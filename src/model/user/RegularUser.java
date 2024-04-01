@@ -4,7 +4,7 @@ public class RegularUser extends User {
 	private Profile userProfile;
  	private CompanyList companyList;
     private ApplicationList applicationList;
-    private QuestDirectory questionList;
+    private QuestionDirectory questionList;
 
     public RegularUser(String userId, String email, String password, Profile userProfile, CompanyList companyList, ApplicationList applicationList) {
         super(userId, email, password);
