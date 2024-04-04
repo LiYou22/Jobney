@@ -14,10 +14,20 @@ public class AdminUser extends User{
 
     @Override
     public boolean isValidUser(String email, String password) {
-        return true;
+    	return this.getEmail().equals(email) && this.getPassword().equals(password);
     }
 
-    public RegularUserDirectory getUsers() {
+    private String getEmail() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	private String getPassword() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public RegularUserDirectory getUsers() {
         return users;
     }
 

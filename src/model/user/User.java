@@ -13,16 +13,16 @@ public abstract class User {
 
     public abstract boolean isValidUser(String email, String password);
 
-    public boolean isMatch(String userId) {
-        return this.userId.equals(userId);
-    }
-
-    public void updatePassword(String newPassword) {
-        this.password = newPassword;
-    }
-
-    public void updateEmail(String newEmail) {
-        this.email = newEmail;
-    }
+//    public boolean isMatch(String userId) {
+//        return this.userId.equals(userId);
+//    }
+//
+//    public void updatePassword(String newPassword) {
+//        this.password = newPassword;
+//    }
+//
+//    public void updateEmail(String newEmail) {
+//        this.email = newEmail;
+//    }
 
 }

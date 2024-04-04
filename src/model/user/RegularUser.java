@@ -1,4 +1,4 @@
-package model.application.ApplicationList;
+package model.user;
 
 import model.application.ApplicationList;
 import model.company.CompanyList;
@@ -25,7 +25,17 @@ public class RegularUser extends User {
         return this.getEmail().equals(email) && this.getPassword().equals(password);
     }
 
-    public Profile getUserProfile() {
+    private Object getPassword() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	private Object getEmail() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public Profile getUserProfile() {
         return userProfile;
     }
 
@@ -37,8 +47,8 @@ public class RegularUser extends User {
         return applicationList;
     }
 
-    public QuestDirectory getQuestionList() {
-        return questionList;
-    }
+//    public QuestDirectory getQuestionList() {
+//        return questionList;
+//    }
 
 }

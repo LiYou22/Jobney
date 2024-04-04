@@ -35,9 +35,9 @@ public class CompanyCatalog {
         return companies.size();
     }
 
-    public int countApplicationByCompany(String companyName) {
-    	
-    }
+//    public int countApplicationByCompany(String companyName) {
+//    	
+//    }
 
 
 }

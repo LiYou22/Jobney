@@ -3,6 +3,7 @@ package model.connection;
 import java.util.Date;
 
 import model.enums.CONNECTSTATUS;
+import model.company.Company;
 
 public class Connection {
      private String connectionID;
@@ -51,9 +52,14 @@ public class Connection {
     	 this.status = status;
      }
      
-     public void updateStatus(CONNECTSTATUS status) {
+     public void updateStatus(CONNECTSTATUS newStatus) {
     	 this.status = newStatus;
      }
+
+	public Company getCompany() {
+		// TODO Auto-generated method stub
+		return null;
+	}
      
      
 }

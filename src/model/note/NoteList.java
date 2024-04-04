@@ -1,5 +1,6 @@
 package model.note;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class NoteList {
@@ -13,16 +14,16 @@ public class NoteList {
           return noteList;
       }
       
-      public void addNote(String content) {
-    	  Note note = new Note(content);
-    	  noteList.add(note);
-      }
+//      public void addNote(String content) {
+//    	  Note note = new Note(content);
+//    	  noteList.add(note);
+//      }
       
-      public void updateNote(String noteID, String newContent) {
-    	  Note note = findNoteByID(noteID){
-    		  if(note != null) {
-    			  note.updateContent(newContent);
-    		  }
-    	  }
-      }
+//      public void updateNote(String noteID, String newContent) {
+//    	  Note note = findNoteByID(noteID){
+//    		  if(note != null) {
+//    			  note.updateContent(newContent);
+//    		  }
+//    	  }
+//      }
 }

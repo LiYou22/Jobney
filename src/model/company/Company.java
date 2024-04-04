@@ -1,5 +1,8 @@
 package model.company;
 
+import model.enums.INDUSTRY;
+import model.job.JobCatalog;
+
 public class Company {
     private String companyId;
     private String companyName;
@@ -12,7 +15,7 @@ public class Company {
         this.companyName = companyName;
         this.industry = industry;
         this.website = website;
-        this.jobList = new JobCatalog(); // Initialize JobCatalog for the company
+        this.jobList = new JobCatalog();
     }
 
     public JobCatalog getJobCatalog() {

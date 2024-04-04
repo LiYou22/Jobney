@@ -10,21 +10,21 @@ public class DocumentList {
     	  this.documents = new ArrayList<>();
       }
       
-      public void addDoc(String docID, DOCTYPE type, String docName) {
-    	  Document document;
-    	  switch(type) {
-    	     case CoverLetter:    // how many types should we have ,just 2 or it can be added by users
-    	    	 document = new CoverLetter(docID,docName);
-    	    	 break;
-    	     case Resume:
-    	    	 document = new Resume(docID,docName);
-    	    	 break;
-    	    	// add more cases....
-    	     default:
-    	    	 throw new IllegalArgumentException("Unsupported document type.")
-    	  }
-    	  documents.add(document);
-      }
+//      public void addDoc(String docID, DOCTYPE type, String docName) {
+//    	  Document document;
+//    	  switch(type) {
+//    	     case CoverLetter:    // how many types should we have ,just 2 or it can be added by users
+//    	    	 document = new CoverLetter(docID,docName);
+//    	    	 break;
+//    	     case Resume:
+//    	    	 document = new Resume(docID,docName);
+//    	    	 break;
+//    	    	// add more cases....
+//    	     default:
+//    	    	 throw new IllegalArgumentException("Unsupported document type.")
+//    	  }
+//    	  documents.add(document);
+//      }
       
       public void removeDoc(String docID) {
     	  documents.removeIf(doc -> doc.getDocID().equals(docID));

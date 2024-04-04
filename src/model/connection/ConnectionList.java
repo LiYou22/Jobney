@@ -43,22 +43,22 @@ public class ConnectionList {
     	return connections.size();
     }
     
-    public int countAcceptance() {
-    	int count = 0;
-    	for(Connection connection: connections) {
-    		if(connection.isAccepted()) {    //connection status 
-    			count++
-    		}
-    	}
-    	return count;
-    }
+//    public int countAcceptance() {
+//    	int count = 0;
+//    	for(Connection connection: connections) {
+//    		if(connection.isAccepted()) {    //connection status 
+//    			count++;
+//    		}
+//    	}
+//    	return count;
+//    }
     
-    public double countAcceptRate() {
-    	if(connections.size() == 0) {
-    		return 0; // to avoid division by zero
-    	}
-    	return (double) countAcceptance()/ connections.size() * 100;
-    }
+//    public double countAcceptRate() {
+//    	if(connections.size() == 0) {
+//    		return 0; // to avoid division by zero
+//    	}
+//    	return (double) countAcceptance()/ connections.size() * 100;
+//    }
     
     public int countInformationInterview() {
     	int count = 0;
@@ -71,54 +71,54 @@ public class ConnectionList {
     	return count;
     }
     
-    public String findCompanyWithMostConnections() {
-    	Map<String, Integer> companyConnectionCount = new HashMap<>();
-    	for (Connection connection : connections) {
-    		String company = connection.getCompany(); // how to get company name?
-    		companyConnectionCount.put(company, companyConnectionCount.getOrDefault(company, 0)+1);
-    	}
-    	int maxConnections = 0;
-    	String companyWithMostConnections = null;
-    	for(Map.Entry<String, Integer> entry: companyConnectionCount.entrySet()) {
-    		if(entry.getValue() > maxConnections) {
-    			maxConnections = entry.getValue();
-    			companyWithMostConnections = entry.getKey();
-    		}
-    	}
-    		return companyWithMostConnections;
-    }
+//    public String findCompanyWithMostConnections() {
+//    	Map<String, Integer> companyConnectionCount = new HashMap<>();
+//    	for (Connection connection : connections) {
+//    		String company = connection.getCompany(); // how to get company name?
+//    		companyConnectionCount.put(company, companyConnectionCount.getOrDefault(company, 0)+1);
+//    	}
+//    	int maxConnections = 0;
+//    	String companyWithMostConnections = null;
+//    	for(Map.Entry<String, Integer> entry: companyConnectionCount.entrySet()) {
+//    		if(entry.getValue() > maxConnections) {
+//    			maxConnections = entry.getValue();
+//    			companyWithMostConnections = entry.getKey();
+//    		}
+//    	}
+//    		return companyWithMostConnections;
+//    }
     
-    public String findCompanyWithLeastConnections() {
-        Map<String, Integer> companyConnectionCount = new HashMap<>();
-        for (Connection connection : connections) {
-            String company = connection.getCompany();
-            companyConnectionCount.put(company, companyConnectionCount.getOrDefault(company, 0) + 1);
-        }
-        int minConnections = Integer.MAX_VALUE;
-        String companyWithLeastConnections = null;
-        for (Map.Entry<String, Integer> entry : companyConnectionCount.entrySet()) {
-            if (entry.getValue() < minConnections) {
-                minConnections = entry.getValue();
-                companyWithLeastConnections = entry.getKey();
-            }
-        }
-        return companyWithLeastConnections;
-    }
+//    public String findCompanyWithLeastConnections() {
+//        Map<String, Integer> companyConnectionCount = new HashMap<>();
+//        for (Connection connection : connections) {
+//            String company = connection.getCompany();
+//            companyConnectionCount.put(company, companyConnectionCount.getOrDefault(company, 0) + 1);
+//        }
+//        int minConnections = Integer.MAX_VALUE;
+//        String companyWithLeastConnections = null;
+//        for (Map.Entry<String, Integer> entry : companyConnectionCount.entrySet()) {
+//            if (entry.getValue() < minConnections) {
+//                minConnections = entry.getValue();
+//                companyWithLeastConnections = entry.getKey();
+//            }
+//        }
+//        return companyWithLeastConnections;
+//    }
     
-    public double calculateAvgConnectionsPerCompany() {
-            if (connections.size() == 0) {
-                return 0; // To avoid division by zero
-            }
-            Map<String, Integer> companyConnectionCount = new HashMap<>();
-            for (Connection connection : connections) {
-                String company = connection.getCompany();
-                companyConnectionCount.put(company, companyConnectionCount.getOrDefault(company, 0) + 1);
-            }
-            int totalCompanies = companyConnectionCount.size();
-            int totalConnections = connections.size();
-            return (double) totalConnections / totalCompanies;
-        }
-    
+//    public double calculateAvgConnectionsPerCompany() {
+//        if (connections.size() == 0) {
+//            return 0; // To avoid division by zero
+//        }
+//        Map<String, Integer> companyConnectionCount = new HashMap<>();
+//        for (Connection connection : connections) {
+//            String company = connection.getCompany();
+//            companyConnectionCount.put(company, companyConnectionCount.getOrDefault(company, 0) + 1);
+//        }
+//        int totalCompanies = companyConnectionCount.size();
+//        int totalConnections = connections.size();
+//        return (double) totalConnections / totalCompanies;
+//    }
+//    
     
     
 }
