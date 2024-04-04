@@ -1,46 +1,23 @@
 package model.question;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class QuestionList {
+// class to manage all the questions under one application 
+public class QuestionList  extends QuestionManager{
 
-	private List<Question> questionList;
+	private int applicationId;
 	
-	public QuestionList() {
-		this.questionList = new ArrayList<>();
+	public QuestionList(int applicationID) {
+		super();
+		this.applicationId = applicationID;
 	}
 	
-	public List<Question> getQuestionList(){
-		return questionList;
+	public int getApplicationId() {
+		return applicationId;
 	}
-	
-	public void addQuestion(Question q) {
-		questionList.add(q);
+
+	public void setApplicationId(int applicationId) {
+		this.applicationId = applicationId;
 	}
-	
-	public void updateQuestion(String qID, String newQuestion, String newAnswer) {
-		Question q = findQuestionByID(qID);
-		if(q != null) {
-			q.setAnswer(newAnswer);;
-			q.setQuestion(newQuestion);
-		}
-	}
-	
-	public void deleteQuestion(String qID) {
-		Question q = findQuestionByID(qID);
-        if (q != null) {
-            questionList.remove(q);
-        }
-	}
-	
-	public Question findQuestionByID(String qID) {
-        for (Question q : questionList) {
-            if (q.getQuestionID().equals(qID)) {
-                return q;
-            }
-        }
-        return null; // Question not found
-    }
 	
 }

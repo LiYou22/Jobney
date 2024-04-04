@@ -4,49 +4,23 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-public class QuestionDirectory {
-       private List<Question> questionList;
-       
-       public QuestionDirectory(List<Question> questionList) {
-    	   this.questionList = questionList;
-       }
-       
-       public List<Question> getAllQuestions(){
-    	   return questionList;
-       }
+// class to manage all questions under one user
+public class QuestionDirectory extends QuestionManager {
 	
-       public void addQuestion(Question question) {
-    	   questionList.add(question);
-       }
+	public static int count;
+    protected List<Question> allQuestionList;
+	
+	public QuestionDirectory() {
+		super();
+	}
        
-       public void updateQuestion(String qID, String newQuestion, String newAnswer) {
-    	   for(Question q : questionList) {
-    		   if(q.getQuestionID().equals(qID)) {
-    			   q.setQuestion(newQuestion);
-    			   q.setAnswer(newAnswer);
-    			   break;
-    		   }
-    	   }
-       }
-       
-       public void deleteQuestion(String qID) {
-    	   questionList.removeIf(q -> q.getQuestionID().equals(qID));
-       }
-       
-       public Question searchQuestionByName(String questionName) {
-    	   for (Question q: questionList) {
-    		   if(q.getQuestion().equalsIgnoreCase(questionName)) {
-    			   return q;
-    		   }
-    	   }
-    	   return null;
-       }
-       
-       public void sortQuestionByFrequency() {
-    	   Collections.sort(questionList, Comparator.comparingInt(Question::getFrequency).reversed()l));
-       }
-       
-       public int countQuestions() {
-           return questionList.size();
-       }
+   	// list question by frequency in descending order
+   	public List<Question> sortQuestionByFrequency(){
+   		Collections.sort(allQuestionList, new Comparator<Question>() {
+   			public int compare(Question q1, Question q2) {
+   				return Integer.compare(q1.getFrequency(), q2.getFrequency());
+   			}
+   		});
+   		return allQuestionList;
+   	}
 }

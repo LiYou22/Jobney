@@ -1,18 +1,23 @@
 package model.question;
 
+import java.util.ArrayList;
+
 public class Question {
-      private String qID;
+	
+	  private static int nextId = 1;
+      private int qID;
       private String q;
-      private String a;
-      int frequency;
+      private ArrayList<String> alist;  // one question might have multiple answers
+      private int frequency;
       
-      public Question(String qID, String q) {
-    	  this.qID = qID;
+      public Question(String q) {
+    	  this.qID = nextId++;
     	  this.q = q;
+    	  this.alist = new ArrayList<>();
     	  this.frequency = 0;
       }
 	
-	  public String getQuestionID() {
+	  public int getQuestionID() {
 		  return qID;
 	  }
      
@@ -24,18 +29,25 @@ public class Question {
 		  this.q = q;
 	  }
 	  
-	  public String getAnswer() {
-		  return a;
+	  public ArrayList<String> getAnswerList() {
+		  return alist;
 	  }
 	  
-	  public void setAnswer(String a) {
-		  this.a = a;
+	  public void addAnswer(String a) {
+		  alist.add(a);
 	  }
+	  
+	  public void updateAnswer(String oldAnswer, String newAnswer) {
+		  int index = alist.indexOf(oldAnswer);
+		  alist.set(index, newAnswer);
+	  }
+	  
 	  
 	  public int getFrequency() {
 		  return frequency;
 	  }
 	  
+	  // when adding an answer, increase the frequency
 	  public void addFrequency() {
 		  frequency++;
 	  }
