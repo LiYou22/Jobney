@@ -1,10 +1,14 @@
 package model.application.ApplicationList;
 
+import model.application.ApplicationList;
+import model.company.CompanyList;
+import model.question.QuestionDirectory;
+
 public class RegularUser extends User {
 	private Profile userProfile;
  	private CompanyList companyList;
     private ApplicationList applicationList;
-    private QuestDirectory questionList;
+    private QuestionDirectory questionList;
 
     public RegularUser(String userId, String email, String password, Profile userProfile, CompanyList companyList, ApplicationList applicationList) {
         super(userId, email, password);
@@ -12,7 +16,7 @@ public class RegularUser extends User {
         this.companyList = companyList;
         this.applicationList = applicationList;
         // The question list could be initialized here or be set via a setter method.
-        this.questionList = new QuestDirectory(); 
+        this.questionList = new QuestionDirectory(); 
     }
 
     @Override
