@@ -21,24 +21,24 @@ public class QuestionManager {
 	    	count++;
 	    }
 
-	    public Question searchQuestionByID(int qID) {
+	    public Question searchQuestionByID(String inputId) {
 	        for (Question q : questionlist) {
-	            if (q.getQuestionID() == qID) {
+	            if (q.getQuestionID().equals(inputId)) {
 	                return q;
 	            }
 	        }
 	        return null;
 	    }
 
-	    public void deleteQuestion(int qID) {
-	        Question q = searchQuestionByID(qID);
+	    public void deleteQuestion(String inputId) {
+	        Question q = searchQuestionByID(inputId);
 	        if (q != null) {
 	        	questionlist.remove(q);
 	        }
 	    }
 
-	    public void updateAnswer(int qID, String oldAnswer, String newAnswer) {
-	        Question q = searchQuestionByID(qID);
+	    public void updateAnswer(String inputId, String oldAnswer, String newAnswer) {
+	        Question q = searchQuestionByID(inputId);
 	        if(q != null) {
 	            q.updateAnswer(oldAnswer, newAnswer);
 	        }

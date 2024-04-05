@@ -1,30 +1,52 @@
 package model.note;
 
-import java.util.Date;
+import java.time.*;  // this will import all classes in java.time package
 
-public class Note {
-       private String noteID;
-       private String content;
-       private Date createDate;
-       private Date updateDate;
+
+import model.utilities.BaseId;
+
+public class Note extends BaseId{
+	
+	   final String prefix = "note-";
+	   private static int nextId = 1;
+       private String noteId;
        
-       public Note(String noteID, String content) {
-    	   this.noteID = noteID;  // generate by method or create by user
-    	   this.content = content;
-    	   this.createDate = new Date();
-    	   this.updateDate = new Date();
+       private String title;
+       private String content;
+       private LocalDate createDate;
+       private LocalDate updateDate;
+       
+       // note id format: note-1, note-2, etc.
+       protected void generateId(String prefix) {
+    	   this.noteId = prefix + nextId;
        }
        
-       public String getNoteID() {
-    	   return noteID;
+       public Note(String title, String content) {
+    	   generateId(prefix);
+    	   this.title = title;
+    	   this.content = content;
+    	   this.createDate = LocalDate.now();
+    	   this.updateDate = LocalDate.now();
+       }
+       
+       public String getNoteId() {
+    	   return this.noteId;
+       }
+       
+       public String getTitle() {
+    	   return this.title;
        }
        
        public String getContent() {
-    	   return content;
+    	   return this.content;
        }
        
        public void updateContent(String newContent) {
-    	   content = newContent;
-    	   updateDate = new Date();
+    	   this.content = newContent;
+    	   this.updateDate = LocalDate.now();
        }
+       
+       public void updateTitle(String newTitle) {
+    	   this.title = newTitle;
+    	   this.updateDate = LocalDate.now();
 }
