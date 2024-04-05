@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DocumentList {
+	
       private List<Document> documents;
       
       public DocumentList() {
@@ -27,12 +28,12 @@ public class DocumentList {
 //      }
       
       public void removeDoc(String docID) {
-    	  documents.removeIf(doc -> doc.getDocID().equals(docID));
+    	  documents.removeIf(doc -> doc.getDocId().equals(docID));
       }
       
       public Document findDoc(String docID){
     	  for(Document doc: documents) {
-    		  if(doc.getDocID().equals(docID)) {
+    		  if(doc.getDocId().equals(docID)) {
     			  return doc;
     		  }
     	  }

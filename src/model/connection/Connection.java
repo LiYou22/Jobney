@@ -1,33 +1,33 @@
 package model.connection;
 
 import java.util.Date;
-
 import model.enums.CONNECTSTATUS;
 import model.company.Company;
 
 public class Connection {
-     private String connectionID;
+	
+	 final String prefix = "connection-";
+	 private static int nextId = 1;
+     private String connectionId;
+     
      private String firstName;
      private String lastName;
      private Date connectDate;
      private CONNECTSTATUS status;
      
-     public Connection(String connectionID, String firstName, String lastName) {
-    	 this.connectionID = connectionID;
+     public Connection(String firstName, String lastName) {
+    	 this.connectionId = prefix + nextId;
     	 this.firstName = firstName;
     	 this.lastName = lastName;
     	 this.connectDate = new Date(); //default to current date
     	 this.status = CONNECTSTATUS.SENTFOLLOWUPEMAIL; // default???
+    	 nextId++;
      }
      
-     public String getConnectionID() {
-    	 return connectionID;
+     public String getConnectionId() {
+    	 return connectionId;
      }
    
-     public void setConnectionID(String connectionID) {
-    	 this.connectionID = connectionID;
-     }
-     
      public String getFirstName() {
     	 return firstName;
      }

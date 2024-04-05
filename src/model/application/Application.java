@@ -8,7 +8,11 @@ import model.enums.RATE;
 import model.job.Job;
 
 public class Application {
+	
+	final String prefix = "application-";
+	private static int nextId = 1;
     private String applicationId;
+    
     private Job associatedJob; 
     private RATE rate; 
     private Date applyDeadline;
@@ -17,11 +21,17 @@ public class Application {
 
     public Application(Job associatedJob) {
         this.associatedJob = associatedJob;
+        this.applicationId = prefix + nextId;
+        nextId++;
     }
 
 	public Job getAssociatedJob() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	
+	public String getApplicationId() {
+		return this.applicationId;
 	}
 
 }

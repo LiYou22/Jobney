@@ -4,8 +4,9 @@ import java.util.ArrayList;
 
 import model.utilities.BaseId;
 
-public class Question extends BaseId{
+public class Question{
 	
+      // question id format: question-1, question-2, etc.
 	  final String prefix = "question-";
 	  private static int nextId = 1;
       private String qId;
@@ -14,16 +15,13 @@ public class Question extends BaseId{
       private ArrayList<String> alist;  // one question might have multiple answers
       private int frequency;
       
-      // question id format: question-1, question-2, etc.
-      protected void generateId(String prefix) {
-    	  this.qId = prefix + nextId;
-      }
       
       public Question(String q) {
-   	      generateId(prefix);
+    	  this.qId = prefix + nextId;
     	  this.q = q;
     	  this.alist = new ArrayList<>();
     	  this.frequency = 0;
+          nextId++;
       }
 	
 	  public String getQuestionID() {

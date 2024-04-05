@@ -5,8 +5,9 @@ import java.time.*;  // this will import all classes in java.time package
 
 import model.utilities.BaseId;
 
-public class Note extends BaseId{
-	
+public class Note{
+    
+	   // note id format: note-1, note-2, etc.
 	   final String prefix = "note-";
 	   private static int nextId = 1;
        private String noteId;
@@ -16,17 +17,13 @@ public class Note extends BaseId{
        private LocalDate createDate;
        private LocalDate updateDate;
        
-       // note id format: note-1, note-2, etc.
-       protected void generateId(String prefix) {
-    	   this.noteId = prefix + nextId;
-       }
-       
        public Note(String title, String content) {
-    	   generateId(prefix);
+    	   this.noteId = prefix + nextId;
     	   this.title = title;
     	   this.content = content;
     	   this.createDate = LocalDate.now();
     	   this.updateDate = LocalDate.now();
+           nextId++;
        }
        
        public String getNoteId() {
@@ -49,4 +46,5 @@ public class Note extends BaseId{
        public void updateTitle(String newTitle) {
     	   this.title = newTitle;
     	   this.updateDate = LocalDate.now();
+       }
 }

@@ -3,16 +3,21 @@ package model.document;
 import java.util.Date;
 
 public abstract class Document {
-      private String docID;
+	
+	  private final String prefix = "doc-";
+	  private static int nextId = 1;
+      private String docId;
+      
       private String docName;
       private Date creationDate;
       private String filePath;
       
-      public Document(String docID, String docName) {
-    	  this.docID = docID;
+      public Document(String docName) {
+    	  this.docId = prefix + nextId;
     	  this.docName = docName;
     	  this.creationDate = new Date();
     	  this.filePath = "";
+    	  nextId++;
       }
       
       public void updateName(String newName) {
@@ -25,8 +30,8 @@ public abstract class Document {
       
       protected abstract String getType(); // for coverletter and resume
       
-      public String getDocID() {
-    	  return docID;
+      public String getDocId() {
+    	  return docId;
       }
       
       public String getDocName() {

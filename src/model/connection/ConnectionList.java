@@ -23,17 +23,17 @@ public class ConnectionList {
     	connections.add(connection);
 	}
     
-    public Connection findConnection(String connectionID) {
+    public Connection findConnection(String connectionId) {
     	for(Connection connection: connections) {
-    		if(connection.getConnectionID().equals(connectionID)) {
+    		if(connection.getConnectionId().equals(connectionId)) {
     			return connection;
     		}
     	}
     	return null;
     }
     
-    public void deleteConnection(String connectionID) {
-    	Connection connectionToRemove = findConnection(connectionID);
+    public void deleteConnection(String connectionId) {
+    	Connection connectionToRemove = findConnection(connectionId);
     	if(connectionToRemove != null) {
     		connections.remove(connectionToRemove);
     	}

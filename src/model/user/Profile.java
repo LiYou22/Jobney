@@ -4,6 +4,7 @@ import java.awt.Image;
 import java.util.Date;
 
 public class Profile {
+	
 	private String userName;
 	private Image avatar;
 	private Date registerDate;
