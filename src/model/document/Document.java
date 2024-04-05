@@ -11,12 +11,14 @@ public abstract class Document {
       private String docName;
       private Date creationDate;
       private String filePath;
+      private double version;
       
       public Document(String docName) {
     	  this.docId = prefix + nextId;
     	  this.docName = docName;
     	  this.creationDate = new Date();
     	  this.filePath = "";
+    	  this.version = 1.0;
     	  nextId++;
       }
       
@@ -45,4 +47,10 @@ public abstract class Document {
       public String getFilePath() {
     	  return filePath;
       }
+      
+      public double getVersion() {
+    	  return version;
+      }
+      
+      // update document, change version 
 }
