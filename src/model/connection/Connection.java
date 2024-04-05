@@ -1,6 +1,6 @@
 package model.connection;
 
-import java.util.Date;
+import java.time.LocalDate;
 import model.enums.CONNECTSTATUS;
 import model.company.Company;
 
@@ -12,15 +12,15 @@ public class Connection {
      
      private String firstName;
      private String lastName;
-     private Date connectDate;
+     private LocalDate connectDate;
      private CONNECTSTATUS status;
      
      public Connection(String firstName, String lastName) {
     	 this.connectionId = prefix + nextId;
     	 this.firstName = firstName;
     	 this.lastName = lastName;
-    	 this.connectDate = new Date(); //default to current date
-    	 this.status = CONNECTSTATUS.SENTFOLLOWUPEMAIL; // default???
+    	 this.connectDate = LocalDate.now(); //default to current date
+    	 this.status = CONNECTSTATUS.SENT; // default = sent
     	 nextId++;
      }
      
@@ -48,7 +48,7 @@ public class Connection {
     	 return status;
      }
      
-     public void setCONNECTSTATUS(CONNECTSTATUS status) {
+     public void setStatus(CONNECTSTATUS status) {
     	 this.status = status;
      }
      
@@ -56,10 +56,6 @@ public class Connection {
     	 this.status = newStatus;
      }
 
-	public Company getCompany() {
-		// TODO Auto-generated method stub
-		return null;
-	}
      
      
 }
