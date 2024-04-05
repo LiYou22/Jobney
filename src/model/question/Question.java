@@ -2,7 +2,6 @@ package model.question;
 
 import java.util.ArrayList;
 
-import model.utilities.HashHelper;
 
 public class Question{
 	

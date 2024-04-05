@@ -1,9 +1,7 @@
 package model.note;
 
-import java.time.*;  // this will import all classes in java.time package
+import java.time.LocalDate;
 
-
-import model.utilities.HashHelper;
 
 public class Note{
     
@@ -16,7 +14,7 @@ public class Note{
        private String content;
        private LocalDate createDate;
        private LocalDate updateDate;
-       
+   
        public Note(String title, String content) {
     	   this.noteId = prefix + nextId;
     	   this.title = title;
