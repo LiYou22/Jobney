@@ -30,7 +30,7 @@ public abstract class Document {
     	  this.filePath = newPath;
       }
       
-      protected abstract String getType(); // for coverletter and resume
+      protected abstract String getType(); // for cover letter and resume
       
       public String getDocId() {
     	  return docId;
