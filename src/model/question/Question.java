@@ -2,7 +2,7 @@ package model.question;
 
 import java.util.ArrayList;
 
-import model.utilities.BaseId;
+import model.utilities.HashHelper;
 
 public class Question{
 	

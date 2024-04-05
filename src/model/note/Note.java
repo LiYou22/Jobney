@@ -3,7 +3,7 @@ package model.note;
 import java.time.*;  // this will import all classes in java.time package
 
 
-import model.utilities.BaseId;
+import model.utilities.HashHelper;
 
 public class Note{
     
