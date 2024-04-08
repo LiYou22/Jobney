@@ -3,16 +3,22 @@ package model.job;
 import model.company.*;
 
 public class Job {
+	
+	// job id format: note-1, note-2, etc.
+	final String prefix = "job-";
+	private static int nextId = 1;
 	private String jobId;
+	
     private Company associatedCompany; 
     private String jobName;
     private String jobLink;
 
-    public Job(String jobId, Company associatedCompany, String jobName, String jobLink) {
-        this.jobId = jobId;
+    public Job(Company associatedCompany, String jobName, String jobLink) {
+        this.jobId = prefix + nextId;
         this.associatedCompany = associatedCompany;
         this.jobName = jobName;
         this.jobLink = jobLink;
+        nextId++;
     }
 
     public String getJobId() {

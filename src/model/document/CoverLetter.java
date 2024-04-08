@@ -2,8 +2,9 @@
 package model.document;
 
 public class CoverLetter extends Document {
-     public CoverLetter(String docID, String docName) {
-    	 super(docID, docName);
+	
+     public CoverLetter(String docName) {
+    	 super(docName);
      }
      
      @Override

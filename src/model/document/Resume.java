@@ -1,8 +1,8 @@
 package model.document;
 
 public class Resume extends Document {
-	public Resume(String docID, String docName) {
-   	 super(docID, docName);
+	public Resume(String docName) {
+   	 super(docName);
     }
     
     @Override

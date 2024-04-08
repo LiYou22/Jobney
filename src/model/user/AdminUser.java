@@ -3,11 +3,12 @@ package model.user;
 import model.company.*;
 
 public class AdminUser extends User{
+	
 	private RegularUserDirectory users;
     private CompanyCatalog companies;
 
-    public AdminUser(String userId, String email, String password, RegularUserDirectory users, CompanyCatalog companies) {
-        super(userId, email, password);
+    public AdminUser(String email, String password, RegularUserDirectory users, CompanyCatalog companies) {
+        super(email, password);
         this.users = users;
         this.companies = companies;
     }

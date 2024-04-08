@@ -4,6 +4,7 @@ import java.util.Date;
 import model.enums.APPLICATIONSTATUS;
 
 public class StatusChange {
+	
 	private APPLICATIONSTATUS status;
     private Date changeDate;
     private Application associatedApplication; // Reference to the Application for which the status is changing

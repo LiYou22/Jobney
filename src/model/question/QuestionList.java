@@ -5,18 +5,18 @@ import java.util.List;
 // class to manage all the questions under one application 
 public class QuestionList  extends QuestionManager{
 
-	private int applicationId;
+	private String applicationId;
 	
-	public QuestionList(int applicationID) {
+	public QuestionList(String applicationID) {
 		super();
 		this.applicationId = applicationID;
 	}
 	
-	public int getApplicationId() {
-		return applicationId;
+	public String getApplicationId() {
+		return this.applicationId;
 	}
 
-	public void setApplicationId(int applicationId) {
+	public void setApplicationId(String applicationId) {
 		this.applicationId = applicationId;
 	}
 	

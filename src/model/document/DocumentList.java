@@ -4,35 +4,33 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DocumentList {
-      private List<Document> documents;
+	
+	  private static int count;
+      private List<Document> documentList;
       
       public DocumentList() {
-    	  this.documents = new ArrayList<>();
+    	  this.documentList = new ArrayList<>();
       }
       
-//      public void addDoc(String docID, DOCTYPE type, String docName) {
-//    	  Document document;
-//    	  switch(type) {
-//    	     case CoverLetter:    // how many types should we have ,just 2 or it can be added by users
-//    	    	 document = new CoverLetter(docID,docName);
-//    	    	 break;
-//    	     case Resume:
-//    	    	 document = new Resume(docID,docName);
-//    	    	 break;
-//    	    	// add more cases....
-//    	     default:
-//    	    	 throw new IllegalArgumentException("Unsupported document type.")
-//    	  }
-//    	  documents.add(document);
-//      }
+      public void addDoc(Object doc) {
+    	  // implicitly casting 
+    	  Document result = (Document) doc;
+    	  documentList.add(result);
+    	  count++;
+
+      }
+      
+      public int getCount() {
+    	  return count;
+      }
       
       public void removeDoc(String docID) {
-    	  documents.removeIf(doc -> doc.getDocID().equals(docID));
+    	  documentList.removeIf(doc -> doc.getDocId().equals(docID));
       }
       
       public Document findDoc(String docID){
-    	  for(Document doc: documents) {
-    		  if(doc.getDocID().equals(docID)) {
+    	  for(Document doc: documentList) {
+    		  if(doc.getDocId().equals(docID)) {
     			  return doc;
     		  }
     	  }

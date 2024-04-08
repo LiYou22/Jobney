@@ -2,23 +2,29 @@ package model.question;
 
 import java.util.ArrayList;
 
-public class Question {
+
+public class Question{
 	
+      // question id format: question-1, question-2, etc.
+	  final String prefix = "question-";
 	  private static int nextId = 1;
-      private int qID;
+      private String qId;
+      
       private String q;
       private ArrayList<String> alist;  // one question might have multiple answers
       private int frequency;
       
+      
       public Question(String q) {
-    	  this.qID = nextId++;
+    	  this.qId = prefix + nextId;
     	  this.q = q;
     	  this.alist = new ArrayList<>();
     	  this.frequency = 0;
+          nextId++;
       }
 	
-	  public int getQuestionID() {
-		  return qID;
+	  public String getQuestionID() {
+		  return qId;
 	  }
      
 	  public String getQuestion() {

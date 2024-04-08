@@ -1,12 +1,11 @@
 package model.user;
 
 public abstract class User {
-	private String userId;
+	
     private String email;
     private String password;
 
-    public User(String userId, String email, String password) {
-        this.userId = userId;
+    public User(String email, String password) {
         this.email = email;
         this.password = password;
     }
