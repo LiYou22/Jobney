@@ -16,8 +16,15 @@ public class JobCatalog {
         jobs.add(job);
     }
 
-    public void updateJob(Job job) {
-    	
+    public void updateJob(Job updatedJob) {
+    	for(int i = 0 ; i < jobs.size(); i++) {
+    		Job job = jobs.get(i);
+    		if(job.getJobId() == updatedJob.getJobId()) {
+    			job.setJobName(updatedJob.getJobName());
+    			job.setAssociatedCompany(updatedJob.getAssociatedCompany());
+    			job.setJobLink(updatedJob.getJobLink());
+    		}
+    	}
     }
 
     public void deleteJob(Job job) {

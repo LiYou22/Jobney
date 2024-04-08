@@ -24,6 +24,13 @@ public class CompanyCatalog {
     }
 
     public void updateCompany(Company company) {
+    	for(int i = 0; i < companies.size(); i++){
+    		if(companies.get(i).getCompanyId().equals(company.getCompanyId())) {
+    			companies.set(i, company);
+    			break;
+    		}
+    	
+    	}
        
     }
 
@@ -35,9 +42,13 @@ public class CompanyCatalog {
         return companies.size();
     }
 
-//    public int countApplicationByCompany(String companyName) {
-//    	
+//    public int countApplicationByCompany(Company company) {
+//    	int count = 0;
+//    	for(Company c : companies) {
+//    		if(c.getCompanyName().equals(company.getCompanyName())) {
+//    			count+= c.getJobCatalog().countApplications();
+//    		}
+//    	}
+//    	return count;
 //    }
-
-
 }
