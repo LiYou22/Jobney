@@ -1,7 +1,6 @@
 package model.user;
 
 public abstract class User {
-	
     private String email;
     private String password;
 
@@ -10,18 +9,16 @@ public abstract class User {
         this.password = password;
     }
 
-    public abstract boolean isValidUser(String email, String password);
+    public String getEmail() {
+        return email;
+    }
 
-//    public boolean isMatch(String userId) {
-//        return this.userId.equals(userId);
-//    }
-//
-//    public void updatePassword(String newPassword) {
-//        this.password = newPassword;
-//    }
-//
-//    public void updateEmail(String newEmail) {
-//        this.email = newEmail;
-//    }
+    public String getPassword() {
+        return password;
+    }
+
+    public boolean isValidUser(String email, String password) {
+        return this.getEmail().equals(email) && this.getPassword().equals(password);
+    }
 
 }
