@@ -99,7 +99,7 @@
             </AnchorPane>
          </children>
       </VBox>
-      <Pane prefHeight="870.0" prefWidth="986.0">
+      <Pane fx:id="mainPane" prefHeight="870.0" prefWidth="986.0">
          <children>
             <Pane layoutX="7.0" layoutY="6.0" prefHeight="863.0" prefWidth="659.0">
                <children>
@@ -192,7 +192,7 @@
             </Pane>
             <Pane fx:id="right_side_pane" layoutX="681.0" layoutY="-3.0" prefHeight="879.0" prefWidth="307.0" styleClass="right_side_pane" stylesheets="@style.css">
                <children>
-                  <ImageView fx:id="avatar" fitHeight="39.0" fitWidth="39.0" layoutX="238.0" layoutY="38.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="avatar" fitHeight="40.0" fitWidth="40.0" layoutX="238.0" layoutY="38.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../images/avatar.png" />
                      </image>
