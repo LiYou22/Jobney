@@ -3,37 +3,18 @@ package model.user;
 import model.company.*;
 
 public class AdminUser extends User{
-	
-	private RegularUserDirectory users;
-    private CompanyCatalog companies;
+    private RegularUserDirectory directory;
 
-    public AdminUser(String email, String password, RegularUserDirectory users, CompanyCatalog companies) {
+    public AdminUser(String email, String password) {
         super(email, password);
-        this.users = users;
-        this.companies = companies;
+        this.directory = new RegularUserDirectory();
     }
 
-    @Override
-    public boolean isValidUser(String email, String password) {
-    	return this.getEmail().equals(email) && this.getPassword().equals(password);
+    public boolean isAdminCredentials(String email, String password) {
+        return this.getEmail().equals(email) && this.getPassword().equals(password);
     }
 
-    private String getEmail() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	private String getPassword() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public RegularUserDirectory getUsers() {
-        return users;
+    public RegularUserDirectory getDirectory() {
+        return directory;
     }
-
-    public CompanyCatalog getCompanies() {
-        return companies;
-    }
-
 }

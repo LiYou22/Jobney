@@ -1,17 +1,17 @@
-import controller.LoginController;
 import javafx.application.Application;
 import javafx.stage.Stage;
-import model.user.RegularUser;
-import view.LoginView;
+import model.user.AdminUser;
+import view.UserTypeSelectionView;
 
 
 public class JobneyMain extends Application {
+    private AdminUser adminUser;
 
     @Override
     public void start(Stage primaryStage) {
-        RegularUser user = new RegularUser("userId", "user@email.com", "password", null, null, null);
-        LoginView view = new LoginView(primaryStage);
-        new LoginController(view, user);
+        adminUser = new AdminUser("admin@example.com", "adminPassword");
+
+        UserTypeSelectionView userTypeSelectionView = new UserTypeSelectionView(primaryStage, adminUser);
     }
 
     public static void main(String[] args) {
