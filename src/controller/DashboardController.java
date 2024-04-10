@@ -1,7 +1,11 @@
 package controller;
+import model.utilities.FxmlLoader;
+
+import java.net.URL;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -86,6 +90,9 @@ public class DashboardController {
 
     @FXML
     private ImageView logo;
+    
+    @FXML
+    private Pane mainPane;
 
     @FXML
     private Pane right_side_pane;
@@ -110,7 +117,11 @@ public class DashboardController {
 
     @FXML
     void btnApplicationClicked(ActionEvent event) {
-
+    	System.out.println("Switching to Application page!");
+    	URL fileUrl = getClass().getResource("/view/ApplicationUI.fxml");
+    	FxmlLoader obejct = new FxmlLoader();
+    	Pane view = obejct.getPage(fileUrl);
+    	mainPane.getChildren().setAll(view);
     }
 
     @FXML
@@ -120,7 +131,11 @@ public class DashboardController {
 
     @FXML
     void btnOverviewClicked(ActionEvent event) {
-
+    	System.out.println("Switching to Overview page!");
+    	URL fileUrl = getClass().getResource("/view/DashboardUI.fxml");
+    	FxmlLoader obejct = new FxmlLoader();
+    	Pane view = obejct.getPage(fileUrl);
+    	mainPane.getChildren().setAll(view);
     }
 
     @FXML

@@ -4,7 +4,7 @@
 
 .side_anchor_pane{
 	-fx-background-color: #F5F5F5;
-	-fx-border-color: #E8E8E8;
+	-fx-border-color: #c;
 	-fx-border-width: 0px 3px 0px 0px;
 	-fx-border-style: solid;
 	
@@ -29,4 +29,41 @@
 
 .btn_signin{
 	-fx-background-color: #FFBB36;
+}
+
+.table-view {
+    -fx-padding: 10px;
+    -fx-font-size: 11pt;
+}
+
+.table-row-cell {
+    -fx-background-color: white;
+    -fx-border-color: lightgray;
+}
+
+.table-row-cell:odd {
+    -fx-background-color: #fEFF0F1;
+}
+
+.table-row-cell:selected {
+    -fx-background-color: #EFF0F1;
+    -fx-text-fill: white;
+}
+
+.table-column {
+    -fx-background-color: #EFF0F1;
+}
+
+.table-cell {
+    -fx-text-fill: #E8E8E8;
+    -fx-font-family: "Arial";
+}
+
+
+.btn_add_application{
+	-fx-background-color: #43A5FF;
+}
+
+.btn_search{
+	-fx-background-color: #E8E8E8;
 }
