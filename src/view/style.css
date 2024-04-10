@@ -1,0 +1,28 @@
+.root{
+	-fx-background-color: #F5F5F5;
+}
+
+.side_anchor_pane{
+	-fx-background-color: #F5F5F5;
+	-fx-border-color: #E8E8E8;
+	-fx-border-width: 0px 3px 0px 0px;
+	-fx-border-style: solid;
+	
+}
+
+#btn_overview{
+	-fx-background-color: #F5F5F5;
+}
+
+.right_side_pane{
+	-fx-border-color: #E8E8E8;
+	-fx-border-width: 0px 0px 0px 3px;
+	-fx-border-style: solid;
+}
+
+.statics_pane{
+    -fx-background-color: rgba(54, 159, 255, 0.1);
+    -fx-background-radius: 20px;	
+    
+	
+}
