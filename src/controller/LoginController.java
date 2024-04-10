@@ -4,11 +4,37 @@ import model.user.*;
 import view.LoginView;
 import view.RegistrationView;
 
+
+//import javafx.fxml.FXML;
+//import javafx.scene.control.Button;
+//import javafx.scene.control.Label;
+//import javafx.scene.control.PasswordField;
+//import javafx.scene.control.TextField;
+//
+//public class PleaseProvideControllerClassName {
+//
+//    @FXML
+//    private Button btn_signin;
+//
+//    @FXML
+//    private Label btn_signup;
+//
+//    @FXML
+//    private TextField email;
+//
+//    @FXML
+//    private PasswordField password;
+//
+//}
+
+
 public class LoginController {
 	private LoginView view;
     private AdminUser adminstrator;
     private boolean isAdmin;
     private RegularUserDirectory directory; // The directory to validate regular users
+    
+    
 
     public LoginController(LoginView view, AdminUser adminstrator, boolean isAdmin) {
         this.view = view;
