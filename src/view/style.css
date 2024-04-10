@@ -4,7 +4,7 @@
 
 .side_anchor_pane{
 	-fx-background-color: #F5F5F5;
-	-fx-border-color: #c;
+	-fx-border-color: #E8E8E8;
 	-fx-border-width: 0px 3px 0px 0px;
 	-fx-border-style: solid;
 	
@@ -62,8 +62,40 @@
 
 .btn_add_application{
 	-fx-background-color: #43A5FF;
+	-fx-background-radius: 12; 
 }
 
 .btn_search{
 	-fx-background-color: #E8E8E8;
+}
+
+.btn_change_status{
+	-fx-background-color: #D4F8D3;
+	-fx-background-radius: 12; 
+}
+
+.progress_bar .bar{
+	-fx-background-color: #43A5FF;
+	-fx-background-radius: 12; 
+	
+}
+
+.progress_bar .track{
+	-fx-background-color: #EFF0F1;
+	-fx-background-radius: 12; 
+	
+}
+
+.note_pane{
+	-fx-background-color: #EFF0F1;
+	-fx-background-radius: 12; 
+	
+}
+
+.btn_add{
+    -fx-background-color: transparent; /* No fill */
+    -fx-border-style: segments(5.0, 5.0); /* Dotted border */
+    -fx-border-width: 2;
+    -fx-border-color: #B9BDC1;
+	
 }
