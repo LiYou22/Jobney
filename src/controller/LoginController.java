@@ -1,77 +1,86 @@
 package controller;
 
-import model.user.*;
-import view.LoginView;
-import view.RegistrationView;
+import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-
-//import javafx.fxml.FXML;
-//import javafx.scene.control.Button;
-//import javafx.scene.control.Label;
-//import javafx.scene.control.PasswordField;
-//import javafx.scene.control.TextField;
-//
-//public class PleaseProvideControllerClassName {
-//
-//    @FXML
-//    private Button btn_signin;
-//
-//    @FXML
-//    private Label btn_signup;
-//
-//    @FXML
-//    private TextField email;
-//
-//    @FXML
-//    private PasswordField password;
-//
-//}
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
+import javafx.stage.Stage;
+import model.user.AdminUser;
+import model.user.RegularUser;
 
 
 public class LoginController {
-	private LoginView view;
-    private AdminUser adminstrator;
-    private boolean isAdmin;
-    private RegularUserDirectory directory; // The directory to validate regular users
-    
+    @FXML
+    private Button btn_signin;
+    @FXML
+    private Label btn_signup;
+    @FXML
+    private TextField email;
+    @FXML
+    private PasswordField password;
     
 
-    public LoginController(LoginView view, AdminUser adminstrator, boolean isAdmin) {
-        this.view = view;
-        this.adminstrator = adminstrator;
-        this.isAdmin = isAdmin;
-        initController();
-    }
-    
-    private void initController() {
-        view.getLoginButton().setOnAction(e -> login());
-        view.getRegisterButton().setOnAction(e -> {
-            RegistrationView registrationView = new RegistrationView(view.getStage(), adminstrator);
-            registrationView.showRegistrationForm(); // Call the appropriate method to display the form
-        });
-    }
+	@FXML
+	public void initialize() {
+    	btn_signin.setOnAction(e -> login());
+        btn_signup.setOnMouseClicked(e -> openRegistrationForm());
+	}
 
+    
     private void login() {
-        String email = view.getEmailField().getText();
-        String password = view.getPasswordField().getText();
+    	AdminUser administrator = AdminUser.getInstance();
+        String userEmail = email.getText();
+        String userPassword = password.getText();
         
-        // Handle Administrator login
-        if (isAdmin) {
-            if (adminstrator.isValidUser(email, password)) {
-                view.setFeedbackText("Admin login successful!");
-            } else {
-                view.setFeedbackText("Admin login failed. Invalid credentials.");
-            }
+        if (administrator.isValidUser(userEmail, userPassword)) {
+            // Handle admin login
+            // Redirect to admin dashboard 
+            System.out.println("Admin login successful!");
         } else {
-            // Handle regular user login
-            RegularUser attemptingUser = adminstrator.getDirectory().getUser(email);
-            if (attemptingUser != null && attemptingUser.isValidUser(email, password)) {
-                view.setFeedbackText("User login successful!");
-                // Additional regular user login success logic
+            // Attempt to log in as a regular user
+            RegularUser user = administrator.getDirectory().getUser(userEmail);
+            if (user != null && user.isValidUser(userEmail, userPassword)) {
+                // Login successful for a regular user
+                System.out.println("User login successful!");
+                // Redirect to user dashboard or enable user-specific features
             } else {
-                view.setFeedbackText("User login failed. Invalid credentials.");
+                // Login failed
+                System.out.println("Login failed. Please check your credentials.");
             }
-        } 
+        }
+    }
+    
+
+    private void openRegistrationForm() {
+        
+        try {
+            // Load the registration form FXML
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/SignUpUI.fxml"));
+            fxmlLoader.setController(new SignUpController());
+            Parent registrationForm = fxmlLoader.load();
+
+            // Get the current stage (window) from a component
+            Stage currentStage = (Stage) btn_signup.getScene().getWindow();
+
+            // Set the scene of the current stage to the registration form
+            currentStage.setScene(new Scene(registrationForm));
+            currentStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+            // Handle the exception, maybe log it or show an error message
+        }
     }
 }
+
+
 

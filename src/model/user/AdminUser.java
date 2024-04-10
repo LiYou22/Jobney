@@ -1,8 +1,8 @@
 package model.user;
 
-import model.company.*;
 
 public class AdminUser extends User{
+	private static AdminUser instance = new AdminUser("example@csye.com", "123456");
     private RegularUserDirectory directory;
 
     public AdminUser(String email, String password) {
@@ -13,7 +13,11 @@ public class AdminUser extends User{
     public boolean isAdminCredentials(String email, String password) {
         return this.getEmail().equals(email) && this.getPassword().equals(password);
     }
-
+    
+    public static AdminUser getInstance() {
+        return instance;
+    }
+    
     public RegularUserDirectory getDirectory() {
         return directory;
     }
