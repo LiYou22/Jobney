@@ -10,6 +10,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
@@ -42,43 +43,61 @@ public class LoginController {
         String userEmail = email.getText();
         String userPassword = password.getText();
         
-        if (administrator.isValidUser(userEmail, userPassword)) {
-            // Handle admin login
-            // Redirect to admin dashboard 
-            System.out.println("Admin login successful!");
-        } else {
-            // Attempt to log in as a regular user
-            RegularUser user = administrator.getDirectory().getUser(userEmail);
-            if (user != null && user.isValidUser(userEmail, userPassword)) {
-                // Login successful for a regular user
-                System.out.println("User login successful!");
-                // Redirect to user dashboard or enable user-specific features
+        try {
+            if (administrator.isValidUser(userEmail, userPassword)) {
+                // Need to redirect to admin dashboard 
+                showAlert("Welcome Administrator", "Admin login successful!");
             } else {
-                // Login failed
-                System.out.println("Login failed. Please check your credentials.");
+                RegularUser user = administrator.getDirectory().getUser(userEmail);
+                if (user != null && user.isValidUser(userEmail, userPassword)) {
+                	showAlert("Login Succeed", "User login successful!");
+                    loadDashboardView(user);
+                } else {
+                    showAlert("Login Failed", "Login failed. Please check your credentials.");
+                }
             }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void openRegistrationForm() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/SignUpUI.fxml"));
+            loader.setController(new SignUpController());
+            Parent registrationForm = loader.load();
+
+            Stage stage = (Stage) btn_signup.getScene().getWindow();
+
+            stage.setScene(new Scene(registrationForm));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
     
+    private void loadDashboardView(RegularUser user) throws IOException {
+    	try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/DashBoardUI.fxml"));
+            loader.setController(new DashboardController(user));
+            Parent dashboard = loader.load();
+            
+            Stage stage = (Stage) btn_signin.getScene().getWindow();
+            stage.setScene(new Scene(dashboard));
+            stage.show();
 
-    private void openRegistrationForm() {
-        
-        try {
-            // Load the registration form FXML
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/SignUpUI.fxml"));
-            fxmlLoader.setController(new SignUpController());
-            Parent registrationForm = fxmlLoader.load();
-
-            // Get the current stage (window) from a component
-            Stage currentStage = (Stage) btn_signup.getScene().getWindow();
-
-            // Set the scene of the current stage to the registration form
-            currentStage.setScene(new Scene(registrationForm));
-            currentStage.show();
         } catch (IOException e) {
             e.printStackTrace();
-            // Handle the exception, maybe log it or show an error message
+            System.out.println("Error: Unable to load the Dashboard view.");
         }
+    }
+    
+    private void showAlert(String title, String content) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(content);
+        alert.showAndWait();
     }
 }
 

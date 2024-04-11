@@ -10,12 +10,9 @@ import model.user.AdminUser;
 
 
 public class JobneyMain extends Application {
-    
-	private AdminUser adminUser = new AdminUser("admin@example.com", "111111");
 
 	@Override
 	public void start(Stage primaryStage) {	
-		
 	    FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/LoginUI.fxml"));
 	    loader.setController(new LoginController());
 	    StackPane root = null;

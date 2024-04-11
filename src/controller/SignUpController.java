@@ -62,30 +62,28 @@ public class SignUpController {
 	    } else {
 	        showAlert("Error", "An account could not be created. Please try again.");
 	    }
-    
-
-        showAlert("Success", "Account created successfully. Please log in.");
-        goToLoginView();
     }
-        
+
+    private void goToLoginView() {
+        try {
+		    FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/LoginUI.fxml")); 
+		    loader.setController(new LoginController());
+		    Parent loginView = loader.load();
+		    
+		    Stage stage = (Stage) btn_signup.getScene().getWindow(); 
+		    stage.setScene(new Scene(loginView));
+		    stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("Error: Unable to load the login view.");
+        }
+    }
+    
     private void showAlert(String title, String content) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle(title);
         alert.setHeaderText(null);
         alert.setContentText(content);
         alert.showAndWait();
-    }
-
-    private void goToLoginView() {
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/LoginUI.fxml"));
-            Parent loginForm = fxmlLoader.load();
-            Stage currentStage = (Stage) email.getScene().getWindow(); 
-            currentStage.setScene(new Scene(loginForm));
-            currentStage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-            showAlert("Error", "Unable to load the login view.");
-        }
     }
 }
