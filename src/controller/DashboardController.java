@@ -1,4 +1,5 @@
 package controller;
+import model.user.RegularUser;
 import model.utilities.FxmlLoader;
 
 import java.net.URL;
@@ -15,6 +16,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 
 public class DashboardController {
+	private RegularUser user;
 
     @FXML
     private ImageView avatar;
@@ -114,6 +116,11 @@ public class DashboardController {
 
     @FXML
     private Pane statics_pane2;
+    
+    
+    public DashboardController(RegularUser user) {
+    	this.user = user;
+    }
 
     @FXML
     void btnApplicationClicked(ActionEvent event) {
@@ -152,5 +159,5 @@ public class DashboardController {
     void click(MouseEvent event) {
 
     }
-
+    
 }
