@@ -2,6 +2,7 @@ package model.user;
 
 
 public class AdminUser extends User{
+	
 	private static AdminUser instance = new AdminUser("example@csye.com", "123456");
     private RegularUserDirectory directory;
 

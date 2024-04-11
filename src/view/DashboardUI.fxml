@@ -15,19 +15,20 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<HBox fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="870.0" prefWidth="1206.0" styleClass="root" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" >
+<HBox fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="870.0" prefWidth="1206.0" styleClass="root" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <VBox prefHeight="870.0" prefWidth="220.0">
          <children>
-            <AnchorPane fx:id="side_anchor_pane" prefHeight="872.0" prefWidth="220.0" styleClass="side_anchor_pane" stylesheets="@style.css">
+            <AnchorPane fx:id="side_anchor_pane" prefHeight="870.0" prefWidth="220.0" styleClass="side_anchor_pane" stylesheets="@style.css">
                <children>
-                  <ImageView fx:id="logo" fitHeight="29.0" fitWidth="96.0" layoutX="76.0" layoutY="59.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../images/jobney_logo.png" />
-                     </image>
-                  </ImageView>
-                  <VBox alignment="CENTER" layoutX="10.0" layoutY="155.0" spacing="15.0" AnchorPane.bottomAnchor="345.0" AnchorPane.rightAnchor="10.0">
+                  <VBox alignment="CENTER" layoutX="10.0" layoutY="155.0" prefHeight="870.0" prefWidth="213.0" spacing="15.0" AnchorPane.bottomAnchor="290.0" AnchorPane.rightAnchor="3.0">
                      <children>
+                        <ImageView fx:id="logo" fitHeight="29.0" fitWidth="96.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/jobney_logo.png" />
+                           </image>
+                        </ImageView>
+                        <Pane prefHeight="33.0" prefWidth="200.0" />
                         <Button fx:id="btn_overview" alignment="CENTER" graphicTextGap="10.0" mnemonicParsing="false" onAction="#btnOverviewClicked" prefHeight="62.0" prefWidth="200.0" styleClass="btn_overview" stylesheets="@style.css" text="Overview">
                            <graphic>
                               <ImageView fx:id="icon_overview" fitHeight="21.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
@@ -88,13 +89,25 @@
                               <Font name="Apple Braille" size="14.0" />
                            </font>
                         </Button>
+                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/Group.png" />
+                           </image>
+                        </ImageView>
+                        <Button id="btn_overview" fx:id="btn_log_out" graphicTextGap="10.0" mnemonicParsing="false" onAction="#btnLogOutClicked" prefHeight="62.0" prefWidth="200.0" stylesheets="@style.css" text="LogOut" textAlignment="CENTER">
+                           <graphic>
+                              <ImageView fx:id="icon_log_out" fitHeight="21.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/exit.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <font>
+                              <Font name="Apple Braille" size="14.0" />
+                           </font>
+                        </Button>
                      </children>
                   </VBox>
-                  <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="43.0" layoutY="689.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../images/Group.png" />
-                     </image>
-                  </ImageView>
                </children>
             </AnchorPane>
          </children>
