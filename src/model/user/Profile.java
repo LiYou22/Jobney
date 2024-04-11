@@ -7,19 +7,22 @@ public class Profile {
 	
 	private String userName;
 	private Image avatar;
-	private Date registerDate;
 
     public Profile(String userName, Image avatar) {
         this.userName = userName;
         this.avatar = avatar;
-        this.registerDate = new Date(); 
     }
-
-    public void updateUserName(String userName) {
+    
+    // this is for testing, can be deleted after we've done
+    public Profile(String userName) {
         this.userName = userName;
     }
 
-    public void updateAvatar(Image avatar) {
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public void setAvatar(Image avatar) {
         this.avatar = avatar;
     }
 
@@ -31,7 +34,5 @@ public class Profile {
         return avatar;
     }
 
-    public Date getRegisterDate() {
-        return registerDate;
-    }
+
 }

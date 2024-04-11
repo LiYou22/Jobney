@@ -11,14 +11,12 @@ public class Company {
     
     private String companyName;
     private INDUSTRY industry;
-    private String website;
     private JobCatalog jobList; 
     
-    public Company(INDUSTRY industry, String companyName, String website) {
+    public Company(INDUSTRY industry, String companyName) {
         this.companyId = prefix + nextId;
         this.companyName = companyName;
         this.industry = industry;
-        this.website = website;
         this.jobList = new JobCatalog();
         nextId++;
     }

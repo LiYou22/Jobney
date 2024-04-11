@@ -1,14 +1,17 @@
 package model.user;
 
+import model.company.CompanyCatalog;
 
 public class AdminUser extends User{
 	
 	private static AdminUser instance = new AdminUser("example@csye.com", "123456");
-    private RegularUserDirectory directory;
+    private RegularUserDirectory userDirectory;
+    private CompanyCatalog companyCatalog;
 
     public AdminUser(String email, String password) {
         super(email, password);
-        this.directory = new RegularUserDirectory();
+        this.userDirectory = new RegularUserDirectory();
+        this.companyCatalog = new CompanyCatalog();
     }
 
     public boolean isAdminCredentials(String email, String password) {
@@ -19,7 +22,11 @@ public class AdminUser extends User{
         return instance;
     }
     
-    public RegularUserDirectory getDirectory() {
-        return directory;
+    public RegularUserDirectory getUserDirectory() {
+        return userDirectory;
+    }
+    
+    public CompanyCatalog getCompanyCatalog() {
+    	return companyCatalog;
     }
 }

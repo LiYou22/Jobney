@@ -149,10 +149,10 @@ public class DashboardController {
     @FXML
     void btnOverviewClicked(ActionEvent event) {
     	System.out.println("Switching to Overview page!");
-    	URL fileUrl = getClass().getResource("/view/DashboardUI.fxml");
-    	FxmlLoader obejct = new FxmlLoader();
-    	Pane view = obejct.getPage(fileUrl);
-    	mainPane.getChildren().setAll(view);
+//    	URL fileUrl = getClass().getResource("/view/DashboardUI.fxml");
+//    	FxmlLoader obejct = new FxmlLoader();
+//    	Pane view = obejct.getPage(fileUrl);
+//    	mainPane.getChildren().setAll(view);
     }
 
     @FXML

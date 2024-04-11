@@ -14,6 +14,7 @@ public class Application {
     private String applicationId;
     
     private Job associatedJob; 
+	private Date createDate;
     private RATE rate; 
     private Date applyDeadline;
     private APPLICATIONSTATUS status;
@@ -23,15 +24,27 @@ public class Application {
         this.associatedJob = associatedJob;
         this.applicationId = prefix + nextId;
         nextId++;
+        this.createDate = new Date();
+        this.status = APPLICATIONSTATUS.TOAPPLY;
+        this.rate = RATE.ZERO;
     }
 
 	public Job getAssociatedJob() {
-		// TODO Auto-generated method stub
-		return null;
+		return this.associatedJob;
 	}
 	
 	public String getApplicationId() {
 		return this.applicationId;
 	}
+	
+	public void setApplyDeadline(Date date) {
+		this.applyDeadline = date;
+	}
+	
+	public void setRate(RATE rate) {
+		this.rate = rate;
+	}
+	
+
 
 }

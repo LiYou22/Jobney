@@ -13,14 +13,17 @@ public class JobneyMain extends Application {
 
 	@Override
 	public void start(Stage primaryStage) {	
+		
 	    FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/LoginUI.fxml"));
 	    loader.setController(new LoginController());
 	    StackPane root = null;
+	    
 		try {
 			root = loader.load();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		
 	    Scene scene = new Scene(root);
 	    primaryStage.setScene(scene);
 	    primaryStage.show();
