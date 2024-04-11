@@ -40,8 +40,9 @@
 }
 
 .table-row-cell:odd {
-    -fx-background-color: #fEFF0F1;
+    -fx-background-color: #EFF0F1;
 }
+
 
 .table-row-cell:selected {
     -fx-background-color: #EFF0F1;
