@@ -1,5 +1,7 @@
 package controller;
 import model.user.RegularUser;
+import javafx.scene.Node;
+
 import model.utilities.FxmlLoader;
 
 import java.io.IOException;
@@ -20,6 +22,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class DashboardController {
+	
 	private RegularUser user;
 
     @FXML
@@ -135,11 +138,22 @@ public class DashboardController {
     @FXML
     void btnApplicationClicked(ActionEvent event) {
     	System.out.println("Switching to Application page!");
-    	URL fileUrl = getClass().getResource("/view/ApplicationUI.fxml");
-    	FxmlLoader obejct = new FxmlLoader();
-    	Pane view = obejct.getPage(fileUrl);
-    	mainPane.getChildren().setAll(view);
+    	
+        try {
+            URL fileUrl = getClass().getResource("/view/ApplicationUI.fxml");
+            FXMLLoader loader = new FXMLLoader(fileUrl);
+            ApplicationController appController = new ApplicationController(user);  
+            loader.setController(appController);
+            Pane view = loader.load();
+            mainPane.getChildren().setAll(view);
+
+        } catch (IOException ex) {
+            System.out.println("Error: Unable to load the Application view.");
+            ex.printStackTrace();
+        }
+        
     }
+    
 
     @FXML
     void btnCompaniesClicked(ActionEvent event) {

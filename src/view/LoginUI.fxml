@@ -21,8 +21,8 @@
                         <Font name="Apple Braille" size="30.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="email" layoutX="109.0" layoutY="371.0" prefHeight="44.0" prefWidth="304.0" promptText="Enter your email" />
-                  <PasswordField fx:id="password" layoutX="109.0" layoutY="467.0" prefHeight="50.0" prefWidth="304.0" promptText="Enter your password" />
+                  <TextField fx:id="email" layoutX="109.0" layoutY="371.0" prefHeight="44.0" prefWidth="304.0" promptText="Enter your email" text="user@gmail.com" />
+                  <PasswordField fx:id="password" layoutX="109.0" layoutY="467.0" prefHeight="50.0" prefWidth="304.0" promptText="Enter your password" text="1111" />
                   <Button fx:id="btn_signin" layoutX="109.0" layoutY="563.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="304.0" styleClass="btn_signup" stylesheets="@style.css" text="Sign In" />
                   <Label layoutX="179.0" layoutY="793.0" text="Don't have an account? " textFill="#000000e5" />
                   <Label fx:id="btn_signup" layoutX="310.0" layoutY="793.0" text="Sign Up" textFill="#000000e5">

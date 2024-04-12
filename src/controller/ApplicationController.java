@@ -1,10 +1,13 @@
 package controller;
 
+import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -20,20 +23,21 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import model.application.Application;
 import model.application.ApplicationList;
+import model.user.RegularUser;
 
 public class ApplicationController {
+	
+	private RegularUser user;
+
+	
 	@FXML
-    private TextField search;
+    private TextField search_bar;
 	@FXML
     private Button btn_search;
 	@FXML
     private Button btn_addApplication;
 	@FXML
-    private TextField jobPosition;
-	@FXML
-    private TextField link;
-	@FXML
-	private TableView<Application> tableView;
+	private TableView<Application> application_table;
 	@FXML
 	private TableColumn<Application,String> JobPositionColumn;
 	@FXML
@@ -41,15 +45,20 @@ public class ApplicationController {
 	@FXML
 	private TableColumn<Application,String> StatusColumn;
 	@FXML
-	private TableColumn<Application,String> DateAddedColumn;
-	@FXML
 	private TableColumn<Application,String> DateAppliedColumn;
+	@FXML
+	private TableColumn<Application,String> DateAddedColumn;
 	@FXML
 	private TableColumn<Application,String> RateColumn;
 	
-	@FXML
+		
+	public ApplicationController(RegularUser user) {
+    	this.user = user;
+	}
+
 	public void initialize() {
-		JobPositionColumn.setCellValueFactory(new PropertyValueFactory<>("companyName"));
+		
+		JobPositionColumn.setCellValueFactory(new PropertyValueFactory<>("jobName"));
 		// actual property name in Application Class
 		companyColumn.setCellValueFactory(new PropertyValueFactory<>("companyName")); 
         StatusColumn.setCellValueFactory(new PropertyValueFactory<>("status"));
@@ -61,11 +70,16 @@ public class ApplicationController {
         ObservableList<Application> data = FXCollections.observableArrayList(ApplicationList.getApplicationList());
 
         // Populate the TableView
-        tableView.setItems(data);
+        application_table.setItems(data);
+        
+        btn_search.setOnAction(e -> search(e));
+        btn_addApplication.setOnAction(e -> addApplication(e));        
+        
 	}
 	
-	public void search() {
-		String searchfield = search.getText();
+	public void search(ActionEvent event) {
+		
+		String searchfield = search_bar.getText();
 		List<Application> results = new ArrayList();
 		
 		for(Application app: ApplicationList.getApplicationList()) { // made static method and attribute
@@ -82,22 +96,29 @@ public class ApplicationController {
 			
 			alert.showAndWait();
 		} else {
-			tableView.setItems(FXCollections.observableArrayList(results));
+			application_table.setItems(FXCollections.observableArrayList(results));
 		}
 	}
 	
-	public void addApplication() {
-		try {
-			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("ApplicationPopWindow.fxml"));
-			Parent root1 = (Parent) fxmlLoader.load();
-			Stage stage = new Stage();
-			stage.initStyle(StageStyle.TRANSPARENT);
-			stage.setTitle("Add a Job");
-			stage.setScene(new Scene(root1));
-			stage.show();
-		} catch (Exception e) {
-			System.out.println("Can't load new window");
-		}
+	public void addApplication(ActionEvent event) {             
+
+	    try {
+
+	        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/ApplicationPopWindow.fxml")); 
+	        Parent root1 = fxmlLoader.load();
+	        Stage stage = new Stage();
+	        stage.initStyle(StageStyle.TRANSPARENT);
+	        stage.setTitle("Add a Job");
+	        Scene scene = new Scene(root1);
+
+	        stage.setScene(scene);
+	        stage.show();
+	      
+	    } catch (IOException e) {
+	        System.out.println("Can't load new window");
+	        e.printStackTrace();
+	    }
 	}
+
 	
 }

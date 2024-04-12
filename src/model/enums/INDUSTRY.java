@@ -4,5 +4,4 @@ public enum INDUSTRY {
     TECH,
     EDUCATION,
     FINTECH,
-    MANUFACTURE
 }

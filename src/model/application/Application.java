@@ -1,5 +1,6 @@
 package model.application;
 
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
@@ -13,11 +14,11 @@ public class Application {
 	
 	final String prefix = "application-";
 	private static int nextId = 1;
-	private String jobName;
-	private String companyName;
+//	private String jobName;
+//	private String companyName;
     private String applicationId;
     private Date dateAdded;
-    private Date dateApplied;
+    private String dateApplied;
     private Job associatedJob; 
     private RATE rate; 
     private Date applyDeadline;
@@ -27,20 +28,26 @@ public class Application {
     public Application(Job associatedJob) {
         this.associatedJob = associatedJob;
         this.applicationId = prefix + nextId;
-        this.dateAdded = new Date(); // set the date added to the current date
+        this.dateAdded = new Date();
+        this.status = APPLICATIONSTATUS.TOAPPLY;
+        this.dateApplied = "N/A";
         nextId++;
     }
 
-    public Application(String jobName, String companyName, Date dateApplied, APPLICATIONSTATUS status) {
-        this.jobName = jobName;
-        this.companyName = companyName;
-        this.dateApplied = dateApplied;
-        this.status = status;
-        this.applicationId = prefix + nextId;
-        this.dateAdded = Date.from(LocalDate.now().atStartOfDay(ZoneId.systemDefault()).toInstant());
-        nextId++;
-    }
+//    public Application(String jobName, String companyName, Date dateApplied, APPLICATIONSTATUS status) {
+//        this.jobName = jobName;
+//        this.companyName = companyName;
+//        this.dateApplied = dateApplied;
+//        this.status = status;
+//        this.applicationId = prefix + nextId;
+//        this.dateAdded = Date.from(LocalDate.now().atStartOfDay(ZoneId.systemDefault()).toInstant());
+//        nextId++;
+//    }
     
+	public String getJobName() {
+		return this.associatedJob.getJobName();
+	}
+	
 	public Job getAssociatedJob() {
 		return this.associatedJob;
 	}
@@ -69,16 +76,19 @@ public class Application {
 	 return this.statusChangeHistory;
 	}
 	
-	 public Date getDateAdded() {
-        return this.dateAdded;
+	 public String getDateAdded() {
+	    SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yy");
+        return formatter.format(this.dateAdded);
     }
 
-	 public Date getDateApplied() {
+	 public String getDateApplied() {
         return this.dateApplied;
     }
 
-    public void setDateApplied(Date dateApplied) {
-        this.dateApplied = dateApplied;
+    public void setDateApplied() {
+    	Date date = new Date();
+	    SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yy");
+        this.dateApplied = formatter.format(date);
     }
     
     public void setStatus(APPLICATIONSTATUS status) {

@@ -1,5 +1,6 @@
 package controller;
 
+import java.io.IOException;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
@@ -8,7 +9,10 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
@@ -42,6 +46,9 @@ public class AddApplicationWindowController {
     @FXML
     private TextField jobLinkField;
     
+    @FXML
+    private Button btn_close_window;
+    
     
     private ObservableList<Application> applications;
     
@@ -50,6 +57,9 @@ public class AddApplicationWindowController {
             "TOAPPLY", "DORESEARCH", "APPLIED", "SENTLINKEDIN", "INTERVIEW", "REJECTED", "GETOFFER"
         );
         statusComboBox.setItems(statusOptions);
+        
+        btnCancel.setOnAction(e -> cancel(e));
+        btnSave.setOnAction(e -> save(e));
     }
     
     @FXML
@@ -57,10 +67,15 @@ public class AddApplicationWindowController {
         Node source = (Node) event.getSource();
         Stage stage = (Stage) source.getScene().getWindow();
         stage.close();
+    	System.out.println("clicking cancel");
+    	
     }
+    
     
     @FXML
     public void save(ActionEvent event) {
+    	System.out.println("clicking save");
+
     	String jobName = jobNameField.getText();
     	String companyName = companyNameField.getText();
     	String status = statusComboBox.getValue();
@@ -75,13 +90,15 @@ public class AddApplicationWindowController {
     	
     	//create application object
     	Application application = new Application(job);
-    	application.setDateApplied(Date.from(dateApplied.atStartOfDay(ZoneId.systemDefault()).toInstant()));
-        application.setStatus(APPLICATIONSTATUS.valueOf(status));
+//    	application.setDateApplied(Date.from(dateApplied.atStartOfDay(ZoneId.systemDefault()).toInstant()));
+//        application.setStatus(APPLICATIONSTATUS.valueOf(status));
     	
     	
        // close the window after saving
     	Node source = (Node) event.getSource();
         Stage stage = (Stage) source.getScene().getWindow();
         stage.close();
+        
+        
     }
 }
