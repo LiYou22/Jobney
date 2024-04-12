@@ -53,7 +53,7 @@ public class ApplicationList {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         for (Application a: applications) {
-            sb.append(a);
+            sb.append(a.getJobName() + ",");
         }
         return sb.toString();
     }

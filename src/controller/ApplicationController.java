@@ -24,11 +24,11 @@ import javafx.stage.StageStyle;
 import model.application.Application;
 import model.application.ApplicationList;
 import model.user.RegularUser;
+import model.utilities.DataUpdateInterface;
 
-public class ApplicationController {
+public class ApplicationController implements DataUpdateInterface{
 	
 	private RegularUser user;
-
 	
 	@FXML
     private TextField search_bar;
@@ -55,11 +55,18 @@ public class ApplicationController {
 	public ApplicationController(RegularUser user) {
     	this.user = user;
 	}
-
-	public void initialize() {
+	
+	@Override
+    public void updateTable() {
 		
+		// refresh the data
+		application_table.getItems().clear();
+		populateTable();
+    }
+	
+	public void populateTable() {
+		// set up columns
 		JobPositionColumn.setCellValueFactory(new PropertyValueFactory<>("jobName"));
-		// actual property name in Application Class
 		companyColumn.setCellValueFactory(new PropertyValueFactory<>("companyName")); 
         StatusColumn.setCellValueFactory(new PropertyValueFactory<>("status"));
         DateAddedColumn.setCellValueFactory(new PropertyValueFactory<>("dateAdded"));
@@ -71,9 +78,14 @@ public class ApplicationController {
 
         // Populate the TableView
         application_table.setItems(data);
+	}
+
+	public void initialize() {
+		
+		updateTable();
         
         btn_search.setOnAction(e -> search(e));
-        btn_addApplication.setOnAction(e -> addApplication(e));        
+        btn_addApplication.setOnAction(e -> addApplication(e));   
         
 	}
 	
@@ -104,11 +116,11 @@ public class ApplicationController {
 
 	    try {
 
-	        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/ApplicationPopWindow.fxml")); 
+	        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/AddApplicationUI.fxml")); 
+	         AddApplicationWindowController controller = new AddApplicationWindowController(user, this);	        fxmlLoader.setController(controller);
 	        Parent root1 = fxmlLoader.load();
 	        Stage stage = new Stage();
-	        stage.initStyle(StageStyle.TRANSPARENT);
-	        stage.setTitle("Add a Job");
+	        stage.setTitle("Create an Application");
 	        Scene scene = new Scene(root1);
 
 	        stage.setScene(scene);
