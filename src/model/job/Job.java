@@ -21,15 +21,6 @@ public class Job {
         nextId++;
     }
 
-    public Job(String jobName, Company associatedCompany,String jobLink) {
-        this.jobId = prefix + nextId;
-        this.associatedCompany = associatedCompany;
-        this.jobName = jobName;
-        this.jobLink = jobLink;
-        nextId++;
-    }
-
-    
     public String getJobId() {
         return jobId;
     }
@@ -43,7 +34,7 @@ public class Job {
     }
 
     public String getJobLink() {
-        return this.jobLink;
+        return jobLink;
     }
 
     public void setAssociatedCompany(Company associatedCompany) {

@@ -21,12 +21,6 @@ public class Company {
         nextId++;
     }
     
-    public Company(String companyName) {
-        this.companyId = prefix + nextId;
-        this.companyName = companyName;
-        nextId++;
-    }
-    
     public String getCompanyId() {
     	return this.companyId;
     }

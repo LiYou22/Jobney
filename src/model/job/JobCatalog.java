@@ -16,7 +16,7 @@ public class JobCatalog {
         jobs.add(job);
     }
 
-    public void updateJob(Job updatedJob) {   //create an object first 
+    public void updateJob(Job updatedJob) {
     	for(int i = 0 ; i < jobs.size(); i++) {
     		Job job = jobs.get(i);
     		if(job.getJobId() == updatedJob.getJobId()) {
@@ -42,13 +42,6 @@ public class JobCatalog {
 
     public List<Job> getJobs() {
         return new ArrayList<>(jobs);
+
     }
-    
-//    public int countApplications() {
-//    	int count = 0;
-//    	for (Job job : jobs) {
-//    		count += job.getApplications().size();
-//    	}
-//    	return count;
-//    }
 }

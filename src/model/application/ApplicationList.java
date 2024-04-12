@@ -6,13 +6,13 @@ import java.util.List;
 import model.enums.INDUSTRY;
 
 public class ApplicationList {
-	private static List<Application> applications;
+	private List<Application> applications;
 
     public ApplicationList() {
         this.applications = new ArrayList<>();
     }
 
-    public static List<Application> getApplicationList() {
+    public List<Application> getApplicationList() {
         return applications;
     }
 
