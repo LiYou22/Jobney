@@ -63,7 +63,12 @@ public class LoginController {
 	    
 	    // add application to the user
 	    testUser.getApplicationList().addApplication(app1);
-		
+	    
+	    // for testing 
+	    System.out.print("user directory: \n" + administrator.getUserDirectory());
+	    System.out.print("compay catalog: \n" + administrator.getCompanyCatalog());
+
+	    
 		// set up UI components
     	btn_signin.setOnAction(e -> login());
         btn_signup.setOnMouseClicked(e -> openRegistrationForm());

@@ -81,5 +81,14 @@ public abstract class User {
     public boolean isValidUser(String email, String password) {
         return this.getEmail().equals(email) && this.getPassword().equals(password);
     }
+    
+    @Override
+    public String toString() {
+        return "UserID: " + userId + 
+            "\nPassword: " + password +
+            "\nRegisterDate: " + registerDate;
+    }
+
+    
 
 }

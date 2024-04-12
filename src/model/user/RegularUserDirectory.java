@@ -18,5 +18,19 @@ public class RegularUserDirectory {
     public RegularUser getUser(String email) {
         return users.get(email);
     }
+    
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        for (Map.Entry<String, RegularUser> entry : users.entrySet()) {
+            sb.append("Email: ")
+              .append(entry.getKey())
+              .append("\n")
+              .append(entry.getValue().toString())  // The RegularUser class should also have a properly overridden toString() method.
+              .append("\n");
+        }
+        return sb.toString();
+    }
+
 
 }
