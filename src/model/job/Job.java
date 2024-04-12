@@ -57,6 +57,13 @@ public class Job {
     public void setJobLink(String jobLink) {
         this.jobLink = jobLink;
     }
+    
+    @Override
+    public String toString() {
+        return "JobID: " + jobId + 
+            "\nJob: " + jobName +
+            "\nJob link: " + jobLink;
+    }
 
 	
 	

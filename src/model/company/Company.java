@@ -38,6 +38,14 @@ public class Company {
     public String getCompanyName() {
     	return this.companyName;
     }
+    
+    @Override
+    public String toString() {
+        return "CompanyID: " + companyId + 
+            "\nCompany: " + companyName +
+            "\nIndustry: " + industry +
+            "\nJob catalog: " + jobList;
+    }
 
 
 }

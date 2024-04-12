@@ -3,6 +3,8 @@ package model.job;
 import java.util.ArrayList;
 import java.util.List;
 
+import model.company.Company;
+
 
 public class JobCatalog {
 	
@@ -51,4 +53,14 @@ public class JobCatalog {
 //    	}
 //    	return count;
 //    }
+    
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        for (Job j: jobs) {
+            sb.append(j);
+        }
+        return sb.toString();
+    }
+    
 }

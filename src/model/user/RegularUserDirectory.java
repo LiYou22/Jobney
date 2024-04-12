@@ -26,7 +26,7 @@ public class RegularUserDirectory {
             sb.append("Email: ")
               .append(entry.getKey())
               .append("\n")
-              .append(entry.getValue().toString())  // The RegularUser class should also have a properly overridden toString() method.
+              .append(entry.getValue().toString())
               .append("\n");
         }
         return sb.toString();

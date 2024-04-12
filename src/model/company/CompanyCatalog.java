@@ -2,8 +2,12 @@ package model.company;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+
+import model.user.RegularUser;
 
 public class CompanyCatalog {
+	
 	private List<Company> companies;
 
     public CompanyCatalog() {
@@ -51,4 +55,14 @@ public class CompanyCatalog {
 //    	}
 //    	return count;
 //    }
+    
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        for (Company c: companies) {
+            sb.append(c);
+        }
+        return sb.toString();
+    }
+
 }
