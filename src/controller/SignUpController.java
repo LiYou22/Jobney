@@ -54,7 +54,7 @@ public class SignUpController {
 
 	    RegularUser newUser = new RegularUser(userEmail, userPassword); 
 	    AdminUser admin = AdminUser.getInstance();
-	    boolean success = admin.getDirectory().addUser(newUser); 
+	    boolean success = admin.getUserDirectory().addUser(newUser); 
 
 	    if (success) {
 	        showAlert("Success", "Account created successfully. Please log in.");

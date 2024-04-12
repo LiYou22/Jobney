@@ -22,9 +22,7 @@
 
 .statics_pane{
     -fx-background-color: rgba(54, 159, 255, 0.1);
-    -fx-background-radius: 20px;	
-    
-	
+    -fx-background-radius: 20px;
 }
 
 .btn_signin{
@@ -42,8 +40,9 @@
 }
 
 .table-row-cell:odd {
-    -fx-background-color: #fEFF0F1;
+    -fx-background-color: #EFF0F1;
 }
+
 
 .table-row-cell:selected {
     -fx-background-color: #EFF0F1;
