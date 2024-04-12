@@ -31,7 +31,7 @@
           <RowConstraints maxHeight="154.0" minHeight="10.0" prefHeight="154.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <TableView prefHeight="411.0" prefWidth="870.0" stylesheets="@style.css" GridPane.rowIndex="1">
+            <TableView prefHeight="260.0" prefWidth="870.0" stylesheets="@style.css" GridPane.rowIndex="1">
               <columns>
                 <TableColumn prefWidth="75.0" text="Job Position" />
                 <TableColumn prefWidth="75.0" text="Company" />
