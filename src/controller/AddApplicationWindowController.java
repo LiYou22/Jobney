@@ -52,7 +52,9 @@ public class AddApplicationWindowController {
     
     private ObservableList<Application> applications;
     
+    
     public void initialize() {
+
         ObservableList<String> statusOptions = FXCollections.observableArrayList(
             "TOAPPLY", "DORESEARCH", "APPLIED", "SENTLINKEDIN", "INTERVIEW", "REJECTED", "GETOFFER"
         );

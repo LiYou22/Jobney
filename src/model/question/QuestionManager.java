@@ -6,13 +6,13 @@ import java.util.List;
 public class QuestionManager {
 	
 		protected int count = 0;
-	    protected List<Question> questionlist;
+	    protected static List<Question> questionlist;
 	    
 	    public QuestionManager() {
 	        this.questionlist = new ArrayList<>();
 	    }
 
-	    public List<Question> getQuestions() {
+	    public static List<Question> getQuestions() {
 	        return questionlist;
 	    }
 

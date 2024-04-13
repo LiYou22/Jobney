@@ -28,14 +28,14 @@
                   <Image url="@../images/search-normal.png" />
                </image>
             </ImageView>
-            <TextField fx:id="search_bar" prefHeight="26.0" prefWidth="232.0" promptText="Search question" />
-            <Button fx:id="btn_search" mnemonicParsing="false" onAction="#searchCompany" prefHeight="26.0" prefWidth="69.0" styleClass="btn_search" stylesheets="@style.css" text="Search" />
+            <TextField fx:id="questionIdField" prefHeight="26.0" prefWidth="232.0" promptText="Search question" />
+            <Button fx:id="btn_search" mnemonicParsing="false" onAction="#searchQuestion" prefHeight="26.0" prefWidth="69.0" styleClass="btn_search" stylesheets="@style.css" text="Search" />
          </children>
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
       </HBox>
-      <ScrollPane layoutX="57.0" layoutY="183.0" prefHeight="649.0" prefWidth="873.0">
+      <ScrollPane fx:id="questionList" layoutX="57.0" layoutY="183.0" prefHeight="649.0" prefWidth="873.0">
          <content>
             <GridPane prefHeight="14.0" prefWidth="0.0">
               <columnConstraints>

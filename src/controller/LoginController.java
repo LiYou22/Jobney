@@ -3,6 +3,8 @@ package controller;
 import java.io.IOException;
 
 import java.net.URL;
+import java.util.Arrays;
+import java.util.List;
 import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
@@ -20,6 +22,8 @@ import javafx.stage.Stage;
 import model.company.Company;
 import model.enums.INDUSTRY;
 import model.job.Job;
+import model.question.Question;
+import model.question.QuestionList;
 import model.user.AdminUser;
 import model.user.Profile;
 import model.user.RegularUser;
@@ -66,24 +70,65 @@ public class LoginController {
 	    Job job2 = new Job(com2, "Software Engineering Intern, People with Disabilities 2024", "https://www.google.com/about/careers/applications/jobs/results/133383757286515398-software-engineering-intern-people-with-disabilities-2024");
 	    Job job3 = new Job(com3, "AIML - Software Engineering Internship - Multiple Party Computation, MLPT", "https://jobs.apple.com/en-us/details/200519066/aiml-software-engineering-internship-multiple-party-computation-mlpt?team=STDNT");
 	    Job job4 = new Job(com4, "Software Development Intern", "https://builtin.com/job/software-development-intern/110908");
+	    // Create additional jobs and applications for the first company
+	    Job job5 = new Job(com1, "Software Engineer", "https://paypal.eightfold.ai/careers?Codes=W-LINKEDIN&domain=paypal.com&query=R0111039&sort_by=relevance");
+	    Job job6 = new Job(com1, "Data Scientist Intern", "https://paypal.eightfold.ai/careers?Codes=W-LINKEDIN&domain=paypal.com&query=R0111040&sort_by=relevance");
+	    
+	    
 	    
 	    // create an application using the job
 	    Application app1 = new Application(job1);
 	    Application app2 = new Application(job2);
 	    Application app3 = new Application(job3);
 	    Application app4 = new Application(job4);
+	    Application app5 = new Application(job5);
+	    Application app6 = new Application(job6);
 	    
 	    // add application to the user
 	    testUser.getApplicationList().addApplication(app1);
 	    testUser.getApplicationList().addApplication(app2);
 	    testUser.getApplicationList().addApplication(app3);
 	    testUser.getApplicationList().addApplication(app4);
+	    testUser.getApplicationList().addApplication(app5);
+	    testUser.getApplicationList().addApplication(app6);
+	    
 
 	    testUser.getCompanyList().addCompany(com1);
 	    testUser.getCompanyList().addCompany(com2);
 	    testUser.getCompanyList().addCompany(com3);
 	    testUser.getCompanyList().addCompany(com4);
 
+	    //add application to company
+	    com1.addApplication(app1);
+	    com1.addApplication(app5);
+	    com1.addApplication(app6);
+	    com2.addApplication(app2);
+	    com3.addApplication(app3);
+	    com4.addApplication(app4);
+	   
+	 // Create some questions
+	    Question question1 = new Question("What are the job responsibilities?");
+	    question1.addAnswer("Design, develop, and test software");
+	    question1.addAnswer("Collaborate with cross-functional teams");
+	    question1.addFrequency();
+
+	    Question question2 = new Question("What are the required qualifications?");
+	    question2.addAnswer("Bachelor's degree in Computer Science or related field");
+	    question2.addAnswer("Experience with Java and Python");
+	    question2.addFrequency();
+
+	    Question question3 = new Question("What is the application process?");
+	    question3.addAnswer("Submit resume and cover letter");
+	    question3.addAnswer("Complete online coding test");
+	    question3.addFrequency();
+
+	    // Create a question list and associate it with an application
+	    List<Question> questions = Arrays.asList(question1, question2, question3);
+	    QuestionList questionList = new QuestionList("application-1", questions);
+	    questionList.addQuestion(question1);
+	    questionList.addQuestion(question2);
+	    questionList.addQuestion(question3);
+	    
 	    
 	    // for testing 
 	    System.out.print("---> user directory: \n" + administrator.getUserDirectory());
