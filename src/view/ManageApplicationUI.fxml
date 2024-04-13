@@ -8,6 +8,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ProgressBar?>
 <?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -135,8 +136,10 @@
             </Pane>
             <Pane prefHeight="386.0" prefWidth="433.0">
                <children>
-                  <TextArea fx:id="note_content" layoutX="16.0" layoutY="81.0" prefHeight="285.0" prefWidth="396.0" promptText="note content" />
+                  <TextArea fx:id="note_content" layoutX="16.0" layoutY="81.0" prefHeight="242.0" prefWidth="391.0" promptText="Start your note" />
                   <Label layoutX="16.0" layoutY="45.0" text="Title:" />
+                  <TextField fx:id="note_title" layoutX="51.0" layoutY="41.0" prefHeight="26.0" prefWidth="354.0" />
+                  <Button layoutX="321.0" layoutY="342.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="84.0" styleClass="btn_add_application" stylesheets="@style.css" text="Save" textFill="WHITE" />
                </children></Pane>
          </children>
       </HBox>
