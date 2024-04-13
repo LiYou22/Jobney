@@ -33,6 +33,15 @@ public class Application {
         this.dateApplied = "N/A";
         nextId++;
     }
+    
+    public Application(Job associatedJob, APPLICATIONSTATUS status, String dateApplied) {
+        this.associatedJob = associatedJob;
+        this.applicationId = prefix + nextId;
+        this.dateAdded = new Date();
+        this.status = status;
+        this.dateApplied = dateApplied;
+        nextId++;
+    }
 
 //    public Application(String jobName, String companyName, Date dateApplied, APPLICATIONSTATUS status) {
 //        this.jobName = jobName;

@@ -20,15 +20,6 @@ public class Job {
         this.jobLink = jobLink;
         nextId++;
     }
-
-    public Job(String jobName, Company associatedCompany,String jobLink) {
-        this.jobId = prefix + nextId;
-        this.associatedCompany = associatedCompany;
-        this.jobName = jobName;
-        this.jobLink = jobLink;
-        nextId++;
-    }
-
     
     public String getJobId() {
         return jobId;
