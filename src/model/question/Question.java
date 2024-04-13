@@ -9,7 +9,6 @@ public class Question{
 	  final String prefix = "question-";
 	  private static int nextId = 1;
       private String qId;
-      
       private String q;
       private ArrayList<String> alist;  // one question might have multiple answers
       private int frequency;

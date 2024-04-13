@@ -32,9 +32,9 @@
          <children>
             <TableView fx:id="company_table" prefHeight="411.0" prefWidth="870.0" stylesheets="@style.css" GridPane.rowIndex="1">
               <columns>
-                <TableColumn prefWidth="75.0" text="Company" />
-                <TableColumn prefWidth="75.0" text="# Application" />
-                  <TableColumn prefWidth="75.0" text="Industry" />
+                <TableColumn fx:id="companyColumn" prefWidth="75.0" text="Company" />
+                <TableColumn fx:id="applicationColumn" prefWidth="75.0" text="# Application" />
+                  <TableColumn fx:id="industryColumn" prefWidth="75.0" text="Industry" />
               </columns>
                <columnResizePolicy>
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />

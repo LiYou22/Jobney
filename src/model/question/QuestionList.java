@@ -7,10 +7,13 @@ public class QuestionList  extends QuestionManager{
 
 	private String applicationId;
 	
-	public QuestionList(String applicationID) {
-		super();
-		this.applicationId = applicationID;
-	}
+	 public QuestionList(String applicationID, List<Question> questions) {
+	        super();
+	        this.applicationId = applicationID;
+	        for (Question question : questions) {
+	            addQuestion(question);
+	        }
+	    }
 	
 	public String getApplicationId() {
 		return this.applicationId;

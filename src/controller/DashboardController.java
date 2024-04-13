@@ -157,7 +157,21 @@ public class DashboardController {
 
     @FXML
     void btnCompaniesClicked(ActionEvent event) {
+        System.out.println("Switching to Companies page!");
+    	
+        try {
+            URL fileUrl = getClass().getResource("/view/CompanyUI.fxml");
+            FXMLLoader loader = new FXMLLoader(fileUrl);
+            CompanyController companyController = new CompanyController(user);  
+            loader.setController(companyController);
+            Pane view = loader.load();
+            mainPane.getChildren().setAll(view);
 
+        } catch (IOException ex) {
+            System.out.println("Error: Unable to load the Company view.");
+            ex.printStackTrace();
+        }
+    	
     }
 
     @FXML
@@ -171,12 +185,38 @@ public class DashboardController {
 
     @FXML
     void btnQuestionsClicked(ActionEvent event) {
+        System.out.println("Switching to Questions page!");
 
+        try {
+            URL fileUrl = getClass().getResource("/view/QuestionUI.fxml");
+            FXMLLoader loader = new FXMLLoader(fileUrl);
+            QuestionController questionsController = new QuestionController(user);  
+            loader.setController(questionsController);
+            Pane view = loader.load();
+            mainPane.getChildren().setAll(view);
+
+        } catch (IOException ex) {
+            System.out.println("Error: Unable to load the Questions view.");
+            ex.printStackTrace();
+        }
     }
 
     @FXML
     void btnSettingsClicked(ActionEvent event) {
-
+//    	System.out.println("Switching to Settings page!");
+//
+//        try {
+//            URL fileUrl = getClass().getResource("/view/SettingsUI.fxml");
+//            FXMLLoader loader = new FXMLLoader(fileUrl);
+//            SettingsController settingsController = new SettingsController(user);  
+//            loader.setController(settingsController);
+//            Pane view = loader.load();
+//            mainPane.getChildren().setAll(view);
+//
+//        } catch (IOException ex) {
+//            System.out.println("Error: Unable to load the Settings view.");
+//            ex.printStackTrace();
+//        }
     }
 
     @FXML
