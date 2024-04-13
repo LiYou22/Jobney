@@ -108,6 +108,9 @@ public class DashboardController {
     
     @FXML
     private Pane mainPane;
+    
+    @FXML
+    private Pane middle_pane;
 
     @FXML
     private Pane right_side_pane;
@@ -134,6 +137,10 @@ public class DashboardController {
     public DashboardController(RegularUser user) {
     	this.user = user;
     }
+    
+    public Pane getMainPane() {
+    	return mainPane;
+    }
 
     @FXML
     void btnApplicationClicked(ActionEvent event) {
@@ -142,7 +149,7 @@ public class DashboardController {
         try {
             URL fileUrl = getClass().getResource("/view/ApplicationUI.fxml");
             FXMLLoader loader = new FXMLLoader(fileUrl);
-            ApplicationController appController = new ApplicationController(user);  
+            ApplicationController appController = new ApplicationController(user, this);  
             loader.setController(appController);
             Pane view = loader.load();
             mainPane.getChildren().setAll(view);

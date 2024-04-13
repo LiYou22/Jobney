@@ -7,6 +7,10 @@ public class QuestionList  extends QuestionManager{
 
 	private String applicationId;
 	
+	public QuestionList() {
+		super();
+	}
+	
 	public QuestionList(String applicationID) {
 		super();
 		this.applicationId = applicationID;
