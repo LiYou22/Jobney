@@ -9,11 +9,7 @@ import model.enums.INDUSTRY;
 
 public class ApplicationList {
 	
-	private static List<Application> applications;
-
-    public ApplicationList() {
-        this.applications = new ArrayList<>();
-    }
+	private static List<Application> applications = new ArrayList<>();
 
     public static List<Application> getApplicationList() {
         return applications;

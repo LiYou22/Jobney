@@ -6,9 +6,13 @@ import java.time.ZoneId;
 import java.util.Date;
 import java.util.List;
 
+import model.connection.ConnectionList;
+import model.document.DocumentList;
 import model.enums.APPLICATIONSTATUS;
 import model.enums.RATE;
 import model.job.Job;
+import model.note.NoteList;
+import model.question.QuestionList;
 
 public class Application {
 	
@@ -24,6 +28,11 @@ public class Application {
     private Date applyDeadline;
     private APPLICATIONSTATUS status;
     private List<StatusChange> statusChangeHistory; 
+    
+    private QuestionList questionList;
+    private NoteList noteList;
+    private ConnectionList connectionList;
+    private DocumentList documentList;
 
     public Application(Job associatedJob) {
         this.associatedJob = associatedJob;
@@ -32,6 +41,11 @@ public class Application {
         this.status = APPLICATIONSTATUS.TOAPPLY;
         this.dateApplied = "N/A";
         nextId++;
+        this.questionList = new QuestionList();
+        this.noteList = new NoteList();
+        this.connectionList = new ConnectionList();
+        this.documentList = new DocumentList();
+        
     }
     
     public Application(Job associatedJob, APPLICATIONSTATUS status, String dateApplied) {

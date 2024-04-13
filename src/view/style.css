@@ -38,14 +38,19 @@
 .table-row-cell {
     -fx-background-color: white;
     -fx-border-color: lightgray;
+    -fx-border-width: 0; 
 }
 
 .table-row-cell:odd {
-    -fx-background-color: #EFF0F1;
+    -fx-background-color: white; /* White background for odd rows */
+}
+
+.table-row-cell:even {
+    -fx-background-color: lightgrey; /* Light grey background for even rows */
 }
 
 .table-row-cell:selected {
-    -fx-background-color: #EFF0F1;
+    -fx-background-color: #43A5FF;
     -fx-text-fill: white;
 }
 
@@ -57,7 +62,7 @@
 .table-cell {
     -fx-text-fill: black;
     -fx-font-family: "Arial";
-    -fx-font-size: 9px;
+    -fx-font-size: 10px;
     -fx-alignment: CENTER;
 }
 

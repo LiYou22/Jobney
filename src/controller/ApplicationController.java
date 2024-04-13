@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import javafx.scene.input.MouseEvent; 
+
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -19,6 +21,8 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import model.application.Application;
@@ -29,6 +33,8 @@ import model.utilities.DataUpdateInterface;
 public class ApplicationController implements DataUpdateInterface{
 	
 	private RegularUser user;
+	
+	DashboardController dashboardController;
 	
 	@FXML
     private TextField search_bar;
@@ -51,10 +57,55 @@ public class ApplicationController implements DataUpdateInterface{
 	@FXML
 	private TableColumn<Application,String> RateColumn;
 	
+	Integer index;
+	
 		
-	public ApplicationController(RegularUser user) {
+	public ApplicationController(RegularUser user, DashboardController dashboardController) {
     	this.user = user;
+    	this.dashboardController = dashboardController;
 	}
+	
+    @FXML
+    void openSelectedApplication(MouseEvent event) {
+    	
+		
+		if(event.getClickCount() == 2) {
+			// check double click
+			Application selectedApplication = application_table.getSelectionModel().getSelectedItem();
+			
+			if(selectedApplication != null) {
+				// navigate to application page
+				System.out.println("open application: " + selectedApplication.getJobName());
+
+	            try {
+	            	// load and configure middle pane
+	                URL fileUrl1 = getClass().getResource("/view/ManageApplicationUI.fxml");
+	                FXMLLoader loader1 = new FXMLLoader(fileUrl1);
+	                ManageApplicationController controller1 = new ManageApplicationController(selectedApplication);  
+	                loader1.setController(controller1);
+	                Pane view1 = loader1.load();
+	                
+	                // load and configure right pane
+	                URL fileUrl2 = getClass().getResource("/view/LinkedinAndQuestionsUI.fxml");
+	                FXMLLoader loader2 = new FXMLLoader(fileUrl2);
+	                ManageLinkedinAndQuestionsController controller2 = new ManageLinkedinAndQuestionsController(selectedApplication);  
+	                loader2.setController(controller2);
+	                Pane view2 = loader2.load();
+	                
+	                // create a pane that contains view1 and view2
+	                HBox hbox = new HBox();
+	                hbox.getChildren().addAll(view1,view2);
+	                
+	                // switch the main pane to the new hbox
+	                dashboardController.getMainPane().getChildren().setAll(hbox);
+
+	            } catch(Exception e) {
+	                e.printStackTrace();
+	            }
+			}
+		}
+
+    }
 	
 	@Override
     public void updateTable() {
@@ -131,6 +182,9 @@ public class ApplicationController implements DataUpdateInterface{
 	        e.printStackTrace();
 	    }
 	}
+	
+
+
 
 	
 }

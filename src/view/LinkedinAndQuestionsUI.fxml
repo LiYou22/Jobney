@@ -39,18 +39,22 @@
                               </Label>
                            </children>
                         </HBox>
-                        <HBox layoutX="25.0" layoutY="84.0" spacing="5.0">
+                        <HBox layoutX="25.0" layoutY="84.0" prefHeight="22.0" prefWidth="234.0" spacing="5.0">
                            <children>
-                              <TextField alignment="CENTER" prefHeight="25.0" prefWidth="238.0" promptText="Name" />
-                              <TextField alignment="CENTER" prefHeight="25.0" prefWidth="235.0" promptText="Linkedin" />
-                              <ImageView fitHeight="23.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../images/black_add.png" />
-                                 </image>
-                              </ImageView>
+                              <TextField fx:id="name" alignment="CENTER" prefHeight="25.0" prefWidth="238.0" promptText="Name" />
+                              <TextField fx:id="linkedin_link" alignment="CENTER" prefHeight="25.0" prefWidth="235.0" promptText="Linkedin" />
+                              <Button fx:id="btn_add_linkedin" alignment="TOP_RIGHT" contentDisplay="GRAPHIC_ONLY" graphicTextGap="2.0" mnemonicParsing="false" onAction="#addLinkedin" prefHeight="20.0" prefWidth="30.0" styleClass="btn_add" stylesheets="@style.css">
+                                 <graphic>
+                                    <ImageView fitHeight="18.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../images/black_add.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
                            </children>
                         </HBox>
-                        <ListView prefHeight="167.0" prefWidth="234.0" />
+                        <ListView fx:id="linkedin_list" prefHeight="167.0" prefWidth="234.0" />
                      </children>
                      <padding>
                         <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
@@ -79,10 +83,10 @@
                         <Label prefHeight="17.0" prefWidth="71.0" text="Question" />
                      </children>
                   </HBox>
-                  <TextField alignment="TOP_LEFT" prefHeight="118.0" prefWidth="234.0" promptText="Enter the Question" />
+                  <TextField fx:id="question" alignment="TOP_LEFT" prefHeight="118.0" prefWidth="234.0" promptText="Enter the Question" />
                   <Label text="Response" />
-                  <TextField alignment="TOP_LEFT" prefHeight="91.0" prefWidth="234.0" promptText="Enter the response" />
-                  <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="238.0" styleClass="btn_add" stylesheets="@style.css" text="Add">
+                  <TextField fx:id="response" alignment="TOP_LEFT" prefHeight="91.0" prefWidth="234.0" promptText="Enter the response" />
+                  <Button fx:id="btn_add_questions" mnemonicParsing="false" onAction="#addQuestion" prefHeight="31.0" prefWidth="238.0" styleClass="btn_add" stylesheets="@style.css" text="Add">
                      <graphic>
                         <ImageView fitHeight="23.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -91,7 +95,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <ListView prefHeight="164.0" prefWidth="234.0" />
+                  <ListView fx:id="question_list" prefHeight="164.0" prefWidth="234.0" />
                </children>
                <padding>
                   <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
