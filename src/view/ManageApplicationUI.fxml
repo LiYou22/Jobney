@@ -115,7 +115,7 @@
                               </Label>
                            </children>
                         </HBox>
-                        <ListView prefHeight="248.0" prefWidth="166.0" />
+                        <ListView fx:id="note_list" prefHeight="248.0" prefWidth="166.0" />
                      </children>
                   </VBox>
                   <Button fx:id="btn_add_note" alignment="CENTER" layoutX="24.0" layoutY="325.0" mnemonicParsing="false" onAction="#addNewNote" prefHeight="27.0" prefWidth="141.0" styleClass="btn_add" stylesheets="@style.css" text="New Note" textAlignment="CENTER">
