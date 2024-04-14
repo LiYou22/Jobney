@@ -119,6 +119,7 @@ public class AddApplicationWindowController {
     	Application app = new Application(job);
     	user.getApplicationList().addApplication(app);
     	
+    	
     	System.out.println("saved the new application!");
     	System.out.println("current application list: " + user.getApplicationList());
 

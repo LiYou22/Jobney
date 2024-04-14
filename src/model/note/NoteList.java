@@ -17,6 +17,14 @@ public class NoteList {
           return noteList;
       }
       
+      public List<String> getNoteTitleList(){
+    	  List<String> titleList = new ArrayList<>();
+    	  for(Note n: noteList) {
+    		  titleList.add(n.getTitle());
+    	  }
+    	  return titleList;
+      }
+      
       public void addNote(Note note) {
     	  noteList.add(note);
     	  count++;

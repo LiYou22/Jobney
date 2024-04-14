@@ -29,7 +29,7 @@ public class Application {
     private APPLICATIONSTATUS status;
     private List<StatusChange> statusChangeHistory; 
     
-    private QuestionList questionList;
+	private QuestionList questionList;
     private NoteList noteList;
     private ConnectionList connectionList;
     private DocumentList documentList;
@@ -117,6 +117,39 @@ public class Application {
     public void setStatus(APPLICATIONSTATUS status) {
         this.status = status;
     }
+    
+    public QuestionList getQuestionList() {
+		return questionList;
+	}
+
+	public void setQuestionList(QuestionList questionList) {
+		this.questionList = questionList;
+	}
+
+	public NoteList getNoteList() {
+		return noteList;
+	}
+
+	public void setNoteList(NoteList noteList) {
+		this.noteList = noteList;
+	}
+
+	public ConnectionList getConnectionList() {
+		return connectionList;
+	}
+
+	public void setConnectionList(ConnectionList connectionList) {
+		this.connectionList = connectionList;
+	}
+
+	public DocumentList getDocumentList() {
+		return documentList;
+	}
+
+	public void setDocumentList(DocumentList documentList) {
+		this.documentList = documentList;
+	}
+
     
 
 }
