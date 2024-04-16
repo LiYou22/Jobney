@@ -1,21 +1,18 @@
 package model.user;
 
-import java.awt.Image;
-import java.util.Date;
+import javafx.scene.image.Image;
 
 public class Profile {
 	
 	private String userName;
 	private Image avatar;
 
-    public Profile(String userName, Image avatar) {
-        this.userName = userName;
-        this.avatar = avatar;
-    }
     
     // this is for testing, can be deleted after we've done
     public Profile(String userName) {
         this.userName = userName;
+        this.avatar = new Image("/images/avatar.png"); // default avatar
+
     }
 
     public void setUserName(String userName) {
@@ -31,7 +28,7 @@ public class Profile {
     }
 
     public Image getAvatar() {
-        return avatar;
+        return this.avatar;
     }
 
 

@@ -236,20 +236,20 @@ public class DashboardController {
 
     @FXML
     void btnSettingsClicked(ActionEvent event) {
-//    	System.out.println("Switching to Settings page!");
-//
-//        try {
-//            URL fileUrl = getClass().getResource("/view/SettingsUI.fxml");
-//            FXMLLoader loader = new FXMLLoader(fileUrl);
-//            SettingsController settingsController = new SettingsController(user);  
-//            loader.setController(settingsController);
-//            Pane view = loader.load();
-//            mainPane.getChildren().setAll(view);
-//
-//        } catch (IOException ex) {
-//            System.out.println("Error: Unable to load the Settings view.");
-//            ex.printStackTrace();
-//        }
+    	System.out.println("Switching to Settings page!");
+
+        try {
+            URL fileUrl = getClass().getResource("/view/SettingsUI.fxml");
+            FXMLLoader loader = new FXMLLoader(fileUrl);
+            SettingsController settingsController = new SettingsController(user);  
+            loader.setController(settingsController);
+            Pane view = loader.load();
+            mainPane.getChildren().setAll(view);
+
+        } catch (IOException ex) {
+            System.out.println("Error: Unable to load the Settings view.");
+            ex.printStackTrace();
+        }
     }
 
     @FXML
