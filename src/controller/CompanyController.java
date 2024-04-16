@@ -32,11 +32,7 @@ public class CompanyController {
     private TableColumn<Company,String> companyColumn;
 	@FXML
     private TableColumn<Company,String> industryColumn;
-//	
-//	@FXML
-//	void searchCcompany(ActionEvent event){
-//		
-//	}
+
 	
 	public CompanyController(RegularUser user) {
     	this.user = user;
@@ -61,7 +57,7 @@ public class CompanyController {
 		String searchfield = search_bar.getText();
 		List<Company> results = new ArrayList<>();
 		for (Company company : CompanyList.getCompanies()) {
-			if(company.getCompanyName().equalsIgnoreCase(searchfield)) {
+			if(company.getCompanyName().toLowerCase().contains(searchfield)) {
 				results.add(company);
 			}
 		}

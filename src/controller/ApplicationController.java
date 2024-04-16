@@ -146,7 +146,7 @@ public class ApplicationController implements DataUpdateInterface{
 		List<Application> results = new ArrayList();
 		
 		for(Application app: ApplicationList.getApplicationList()) { // made static method and attribute
-			if(app.getAssociatedJob().getJobName().equalsIgnoreCase(searchfield)) {
+			if(app.getAssociatedJob().getJobName().toLowerCase().contains(searchfield)) {
 				results.add(app);
 			}
 			
