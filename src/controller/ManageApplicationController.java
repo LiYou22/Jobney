@@ -11,6 +11,7 @@ import java.util.stream.Collectors;
 
 import javafx.beans.value.ChangeListener;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -18,14 +19,17 @@ import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import model.application.Application;
 import model.enums.APPLICATIONSTATUS;
 import model.enums.INDUSTRY;
+import model.note.Note;
 
 public class ManageApplicationController {
 	
@@ -33,11 +37,7 @@ public class ManageApplicationController {
 
     @FXML
     private Button apply_link;
-
-    @FXML
-    private Button btn_add_note;
     
-
     @FXML
     private Button btn_save_note;
 
@@ -58,6 +58,9 @@ public class ManageApplicationController {
 
     @FXML
     private Label job_title;
+    
+    @FXML
+    private TextField note_title;
 
     @FXML
     private TextArea note_content;
@@ -89,9 +92,17 @@ public class ManageApplicationController {
     @FXML
     private CheckBox tailore_cover_checkbox;
     
+    @FXML
+    private ListView<Note> notesListView;
+    
+    private ObservableList<Note> observableNotesList; 
+    
     // constructor
     public ManageApplicationController(Application application){
     	this.currentApplication = application;
+    	
+    	// Initialize the observable list for notes
+    	observableNotesList = FXCollections.observableArrayList();
     }
     
 
@@ -106,23 +117,23 @@ public class ManageApplicationController {
 	            .map(Enum::name)
 	            .collect(Collectors.toCollection(ArrayList::new));
 		
-		// display all data on the page
+		// Display all data on the page
 		job_title.setText(job);
 		company_name.setText(company);
 		
-		// display the current status
+		// Display the current status
 		btn_status.setItems(FXCollections.observableArrayList(statusList));
 		String status = currentStatus.name();
 		btn_status.setValue(status);
 
-		// display current progress, by default is 0%(1 checkbox = 20%)
+		// Display current progress, by default is 0%(1 checkbox = 20%)
 		progress_bar.setProgress(0.0);
 		double value = 0.0;
 		NumberFormat percentFormat = NumberFormat.getPercentInstance();
 		String default_percent = percentFormat.format(value);
 		progress_label.setText(default_percent);
 		
-		// create a listener for checkbox selection changes
+		// Create a listener for checkbox selection changes
 		ChangeListener<Boolean> listener = (obs, oldVal, newVal) -> {
 			double progress = 0;
 			if(do_research_checkbox.isSelected()) progress += 0.2; 
@@ -136,12 +147,18 @@ public class ManageApplicationController {
 			progress_label.setText(percent);
 		};
 		
-		// assign the listener to each checkbox
+		// Assign the listener to each checkbox
 		do_research_checkbox.selectedProperty().addListener(listener);
 		tailor_resume_checkbox.selectedProperty().addListener(listener);
 		tailore_cover_checkbox.selectedProperty().addListener(listener);
 		submit_checkbox.selectedProperty().addListener(listener);	
 		connect_checkbox.selectedProperty().addListener(listener);
+		
+		// Bind the ListView to the ObservableList so that changes in the list are automatically reflected in the ListView
+	    if (currentApplication.getNotesList() != null) {
+	        observableNotesList.addAll(currentApplication.getNotesList().getAllNotes());
+	    }
+	    notesListView.setItems(observableNotesList);
         
 	}
 	
@@ -167,17 +184,23 @@ public class ManageApplicationController {
 
     @FXML
     void saveNote(ActionEvent event) {
+        String title = note_title.getText();
+        String content = note_content.getText();
 
+        if (!title.isEmpty() && !content.isEmpty()) {
+            Note newNote = new Note(title, content);
+            observableNotesList.add(newNote);
+            currentApplication.getNotesList().addNote(newNote); 
+            note_title.clear();
+            note_content.clear();
+        } else {
+            System.out.println("Need to fill out both title and content");
+        }
     }
    
 
     @FXML
     void addCoverLetter(ActionEvent event) {
-
-    }
-
-    @FXML
-    void addNewNote(ActionEvent event) {
 
     }
 

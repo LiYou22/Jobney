@@ -7,13 +7,13 @@ public class NoteList {
 	
 	  private static int count = 0;
 	
-      private List<Note> noteList;
+      private ArrayList<Note> noteList;
       
       public NoteList() {
     	  this.noteList = new ArrayList<>();
       }
       
-      public List<Note> getNoteList(){
+      public ArrayList<Note> getAllNotes(){
           return noteList;
       }
       
@@ -62,4 +62,5 @@ public class NoteList {
     	  System.out.println("cannot find the note");
 
       }
+      
 }
