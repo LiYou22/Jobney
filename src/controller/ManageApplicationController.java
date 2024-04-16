@@ -1,5 +1,6 @@
 package controller;
 import java.awt.Desktop;
+import java.io.File;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -30,6 +31,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import model.application.Application;
 import model.enums.APPLICATIONSTATUS;
@@ -248,12 +250,24 @@ public class ManageApplicationController {
 
     @FXML
     public void addCoverLetter(ActionEvent event) {
-
+	  FileChooser fileChooser = new FileChooser();
+	    fileChooser.setTitle("Open Cover Letter File");
+	    File file = fileChooser.showOpenDialog(((Node) event.getSource()).getScene().getWindow());
+	    if (file != null) {
+	        // Use the file
+	        System.out.println("Cover Letter File: " + file.getAbsolutePath());
+	    }
     }
 
     @FXML
     public void addResume(ActionEvent event) {
-
+	  FileChooser fileChooser = new FileChooser();
+	    fileChooser.setTitle("Open Resume File");
+	    File file = fileChooser.showOpenDialog(((Node) event.getSource()).getScene().getWindow());
+	    if (file != null) {
+	        // Use the file
+	        System.out.println("Resume File: " + file.getAbsolutePath());
+	    }
     }
 
     @FXML
