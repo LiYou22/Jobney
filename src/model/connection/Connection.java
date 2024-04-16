@@ -10,15 +10,13 @@ public class Connection {
 	 private static int nextId = 1;
      private String connectionId;
      
-     private String firstName;
-     private String lastName;
+     private String name;
      private LocalDate connectDate;
      private CONNECTSTATUS status;
      
-     public Connection(String firstName, String lastName) {
+     public Connection(String name) {
     	 this.connectionId = prefix + nextId;
-    	 this.firstName = firstName;
-    	 this.lastName = lastName;
+    	 this.name = name;
     	 this.connectDate = LocalDate.now(); //default to current date
     	 this.status = CONNECTSTATUS.SENT; // default = sent
     	 nextId++;
@@ -28,20 +26,12 @@ public class Connection {
     	 return connectionId;
      }
    
-     public String getFirstName() {
-    	 return firstName;
+     public String getName() {
+    	 return name;
      }
      
-     public void setFirstName(String firstName) {
-    	 this.firstName = firstName;
-     }
-     
-     public String getLastName() {
-    	 return lastName;
-     }
-     
-     public void setLastName(String lastName) {
-    	 this.lastName = lastName;
+     public void setName(String name) {
+    	 this.name = name;
      } 
      
      public CONNECTSTATUS getStatus() {
@@ -55,7 +45,11 @@ public class Connection {
      public void updateStatus(CONNECTSTATUS newStatus) {
     	 this.status = newStatus;
      }
-
      
+     @Override
+     public String toString() {
+    	 return this.name;
+     }
+
      
 }

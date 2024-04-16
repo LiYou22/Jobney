@@ -54,7 +54,7 @@
                               </Button>
                            </children>
                         </HBox>
-                        <ListView fx:id="linkedin_list" prefHeight="167.0" prefWidth="234.0" />
+                        <ListView fx:id="linkedinListView" prefHeight="167.0" prefWidth="234.0" />
                      </children>
                      <padding>
                         <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
@@ -95,7 +95,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <ListView fx:id="question_list" prefHeight="164.0" prefWidth="234.0" />
+                  <ListView fx:id="questionListView" prefHeight="164.0" prefWidth="234.0" />
                </children>
                <padding>
                   <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />

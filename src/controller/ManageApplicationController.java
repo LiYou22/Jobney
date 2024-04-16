@@ -97,8 +97,6 @@ public class ManageApplicationController {
 
 
 	public void initialize() {
-		
-		
 		String job = currentApplication.getJobName();
 		String company = currentApplication.getCompanyName();
 		APPLICATIONSTATUS currentStatus = currentApplication.getStatus();

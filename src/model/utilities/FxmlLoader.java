@@ -1,8 +1,10 @@
 package model.utilities;
 
 
+
 import java.net.URL;
 
+import controller.DashboardController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.Pane;
 
@@ -18,6 +20,7 @@ public class FxmlLoader {
 				throw new java.io.FileNotFoundException("FXML file can't be found");
 			}
 			
+			
 			// load the page
 			view = FXMLLoader.load(fileUrl);
 			
@@ -26,6 +29,7 @@ public class FxmlLoader {
 		}
 		
 		return view;
+		
 	}
 	
 	

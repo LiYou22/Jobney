@@ -15,12 +15,14 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import model.question.Question;
+import model.question.QuestionDirectory;
 import model.question.QuestionList;
 import model.user.RegularUser;
 
 public class QuestionController {
 
 	    private RegularUser user;
+	    
 	    @FXML
 	    private Button btn_search;
 	    @FXML
@@ -37,7 +39,7 @@ public class QuestionController {
 	        btn_search.setOnAction(e -> searchQuestion(e));
 	        VBox vbox = new VBox();
 	        vbox.setSpacing(10);
-	        for (Question question : QuestionList.getQuestions()) { // replace with your actual QuestionList instance
+	        for (Question question : user.getQuestionDirectory().getQuestions()) { // replace with your actual QuestionList instance
 	            Label questionLabel = new Label(question.getQuestion());
 	            questionLabel.setFont(new Font(20));
 	            vbox.getChildren().add(questionLabel);
@@ -63,7 +65,7 @@ public class QuestionController {
 //            }
 //        }
         
-        for(Question question: QuestionList.getQuestions()) { // replace with your actual QuestionList instance
+        for(Question question: user.getQuestionDirectory().getQuestions()) {
             if(question.getQuestionID().contains(searchfield)) {
                 results.add(question);
             }

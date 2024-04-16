@@ -13,10 +13,12 @@ import model.enums.RATE;
 import model.job.Job;
 import model.note.NoteList;
 import model.question.QuestionList;
+import model.user.RegularUser;
 
 public class Application {
 	
 	final String prefix = "application-";
+	private RegularUser user;
 	private static int nextId = 1;
 //	private String jobName;
 //	private String companyName;
@@ -34,22 +36,24 @@ public class Application {
     private ConnectionList connectionList;
     private DocumentList documentList;
 
-    public Application(Job associatedJob) {
+    public Application(Job associatedJob, RegularUser user) {
         this.associatedJob = associatedJob;
+        this.user = user;
         this.applicationId = prefix + nextId;
         this.dateAdded = new Date();
         this.status = APPLICATIONSTATUS.TOAPPLY;
         this.dateApplied = "N/A";
         nextId++;
-        this.questionList = new QuestionList();
+        this.questionList = new QuestionList(this);
         this.noteList = new NoteList();
         this.connectionList = new ConnectionList();
         this.documentList = new DocumentList();
         
     }
     
-    public Application(Job associatedJob, APPLICATIONSTATUS status, String dateApplied) {
+    public Application(Job associatedJob, APPLICATIONSTATUS status, String dateApplied, RegularUser user) {
         this.associatedJob = associatedJob;
+        this.user = user;
         this.applicationId = prefix + nextId;
         this.dateAdded = new Date();
         this.status = status;
@@ -117,6 +121,18 @@ public class Application {
     public void setStatus(APPLICATIONSTATUS status) {
         this.status = status;
     }
+    
+    public RegularUser getUser() {
+    	return this.user;
+    }
+
+	public QuestionList getQuestionList() {
+		return this.questionList;
+	}
+	
+	public ConnectionList getConnectionList() {
+		return this.connectionList;
+	}
     
 
 }

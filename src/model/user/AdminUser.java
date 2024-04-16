@@ -4,7 +4,7 @@ import model.company.CompanyCatalog;
 
 public class AdminUser extends User{
 	
-	private static AdminUser instance = new AdminUser("example@csye.com", "123456");
+	private static AdminUser administrator = new AdminUser("example@csye.com", "123456");
     private RegularUserDirectory userDirectory;
     private CompanyCatalog companyCatalog;
 
@@ -18,8 +18,8 @@ public class AdminUser extends User{
         return this.getEmail().equals(email) && this.getPassword().equals(password);
     }
     
-    public static AdminUser getInstance() {
-        return instance;
+    public static AdminUser getAdministrator() {
+        return administrator;
     }
     
     public RegularUserDirectory getUserDirectory() {

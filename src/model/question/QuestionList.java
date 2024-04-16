@@ -1,35 +1,28 @@
 package model.question;
 
-import java.util.List;
+
+import model.application.Application;
 
 // this class is to manage all the questions under one application 
 public class QuestionList  extends QuestionManager{
 
-	private String applicationId;
+	private Application application;
 
-	public QuestionList(String applicationID, List<Question> questions) {
+	public QuestionList(Application application) {
         super();
-        this.applicationId = applicationID;
-        for (Question question : questions) {
-            addQuestion(question);
-        }
-	}
-	
-	public QuestionList() {
-		super();
-	}
-	
-	public QuestionList(String applicationID) {
-		super();
-		this.applicationId = applicationID;
-	}
-	
-	public String getApplicationId() {
-		return this.applicationId;
+        this.application = application;
 	}
 
-	public void setApplicationId(String applicationId) {
-		this.applicationId = applicationId;
+	public Application getApplication() {
+		return this.application;
 	}
+	
+	@Override
+	public void addQuestion(Question q) {
+		super.addQuestion(q);
+		this.application.getUser().getQuestionDirectory().addQuestion(q);
+	}
+
+
 	
 }
