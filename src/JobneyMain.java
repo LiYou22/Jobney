@@ -10,9 +10,18 @@ import model.user.AdminUser;
 
 
 public class JobneyMain extends Application {
+	
+	
 
 	@Override
 	public void start(Stage primaryStage) {	
+		
+        AdminUser administrator = AdminUser.getAdministrator();
+
+		
+        // Initialize the data
+        Initializer.initializeData(administrator);
+        
 	    FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/LoginUI.fxml"));
 	    loader.setController(new LoginController());
 	    StackPane root = null;
