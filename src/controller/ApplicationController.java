@@ -92,12 +92,14 @@ public class ApplicationController implements DataUpdateInterface{
 	                loader2.setController(controller2);
 	                Pane view2 = loader2.load();
 	                
-	                // create a pane that contains view1 and view2
-	                HBox hbox = new HBox();
-	                hbox.getChildren().addAll(view1,view2);
-	                
-	                // switch the main pane to the new hbox
-	                dashboardController.getHbox().getChildren().setAll(hbox);
+	                dashboardController.getHbox().getChildren().remove(1);
+	                dashboardController.getHbox().getChildren().add(view1);
+	                dashboardController.getHbox().getChildren().add(view2);
+
+//	                hbox.getChildren().addAll(view1,view2);
+//	                
+//	                // switch the main pane to the new hbox
+//	                dashboardController.getHbox().getChildren().setAll(hbox);
 
 	            } catch(Exception e) {
 	                e.printStackTrace();
