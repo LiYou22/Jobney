@@ -116,7 +116,7 @@ public class AddApplicationWindowController {
     	Job job = new Job(company, jobName,jobLink);
     
     	// create an application
-    	Application app = new Application(job);
+    	Application app = new Application(job, user);
     	user.getApplicationList().addApplication(app);
     	
     	

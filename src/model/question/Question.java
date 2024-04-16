@@ -56,5 +56,10 @@ public class Question{
 	  public void addFrequency() {
 		  frequency++;
 	  }
+	  
+	  @Override
+	  public String toString() {
+	      return this.q;
+	  }
 }
 

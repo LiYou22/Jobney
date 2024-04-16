@@ -42,7 +42,7 @@ public class LoginController {
     private PasswordField password;
     
     // Initialize User Directory and Admin User
-    AdminUser administrator = AdminUser.getInstance();
+    AdminUser administrator = AdminUser.getAdministrator();
     
 
 	@FXML
@@ -76,12 +76,12 @@ public class LoginController {
 	    Job job6 = new Job(com1, "Data Scientist Intern", "https://paypal.eightfold.ai/careers?Codes=W-LINKEDIN&domain=paypal.com&query=R0111040&sort_by=relevance");
 	    
 	    // create an application using the job
-	    Application app1 = new Application(job1);
-	    Application app2 = new Application(job2);
-	    Application app3 = new Application(job3);
-	    Application app4 = new Application(job4);
-	    Application app5 = new Application(job5);
-	    Application app6 = new Application(job6);
+	    Application app1 = new Application(job1, testUser);
+	    Application app2 = new Application(job2, testUser);
+	    Application app3 = new Application(job3, testUser);
+	    Application app4 = new Application(job4, testUser);
+	    Application app5 = new Application(job5, testUser);
+	    Application app6 = new Application(job6, testUser);
 	    
 	    // create notes under one application
 	    Note note1 = new Note("company info", "PayPal is a global online payment system that serves as an electronic alternative to traditional paper methods such as checks, money orders, and cash transactions. Founded in 1998 in the United States and initially a subsidiary of eBay, it was spun off into its own company in 2015. Today, PayPal operates in more than 200 countries, allowing customers to send, receive, and hold funds in 25 currencies worldwide. The company's payment solution simplifies online transactions between businesses and consumers, providing secure and convenient digital payment options. PayPal continuously innovates its technology platform to reduce fraud risks and make online shopping easier, safer, and more user-friendly");
@@ -128,13 +128,22 @@ public class LoginController {
 	    question3.addAnswer("Submit resume and cover letter");
 	    question3.addAnswer("Complete online coding test");
 	    question3.addFrequency();
+	    
+	    
 
 	    // Create a question list and associate it with an application
-	    List<Question> questions = Arrays.asList(question1, question2, question3);
-	    QuestionList questionList = new QuestionList("application-1", questions);
-	    questionList.addQuestion(question1);
-	    questionList.addQuestion(question2);
-	    questionList.addQuestion(question3);
+//	    List<Question> questions = Arrays.asList(question1, question2, question3);
+//	    QuestionList questionList = new QuestionList("application-1", questions);
+//	    questionList.addQuestion(question1);
+//	    questionList.addQuestion(question2);
+//	    questionList.addQuestion(question3);
+	    
+	    QuestionList ql1 = app1.getQuestionList();
+	    ql1.addQuestion(question1);
+	    ql1.addQuestion(question2);
+	    ql1.addQuestion(question3);
+	    
+	    
 	    
 	    
 	    // for testing 

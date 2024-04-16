@@ -13,23 +13,22 @@ public class JobneyMain extends Application {
 
 	@Override
 	public void start(Stage primaryStage) {	
-		
 	    FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/LoginUI.fxml"));
 	    loader.setController(new LoginController());
 	    StackPane root = null;
 	    
 		try {
 			root = loader.load();
+		    Scene scene = new Scene(root);
+		    primaryStage.setScene(scene);
+		    primaryStage.show();
+		    
 		} catch (IOException e) {
 			e.printStackTrace();
+			System.out.println("Error: Unable to load the LoginUI.fxml.");
 		}
-		
-	    Scene scene = new Scene(root);
-	    primaryStage.setScene(scene);
-	    primaryStage.show();
 	}
 	
-
     public static void main(String[] args) {
         launch(args);
     }

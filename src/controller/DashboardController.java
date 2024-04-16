@@ -183,11 +183,38 @@ public class DashboardController {
 
     @FXML
     void btnOverviewClicked(ActionEvent event) {
-    	System.out.println("Switching to Overview page!");
+//    	System.out.println("Switching to Overview page!");
 //    	URL fileUrl = getClass().getResource("/view/DashboardUI.fxml");
 //    	FxmlLoader obejct = new FxmlLoader();
 //    	Pane view = obejct.getPage(fileUrl);
 //    	mainPane.getChildren().setAll(view);
+    	System.out.println("Switching to Overview page!");
+        
+        // Load the FXML file using the standard FXMLLoader
+        URL fileUrl = getClass().getResource("/view/DashboardUI.fxml");
+        if (fileUrl == null) {
+            System.out.println("Error: FXML file not found.");
+            return;
+        }
+
+        try {
+            // Create an FXMLLoader instance and set the location to the URL of the FXML file
+            FXMLLoader loader = new FXMLLoader(fileUrl);
+            // Set controller for this page
+            //loader.setController(new DashboardController(user));
+            // Load the pane from the FXML file
+            Pane view = loader.load();
+
+            
+            mainPane.getChildren().setAll(view);
+            
+        } catch (IOException e) {
+            System.out.println("Error: Failed to load the FXML view.");
+            e.printStackTrace();
+            return;
+
+        }
+    	
     }
 
     @FXML

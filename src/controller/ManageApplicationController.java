@@ -7,12 +7,10 @@ import java.net.URL;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 import java.util.stream.Collectors;
 
 import javafx.beans.value.ChangeListener;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -20,21 +18,18 @@ import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import model.application.Application;
 import model.enums.APPLICATIONSTATUS;
 import model.enums.INDUSTRY;
-import model.note.Note;
 
 public class ManageApplicationController {
 	
-	private Application currentApplication;
+	Application currentApplication;
 
     @FXML
     private Button apply_link;
@@ -65,14 +60,7 @@ public class ManageApplicationController {
     private Label job_title;
 
     @FXML
-    private TextField note_title;
-
-    @FXML
     private TextArea note_content;
-    
-
-    @FXML
-    private ListView<String> note_list;
 
     @FXML
     private HBox note_pane;
@@ -101,25 +89,18 @@ public class ManageApplicationController {
     @FXML
     private CheckBox tailore_cover_checkbox;
     
-
-    
     // constructor
     public ManageApplicationController(Application application){
-        this.currentApplication = application;
-
+    	this.currentApplication = application;
     }
+    
 
 
 	public void initialize() {
-		
 		String job = currentApplication.getJobName();
 		String company = currentApplication.getCompanyName();
 		APPLICATIONSTATUS currentStatus = currentApplication.getStatus();
-		List<String> notelist = currentApplication.getNoteList().getNoteTitleList();
-
 		
-		System.out.println("notelist: " + notelist);
-
 		// set up the items in the combo box
 		ArrayList<String> statusList = Arrays.stream(APPLICATIONSTATUS.values())
 	            .map(Enum::name)
@@ -161,48 +142,31 @@ public class ManageApplicationController {
 		tailore_cover_checkbox.selectedProperty().addListener(listener);
 		submit_checkbox.selectedProperty().addListener(listener);	
 		connect_checkbox.selectedProperty().addListener(listener);
-		
-    	
-    	ObservableList<String> notes = FXCollections.observableArrayList(notelist);
-    	
-//    	note_list.setItems(notes);
         
 	}
 	
 
     @FXML
     void ChangeStatus(ActionEvent event) {
-    	String newStatus = btn_status.getSelectionModel().getSelectedItem();
-    	currentApplication.setStatus(APPLICATIONSTATUS.valueOf(newStatus));
-    	System.out.println("change status to " + newStatus);
+
     }
 
     @FXML
     void GoBack(ActionEvent event) {
     	// go back to application table
-
+    	
+//        URL fileUrl1 = getClass().getResource("/view/ManageApplicationUI.fxml");
+//        FXMLLoader loader1 = new FXMLLoader(fileUrl1);
+//        ManageApplicationController controller1 = new ManageApplicationController(selectedApplication);  
+//        loader1.setController(controller1);
+//        Pane view1 = loader1.load();
+        
 
     }
     
 
     @FXML
     void saveNote(ActionEvent event) {
-    	
-    	// fetch the info
-    	String title = note_title.getText();
-    	String content = note_content.getText();
-    	
-    	Note newNote = new Note(title, content);
-    	currentApplication.getNoteList().addNote(newNote);
-    	
-    	updateNoteList();
-
-    }
-    
-    public void updateNoteList() {
-    	// update the note list
-    	
-    	System.out.println("update note list");
 
     }
    

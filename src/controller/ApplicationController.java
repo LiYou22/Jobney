@@ -183,8 +183,5 @@ public class ApplicationController implements DataUpdateInterface{
 	    }
 	}
 	
-
-
-
 	
 }
