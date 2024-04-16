@@ -11,6 +11,7 @@ import model.document.DocumentList;
 import model.enums.APPLICATIONSTATUS;
 import model.enums.RATE;
 import model.job.Job;
+import model.note.Note;
 import model.note.NoteList;
 import model.question.QuestionList;
 import model.user.RegularUser;
@@ -132,6 +133,10 @@ public class Application {
 	
 	public ConnectionList getConnectionList() {
 		return this.connectionList;
+	}
+
+	public NoteList getNotesList() {
+		return this.noteList;
 	}
     
 

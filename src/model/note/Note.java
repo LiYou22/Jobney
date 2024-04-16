@@ -45,4 +45,9 @@ public class Note{
     	   this.title = newTitle;
     	   this.updateDate = LocalDate.now();
        }
+       
+       @Override
+       public String toString() {
+    	   return this.title;
+       }
 }

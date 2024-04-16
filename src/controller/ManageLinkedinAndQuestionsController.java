@@ -34,7 +34,6 @@ public class ManageLinkedinAndQuestionsController {
     
     private ObservableList<Connection> observableConnectionList;
     
-    private ConnectionList connectionList;
 
     @FXML
     private TextField question;
@@ -45,16 +44,13 @@ public class ManageLinkedinAndQuestionsController {
     @FXML
     private TextField response;
     
-    private QuestionList questionList;
     
     private ObservableList<Question> observableQuestionList;
     
     
-    // constructor
     public ManageLinkedinAndQuestionsController(Application application){
         this.currentApplication = application;
         
-        // Assume getConnections() and getQuestions() methods exist in Application
         this.observableConnectionList = FXCollections.observableArrayList(application.getConnectionList().getConnectionList());
         this.observableQuestionList = FXCollections.observableArrayList(application.getQuestionList().getQuestions());
     }
@@ -67,9 +63,11 @@ public class ManageLinkedinAndQuestionsController {
     @FXML
     void addLinkedin(ActionEvent event) {
         String nameText = name.getText();
-        Connection newConnection = new Connection(nameText); // Assuming this constructor is properly defined
+        Connection newConnection = new Connection(nameText);
         observableConnectionList.add(newConnection);
         currentApplication.getConnectionList().addConnection(newConnection);
+        
+        name.clear();
     }
 
     @FXML
