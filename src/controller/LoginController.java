@@ -22,6 +22,7 @@ import javafx.stage.Stage;
 import model.company.Company;
 import model.enums.INDUSTRY;
 import model.job.Job;
+import model.note.Note;
 import model.question.Question;
 import model.question.QuestionList;
 import model.user.AdminUser;
@@ -74,8 +75,6 @@ public class LoginController {
 	    Job job5 = new Job(com1, "Software Engineer", "https://paypal.eightfold.ai/careers?Codes=W-LINKEDIN&domain=paypal.com&query=R0111039&sort_by=relevance");
 	    Job job6 = new Job(com1, "Data Scientist Intern", "https://paypal.eightfold.ai/careers?Codes=W-LINKEDIN&domain=paypal.com&query=R0111040&sort_by=relevance");
 	    
-	    
-	    
 	    // create an application using the job
 	    Application app1 = new Application(job1, testUser);
 	    Application app2 = new Application(job2, testUser);
@@ -84,6 +83,15 @@ public class LoginController {
 	    Application app5 = new Application(job5, testUser);
 	    Application app6 = new Application(job6, testUser);
 	    
+	    // create notes under one application
+	    Note note1 = new Note("company info", "PayPal is a global online payment system that serves as an electronic alternative to traditional paper methods such as checks, money orders, and cash transactions. Founded in 1998 in the United States and initially a subsidiary of eBay, it was spun off into its own company in 2015. Today, PayPal operates in more than 200 countries, allowing customers to send, receive, and hold funds in 25 currencies worldwide. The company's payment solution simplifies online transactions between businesses and consumers, providing secure and convenient digital payment options. PayPal continuously innovates its technology platform to reduce fraud risks and make online shopping easier, safer, and more user-friendly");
+	    Note note2 = new Note("job keywords", "detail oriented, React, Robotics experience is a plus");
+	    Note note3 = new Note("insights", "aligsn with my interest, but lack of some skills that mentioned in the job descriptioin.");
+	    
+//	    app1.getNoteList().addNote(note1);
+//	    app1.getNoteList().addNote(note2);
+//	    app1.getNoteList().addNote(note3);
+	    
 	    // add application to the user
 	    testUser.getApplicationList().addApplication(app1);
 	    testUser.getApplicationList().addApplication(app2);
@@ -91,7 +99,6 @@ public class LoginController {
 	    testUser.getApplicationList().addApplication(app4);
 	    testUser.getApplicationList().addApplication(app5);
 	    testUser.getApplicationList().addApplication(app6);
-	    
 
 	    testUser.getCompanyList().addCompany(com1);
 	    testUser.getCompanyList().addCompany(com2);

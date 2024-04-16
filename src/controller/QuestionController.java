@@ -10,6 +10,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
@@ -22,78 +23,105 @@ import model.user.RegularUser;
 public class QuestionController {
 
 	    private RegularUser user;
-	    
 	    @FXML
 	    private Button btn_search;
 	    @FXML
-	    private TextField questionIdField;
+	    private ListView<String> answerListView;
 	    @FXML
-	    private ScrollPane questionList;
-   
+	    private ListView<String> searchResultsListView;
+
+	    @FXML
+	    private ListView<String> list_of_questions;
+
+	    @FXML
+	    private TextField questionNameField;
+
+	    @FXML
+	    private TextField searched_answers;
+
+	    @FXML
+	    private TextField searched_questions;
+	    
+	    @FXML
+	    private VBox searchResultsVBox; 
+
 	    public QuestionController(RegularUser user) {
 	    	this.user = user;
-		}
-	    
+	    }
+	   
 	    @FXML
 	    public void initialize() {
 	        btn_search.setOnAction(e -> searchQuestion(e));
-	        VBox vbox = new VBox();
-	        vbox.setSpacing(10);
 	        for (Question question : user.getQuestionDirectory().getQuestions()) { // replace with your actual QuestionList instance
-	            Label questionLabel = new Label(question.getQuestion());
-	            questionLabel.setFont(new Font(20));
-	            vbox.getChildren().add(questionLabel);
+	            list_of_questions.getItems().add(question.getQuestion());
 	        }
-	        questionList.setContent(vbox);
+
+	        // Add a listener to handle ListView item clicks
+	        list_of_questions.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+	            if (newSelection != null) {
+	                displayAnswer(newSelection);
+	            }
+	        });
+	        
 	    }
 	    
-	    @FXML
-	    void searchQuestion(ActionEvent event) {
-       
-        String searchfield = questionIdField.getText();
-        Set<Question> results = new HashSet<>();
-        
-//        //test
-//        List<Question> questions = QuestionList.getQuestions();
-//        System.out.println("Number of questions: " + questions.size());
-//        
-//        //test 2 
-//        for(Question question: QuestionList.getQuestions()) {
-//            System.out.println("Question ID: " + question.getQuestionID());
-//            if(question.getQuestionID().contains(searchfield)) {
-//                results.add(question);
-//            }
-//        }
-        
-        for(Question question: user.getQuestionDirectory().getQuestions()) {
-            if(question.getQuestionID().contains(searchfield)) {
-                results.add(question);
-            }
-        }
+	    private void displayAnswer(String specificQuestionText) {
 
-        if (results.isEmpty()) {
-            Alert alert = new Alert(AlertType.INFORMATION);
-            alert.setTitle("Search Result");
-            alert.setHeaderText(null);
-            alert.setContentText("No question found with the ID: " + searchfield);
+	    	  // Find the question object by its text
+	        for (Question question : user.getQuestionDirectory().getQuestions()) { // replace with your actual QuestionList instance
+	            if (question.getQuestion().contains(specificQuestionText)) {
+	                // Get the list of answers
+	                ArrayList<String> answers = question.getAnswerList();
 
-            alert.showAndWait();
-        } else {
-            // Create a VBox to hold the question
-            VBox vbox = new VBox();
+	                // Check if the list is not empty
+	                if (!answers.isEmpty()) {
+	                    // Clear the ListView
+	                    answerListView.getItems().clear();
 
-            // Create a UI element for each question and add it to the VBox
-            for (Question question : results) {
-                Label questionLabel = new Label(question.getQuestion());
-                questionLabel.setFont(new Font(20)); 
-                vbox.getChildren().add(questionLabel);
-            }
+	                    // Add each answer to the ListView
+	                    for (int i = 0; i < answers.size(); i++) {
+	                        answerListView.getItems().add((i + 1) + ". " + answers.get(i));
+	                    }
+	                }
+	                break;
+	            }
+	        }
+	    }
+		
+		@FXML
+		void searchQuestion(ActionEvent event) {
+		    String searchfield = questionNameField.getText().toLowerCase();
+		    Question foundQuestion = null;
 
-            // Set the VBox as the content of your ScrollPane
-            questionList.setContent(vbox); // replace with your actual ScrollPane's ID
-        }
+		    for(Question question: user.getQuestionDirectory().getQuestions()) { // replace with your actual QuestionList instance
+		        if(question.getQuestion().toLowerCase().contains(searchfield)) {
+		            foundQuestion = question;
+		            break;
+		        }
+		    }
+
+		    if (foundQuestion == null) {
+		        Alert alert = new Alert(AlertType.INFORMATION);
+		        alert.setTitle("Search Result");
+		        alert.setHeaderText(null);
+		        alert.setContentText("No question found: " + searchfield);
+
+		        alert.showAndWait();
+		    } else {
+		    	  searched_questions.setText(foundQuestion.getQuestion());
+		        // Clear the ListView
+		    	searchResultsListView.getItems().clear();
+
+		        // Add each answer to the ListView
+		    	List<String> answers = foundQuestion.getAnswerList();
+		    	for (int i = 0; i < answers.size(); i++) {
+		    	    String answer = answers.get(i);
+		    	    searchResultsListView.getItems().add((i + 1) + ". " + answer);
+		    	}
+		    }
+		}
         
 	    }
 
-	}
+	
 
