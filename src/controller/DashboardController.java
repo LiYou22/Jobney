@@ -228,7 +228,6 @@ public class DashboardController {
             loader.setController(questionsController);
             Pane view = loader.load();
             mainPane.getChildren().setAll(view);
-
         } catch (IOException ex) {
             System.out.println("Error: Unable to load the Questions view.");
             ex.printStackTrace();

@@ -88,9 +88,9 @@ public class LoginController {
 	    Note note2 = new Note("job keywords", "detail oriented, React, Robotics experience is a plus");
 	    Note note3 = new Note("insights", "aligsn with my interest, but lack of some skills that mentioned in the job descriptioin.");
 	    
-	    app1.getNoteList().addNote(note1);
-	    app1.getNoteList().addNote(note2);
-	    app1.getNoteList().addNote(note3);
+//	    app1.getNoteList().addNote(note1);
+//	    app1.getNoteList().addNote(note2);
+//	    app1.getNoteList().addNote(note3);
 	    
 	    // add application to the user
 	    testUser.getApplicationList().addApplication(app1);
