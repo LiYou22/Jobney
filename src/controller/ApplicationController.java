@@ -34,7 +34,7 @@ public class ApplicationController implements DataUpdateInterface{
 	
 	private RegularUser user;
 	
-	DashboardController dashboardController;
+	private DashboardController dashboardController;
 	
 	@FXML
     private TextField search_bar;
@@ -81,7 +81,7 @@ public class ApplicationController implements DataUpdateInterface{
 	            	// load and configure middle pane
 	                URL fileUrl1 = getClass().getResource("/view/ManageApplicationUI.fxml");
 	                FXMLLoader loader1 = new FXMLLoader(fileUrl1);
-	                ManageApplicationController controller1 = new ManageApplicationController(selectedApplication);  
+	                ManageApplicationController controller1 = new ManageApplicationController(selectedApplication, this);  
 	                loader1.setController(controller1);
 	                Pane view1 = loader1.load();
 	                
@@ -183,5 +183,8 @@ public class ApplicationController implements DataUpdateInterface{
 	    }
 	}
 	
+	public DashboardController getDashboardController() {
+		return this.dashboardController;
+	}
 	
 }

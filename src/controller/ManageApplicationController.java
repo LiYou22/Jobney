@@ -15,6 +15,9 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
@@ -27,6 +30,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 import model.application.Application;
 import model.enums.APPLICATIONSTATUS;
 import model.enums.INDUSTRY;
@@ -34,7 +38,9 @@ import model.note.Note;
 
 public class ManageApplicationController {
 	
-	Application currentApplication;
+	private Application currentApplication;
+	
+	private ApplicationController applicationController;
 
     @FXML
     private Button apply_link;
@@ -99,9 +105,9 @@ public class ManageApplicationController {
     private ObservableList<Note> observableNotesList; 
     
     // constructor
-    public ManageApplicationController(Application application){
+    public ManageApplicationController(Application application, ApplicationController applicationController){
     	this.currentApplication = application;
-    	
+    	this.applicationController = applicationController;
     	// Initialize the observable list for notes
     	observableNotesList = FXCollections.observableArrayList();
     }
@@ -179,26 +185,31 @@ public class ManageApplicationController {
 	
 
     @FXML
-    void ChangeStatus(ActionEvent event) {
+    public void ChangeStatus(ActionEvent event) {
 
     }
 
     @FXML
-    void GoBack(ActionEvent event) {
-    	// go back to application table
-    	
-//        URL fileUrl1 = getClass().getResource("/view/ManageApplicationUI.fxml");
-//        FXMLLoader loader1 = new FXMLLoader(fileUrl1);
-//        ManageApplicationController controller1 = new ManageApplicationController(selectedApplication);  
-//        loader1.setController(controller1);
-//        Pane view1 = loader1.load();
-        
+    public void GoBack(ActionEvent event) {
+        try {
+            // Load the previous view
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/ApplicationUI.fxml"));
+            ApplicationController applicationController = this.getApplicationController();
+            loader.setController(applicationController);
+            Pane previousView = loader.load();
+            
+            applicationController.getDashboardController().getMainPane().getChildren().setAll(previousView);
 
+            
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+       
     }
     
 
     @FXML
-    void saveNote(ActionEvent event) {
+    public void saveNote(ActionEvent event) {
         // Select a Note
         Note selectedNote = notesListView.getSelectionModel().getSelectedItem();
 
@@ -234,26 +245,27 @@ public class ManageApplicationController {
             notesListView.getSelectionModel().clearSelection();
     	}
     }
-        
-
-   
 
     @FXML
-    void addCoverLetter(ActionEvent event) {
+    public void addCoverLetter(ActionEvent event) {
 
     }
 
     @FXML
-    void addResume(ActionEvent event) {
+    public void addResume(ActionEvent event) {
 
     }
 
     @FXML
-    void openApplyLink(ActionEvent event) throws IOException, URISyntaxException {
+    public void openApplyLink(ActionEvent event) throws IOException, URISyntaxException {
     	System.out.println("link clicked!");
 		String applyLink = currentApplication.getAssociatedJob().getJobLink();
 
     	Desktop.getDesktop().browse(new URI(applyLink));
+    }
+    
+    public ApplicationController getApplicationController() {
+    	return this.applicationController;
     }
 
 
