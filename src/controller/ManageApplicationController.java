@@ -168,6 +168,12 @@ public class ManageApplicationController {
 	            note_content.setText(newValue.getContent());
 	        }
 	    });
+	    
+	    note_pane.setOnMouseClicked(event -> {
+	        if (!(event.getTarget() instanceof ListView)) {
+	            notesListView.getSelectionModel().clearSelection();
+	        }
+	    });
         
 	}
 	

@@ -101,6 +101,10 @@ public class ManageLinkedinAndQuestionsController {
     }
     
     private void openWebpage(String url) {
+        if (!url.startsWith("http://") && !url.startsWith("https://")) {
+            url = "http://" + url;
+        }
+
         if (Desktop.isDesktopSupported()) {
             Desktop desktop = Desktop.getDesktop();
             try {
