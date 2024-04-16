@@ -18,6 +18,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import model.company.Company;
 import model.enums.INDUSTRY;
@@ -91,12 +93,27 @@ public class LoginController {
     private void loadDashboardView(RegularUser user) throws IOException {
     	
     	try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/DashBoardUI.fxml"));
-            loader.setController(new DashboardController(user));
-            Parent dashboard = loader.load();
+    		
+	        HBox hbox = new HBox();
+
+    		// load and configure left pane(navigation pane)
+            FXMLLoader loader1 = new FXMLLoader(getClass().getResource("../view/DashBoardUI.fxml"));
+            DashboardController dashboardController = new DashboardController(user, hbox);
+            loader1.setController(dashboardController);
+            Pane dashboard = loader1.load();
             
+            
+            // load and configure right pane(dashboard pane)
+            FXMLLoader loader2 = new FXMLLoader(getClass().getResource("../view/OverviewUI.fxml"));
+            loader2.setController(new OverviewController(user, hbox));
+            Pane overview = loader2.load();
+            
+
+	        hbox.getChildren().addAll(dashboard, overview);
+            
+
             Stage stage = (Stage) btn_signin.getScene().getWindow();
-            stage.setScene(new Scene(dashboard));
+            stage.setScene(new Scene(hbox));
             stage.show();
 
         } catch (IOException e) {

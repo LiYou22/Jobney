@@ -1,320 +1,102 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
-<HBox fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="870.0" prefWidth="1206.0" styleClass="root" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <VBox prefHeight="870.0" prefWidth="220.0">
+      <VBox fx:id="navigation" alignment="CENTER" prefHeight="870.0" prefWidth="220.0" styleClass="navigation" stylesheets="@style.css">
          <children>
-            <AnchorPane fx:id="side_anchor_pane" prefHeight="870.0" prefWidth="220.0" styleClass="side_anchor_pane" stylesheets="@style.css">
-               <children>
-                  <VBox alignment="CENTER" layoutX="10.0" layoutY="155.0" prefHeight="870.0" prefWidth="213.0" spacing="15.0" AnchorPane.bottomAnchor="290.0" AnchorPane.rightAnchor="3.0">
-                     <children>
-                        <ImageView fx:id="logo" fitHeight="29.0" fitWidth="96.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../images/jobney_logo.png" />
-                           </image>
-                        </ImageView>
-                        <Pane prefHeight="33.0" prefWidth="200.0" />
-                        <Button fx:id="btn_overview" alignment="CENTER" graphicTextGap="10.0" mnemonicParsing="false" onAction="#btnOverviewClicked" prefHeight="62.0" prefWidth="200.0" styleClass="btn_overview" stylesheets="@style.css" text="Overview">
-                           <graphic>
-                              <ImageView fx:id="icon_overview" fitHeight="21.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../images/Home.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                           <font>
-                              <Font name="Apple Braille" size="14.0" />
-                           </font>
-                        </Button>
-                        <Button id="btn_overview" fx:id="btn_application" graphicTextGap="10.0" mnemonicParsing="false" onAction="#btnApplicationClicked" prefHeight="62.0" prefWidth="200.0" stylesheets="@style.css" text="Application">
-                           <graphic>
-                              <ImageView fx:id="icon_application" fitHeight="21.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../images/Name.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                           <font>
-                              <Font name="Apple Braille" size="14.0" />
-                           </font>
-                        </Button>
-                        <Button id="btn_overview" fx:id="btn_companies" graphicTextGap="10.0" mnemonicParsing="false" onAction="#btnCompaniesClicked" prefHeight="62.0" prefWidth="200.0" stylesheets="@style.css" text="Companies">
-                           <graphic>
-                              <ImageView fx:id="icon_companies" fitHeight="21.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../images/buildings.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                           <font>
-                              <Font name="Apple Braille" size="14.0" />
-                           </font>
-                        </Button>
-                        <Button id="btn_overview" fx:id="btn_questions" graphicTextGap="10.0" mnemonicParsing="false" onAction="#btnQuestionsClicked" prefHeight="62.0" prefWidth="200.0" stylesheets="@style.css" text="Questions">
-                           <graphic>
-                              <ImageView fx:id="icon_question" fitHeight="21.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../images/question.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                           <font>
-                              <Font name="Apple Braille" size="14.0" />
-                           </font>
-                        </Button>
-                        <Button id="btn_overview" fx:id="btn_settings" graphicTextGap="10.0" mnemonicParsing="false" onAction="#btnSettingsClicked" prefHeight="62.0" prefWidth="200.0" stylesheets="@style.css" text="Settings" textAlignment="CENTER">
-                           <graphic>
-                              <ImageView fx:id="icon_settings" fitHeight="21.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../images/settings.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                           <font>
-                              <Font name="Apple Braille" size="14.0" />
-                           </font>
-                        </Button>
-                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../images/Group.png" />
-                           </image>
-                        </ImageView>
-                        <Button id="btn_overview" fx:id="btn_log_out" graphicTextGap="10.0" mnemonicParsing="false" onAction="#btnLogOutClicked" prefHeight="62.0" prefWidth="200.0" stylesheets="@style.css" text="LogOut" textAlignment="CENTER">
-                           <graphic>
-                              <ImageView fx:id="icon_log_out" fitHeight="21.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../images/exit.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                           <font>
-                              <Font name="Apple Braille" size="14.0" />
-                           </font>
-                        </Button>
-                     </children>
-                  </VBox>
-               </children>
-            </AnchorPane>
-         </children>
-      </VBox>
-      <Pane fx:id="mainPane" prefHeight="870.0" prefWidth="986.0">
-         <children>
-            <Pane fx:id="middle_pane" layoutX="7.0" layoutY="6.0" prefHeight="863.0" prefWidth="659.0">
-               <children>
-                  <VBox layoutX="34.0" layoutY="130.0">
-                     <children>
-                        <Pane fx:id="btn_1day_left" onMouseClicked="#click" prefHeight="165.0" prefWidth="592.0">
-                           <children>
-                              <ImageView fitHeight="181.0" fitWidth="600.0" layoutX="-5.0" layoutY="-3.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../images/1dayleft.png" />
-                                 </image>
-                              </ImageView>
-                              <Text fx:id="job_title1" fill="WHITE" layoutX="50.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Job title 1">
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font>
-                              </Text>
-                              <Text fx:id="company1_name" fill="WHITE" layoutX="50.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Company 1">
-                                 <font>
-                                    <Font size="14.0" />
-                                 </font>
-                              </Text>
-                           </children>
-                        </Pane>
-                        <Pane fx:id="btn_2day_left" onMouseClicked="#click" prefHeight="165.0" prefWidth="592.0">
-                           <children>
-                              <ImageView fx:id="btn" fitHeight="181.0" fitWidth="600.0" layoutX="-5.0" layoutY="-3.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../images/2daysleft.png" />
-                                 </image>
-                              </ImageView>
-                              <Text fx:id="job_title2" fill="WHITE" layoutX="50.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Job title 2">
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font>
-                              </Text>
-                              <Text fx:id="company2_name" fill="WHITE" layoutX="50.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Company 2">
-                                 <font>
-                                    <Font size="14.0" />
-                                 </font>
-                              </Text>
-                           </children>
-                        </Pane>
-                        <Pane fx:id="btn_3day_left" onMouseClicked="#click" prefHeight="165.0" prefWidth="592.0">
-                           <children>
-                              <ImageView fitHeight="181.0" fitWidth="600.0" layoutX="-5.0" layoutY="-3.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../images/3daysleft.png" />
-                                 </image>
-                              </ImageView>
-                              <Text fx:id="job_title3" fill="WHITE" layoutX="50.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Job title 3">
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font>
-                              </Text>
-                              <Text fx:id="company3_name" fill="WHITE" layoutX="50.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Company 3">
-                                 <font>
-                                    <Font size="14.0" />
-                                 </font>
-                              </Text>
-                           </children>
-                        </Pane>
-                        <Pane fx:id="btn_4day_left" onMouseClicked="#click" prefHeight="165.0" prefWidth="592.0">
-                           <children>
-                              <ImageView fitHeight="181.0" fitWidth="600.0" layoutX="-5.0" layoutY="-3.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../images/4daysleft.png" />
-                                 </image>
-                              </ImageView>
-                              <Text fx:id="job_title4" fill="WHITE" layoutX="50.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Job title 4">
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font>
-                              </Text>
-                              <Text fx:id="company4_name" fill="WHITE" layoutX="50.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Company 4">
-                                 <font>
-                                    <Font size="14.0" />
-                                 </font>
-                              </Text>
-                           </children>
-                        </Pane>
-                     </children>
-                  </VBox>
-                  <Label layoutX="56.0" layoutY="85.0" text="Hello Bruno, welcome back!  👋">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </Label>
-               </children>
-            </Pane>
-            <Pane fx:id="right_side_pane" layoutX="681.0" layoutY="-3.0" prefHeight="879.0" prefWidth="307.0" styleClass="right_side_pane" stylesheets="@style.css">
-               <children>
-                  <ImageView fx:id="avatar" fitHeight="40.0" fitWidth="40.0" layoutX="238.0" layoutY="38.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="logo" fitHeight="29.0" fitWidth="96.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/jobney_logo.png" />
+               </image>
+            </ImageView>
+            <Pane prefHeight="100.0" prefWidth="218.0" />
+            <Button fx:id="btn_overview" alignment="CENTER" graphicTextGap="10.0" mnemonicParsing="false" onAction="#btnOverviewClicked" prefHeight="62.0" prefWidth="200.0" styleClass="btn_overview" stylesheets="@style.css" text="Overview">
+               <graphic>
+                  <ImageView fx:id="icon_overview" fitHeight="21.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../images/avatar.png" />
+                        <Image url="@../images/Home.png" />
                      </image>
                   </ImageView>
-                  <Label layoutX="23.0" layoutY="98.0" text="Achievements">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="23.0" layoutY="480.0" text="Calendar">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </Label>
-                  <GridPane hgap="15.0" layoutX="23.0" layoutY="145.0" vgap="15.0">
-                     <columnConstraints>
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
-                     </columnConstraints>
-                     <rowConstraints>
-                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                     </rowConstraints>
-                     <children>
-                        <Pane fx:id="statics_pane" prefHeight="129.0" prefWidth="125.0" styleClass="statics_pane" stylesheets="@style.css">
-                           <children>
-                              <Label layoutX="18.0" layoutY="20.0" text="Total " textFill="#8ea3b7">
-                                 <font>
-                                    <Font name="Apple Braille Outline 6 Dot" size="13.0" />
-                                 </font>
-                              </Label>
-                              <Label layoutX="18.0" layoutY="37.0" text="Applications" textFill="#8ea3b7">
-                                 <font>
-                                    <Font name="Apple Braille Outline 6 Dot" size="13.0" />
-                                 </font>
-                              </Label>
-                              <Line endX="-100.0" endY="36.0" layoutX="121.0" layoutY="74.0" startX="-100.0" startY="8.0" stroke="#369fff" strokeWidth="3.0" />
-                              <Label layoutX="63.0" layoutY="82.0" text="129" textFill="#006ed3">
-                                 <font>
-                                    <Font name="System Bold" size="24.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </Pane>
-                        <Pane fx:id="statics_pane1" prefHeight="129.0" prefWidth="125.0" styleClass="statics_pane" stylesheets="@style.css" GridPane.columnIndex="1">
-                           <children>
-                              <Label layoutX="18.0" layoutY="20.0" text="Applied" textFill="#8ea3b7">
-                                 <font>
-                                    <Font name="Apple Braille Outline 6 Dot" size="13.0" />
-                                 </font>
-                              </Label>
-                              <Label layoutX="18.0" layoutY="37.0" text="Companies" textFill="#8ea3b7">
-                                 <font>
-                                    <Font name="Apple Braille Outline 6 Dot" size="13.0" />
-                                 </font>
-                              </Label>
-                              <Line endX="-100.0" endY="36.0" layoutX="121.0" layoutY="74.0" startX="-100.0" startY="8.0" stroke="#369fff" strokeWidth="3.0" />
-                              <Label layoutX="76.0" layoutY="82.0" text="52" textFill="#006ed3">
-                                 <font>
-                                    <Font name="System Bold" size="24.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </Pane>
-                        <Pane fx:id="statics_pane11" prefHeight="129.0" prefWidth="125.0" styleClass="statics_pane" stylesheets="@style.css" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                           <children>
-                              <Label layoutX="18.0" layoutY="20.0" text="Total" textFill="#8ea3b7">
-                                 <font>
-                                    <Font name="Apple Braille Outline 6 Dot" size="13.0" />
-                                 </font>
-                              </Label>
-                              <Label layoutX="18.0" layoutY="37.0" text="Offers" textFill="#8ea3b7">
-                                 <font>
-                                    <Font name="Apple Braille Outline 6 Dot" size="13.0" />
-                                 </font>
-                              </Label>
-                              <Line endX="-100.0" endY="36.0" layoutX="121.0" layoutY="74.0" startX="-100.0" startY="8.0" stroke="#369fff" strokeWidth="3.0" />
-                              <Label layoutX="76.0" layoutY="82.0" text="2" textFill="#006ed3">
-                                 <font>
-                                    <Font name="System Bold" size="24.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </Pane>
-                        <Pane fx:id="statics_pane2" prefHeight="129.0" prefWidth="125.0" styleClass="statics_pane" stylesheets="@style.css" GridPane.rowIndex="1">
-                           <children>
-                              <Label layoutX="18.0" layoutY="20.0" text="Total " textFill="#8ea3b7">
-                                 <font>
-                                    <Font name="Apple Braille Outline 6 Dot" size="13.0" />
-                                 </font>
-                              </Label>
-                              <Label layoutX="18.0" layoutY="37.0" text="Interviews" textFill="#8ea3b7">
-                                 <font>
-                                    <Font name="Apple Braille Outline 6 Dot" size="13.0" />
-                                 </font>
-                              </Label>
-                              <Line endX="-100.0" endY="36.0" layoutX="121.0" layoutY="74.0" startX="-100.0" startY="8.0" stroke="#369fff" strokeWidth="3.0" />
-                              <Label layoutX="84.0" layoutY="82.0" text="6" textFill="#006ed3">
-                                 <font>
-                                    <Font name="System Bold" size="24.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </Pane>
-                     </children>
-                  </GridPane>
-               </children>
-            </Pane>
+               </graphic>
+               <font>
+                  <Font name="Apple Braille" size="14.0" />
+               </font>
+            </Button>
+            <Button id="btn_overview" fx:id="btn_application" graphicTextGap="10.0" mnemonicParsing="false" onAction="#btnApplicationClicked" prefHeight="62.0" prefWidth="200.0" stylesheets="@style.css" text="Application">
+               <graphic>
+                  <ImageView fx:id="icon_application" fitHeight="21.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/Name.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <font>
+                  <Font name="Apple Braille" size="14.0" />
+               </font>
+            </Button>
+            <Button id="btn_overview" fx:id="btn_companies" graphicTextGap="10.0" mnemonicParsing="false" onAction="#btnCompaniesClicked" prefHeight="62.0" prefWidth="200.0" stylesheets="@style.css" text="Companies">
+               <graphic>
+                  <ImageView fx:id="icon_companies" fitHeight="21.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/buildings.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <font>
+                  <Font name="Apple Braille" size="14.0" />
+               </font>
+            </Button>
+            <Button id="btn_overview" fx:id="btn_questions" graphicTextGap="10.0" mnemonicParsing="false" onAction="#btnQuestionsClicked" prefHeight="62.0" prefWidth="200.0" stylesheets="@style.css" text="Questions">
+               <graphic>
+                  <ImageView fx:id="icon_question" fitHeight="21.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/question.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <font>
+                  <Font name="Apple Braille" size="14.0" />
+               </font>
+            </Button>
+            <Button id="btn_overview" fx:id="btn_settings" graphicTextGap="10.0" mnemonicParsing="false" onAction="#btnSettingsClicked" prefHeight="62.0" prefWidth="200.0" stylesheets="@style.css" text="Settings" textAlignment="CENTER">
+               <graphic>
+                  <ImageView fx:id="icon_settings" fitHeight="21.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/settings.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <font>
+                  <Font name="Apple Braille" size="14.0" />
+               </font>
+            </Button>
+            <Pane layoutX="10.0" layoutY="149.0" prefHeight="100.0" prefWidth="218.0" />
+            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/Group.png" />
+               </image>
+            </ImageView>
+            <Button id="btn_overview" fx:id="btn_log_out" graphicTextGap="10.0" mnemonicParsing="false" onAction="#btnLogOutClicked" prefHeight="62.0" prefWidth="200.0" stylesheets="@style.css" text="LogOut" textAlignment="CENTER">
+               <graphic>
+                  <ImageView fx:id="icon_log_out" fitHeight="21.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/exit.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <font>
+                  <Font name="Apple Braille" size="14.0" />
+               </font>
+            </Button>
          </children>
-      </Pane>
+      </VBox>
    </children>
-</HBox>
+</AnchorPane>

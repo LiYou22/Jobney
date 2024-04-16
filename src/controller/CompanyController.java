@@ -32,11 +32,7 @@ public class CompanyController {
     private TableColumn<Company,String> companyColumn;
 	@FXML
     private TableColumn<Company,String> industryColumn;
-//	
-//	@FXML
-//	void searchCcompany(ActionEvent event){
-//		
-//	}
+
 	
 	public CompanyController(RegularUser user) {
     	this.user = user;

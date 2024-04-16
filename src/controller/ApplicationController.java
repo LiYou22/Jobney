@@ -97,7 +97,7 @@ public class ApplicationController implements DataUpdateInterface{
 	                hbox.getChildren().addAll(view1,view2);
 	                
 	                // switch the main pane to the new hbox
-	                dashboardController.getMainPane().getChildren().setAll(hbox);
+	                dashboardController.getHbox().getChildren().setAll(hbox);
 
 	            } catch(Exception e) {
 	                e.printStackTrace();

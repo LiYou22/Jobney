@@ -18,37 +18,23 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class DashboardController {
 	
 	private RegularUser user;
+	
+	private HBox hbox;
 
-    @FXML
-    private ImageView avatar;
-
-    @FXML
-    private ImageView btn;
-
-    @FXML
-    private Pane btn_1day_left;
-
-    @FXML
-    private Pane btn_2day_left;
-
-    @FXML
-    private Pane btn_3day_left;
-
-    @FXML
-    private Pane btn_4day_left;
 
     @FXML
     private Button btn_application;
 
     @FXML
     private Button btn_companies;
-    
+
     @FXML
     private Button btn_log_out;
 
@@ -62,23 +48,11 @@ public class DashboardController {
     private Button btn_settings;
 
     @FXML
-    private Text company1_name;
-
-    @FXML
-    private Text company2_name;
-
-    @FXML
-    private Text company3_name;
-
-    @FXML
-    private Text company4_name;
-
-    @FXML
     private ImageView icon_application;
 
     @FXML
     private ImageView icon_companies;
-    
+
     @FXML
     private ImageView icon_log_out;
 
@@ -92,55 +66,27 @@ public class DashboardController {
     private ImageView icon_settings;
 
     @FXML
-    private Text job_title1;
-
-    @FXML
-    private Text job_title2;
-
-    @FXML
-    private Text job_title3;
-
-    @FXML
-    private Text job_title4;
-
-    @FXML
     private ImageView logo;
-    
+
     @FXML
     private Pane mainPane;
-    
-    @FXML
-    private Pane middle_pane;
 
     @FXML
-    private Pane right_side_pane;
+    private VBox navigation;
 
     @FXML
     private HBox root;
 
-    @FXML
-    private AnchorPane side_anchor_pane;
 
-    @FXML
-    private Pane statics_pane;
-
-    @FXML
-    private Pane statics_pane1;
-
-    @FXML
-    private Pane statics_pane11;
-
-    @FXML
-    private Pane statics_pane2;
     
     
-    public DashboardController(RegularUser user) {
+    public DashboardController(RegularUser user, HBox hbox) {
     	this.user = user;
+    	this.hbox = hbox;
+
     }
     
-    public Pane getMainPane() {
-    	return mainPane;
-    }
+
 
     @FXML
     void btnApplicationClicked(ActionEvent event) {
@@ -152,8 +98,15 @@ public class DashboardController {
             ApplicationController appController = new ApplicationController(user, this);  
             loader.setController(appController);
             Pane view = loader.load();
-            mainPane.getChildren().setAll(view);
 
+            
+            // Remove old child
+            hbox.getChildren().remove(1);
+
+            // Add new child at the correct position
+            hbox.getChildren().add(1, view);
+
+            
         } catch (IOException ex) {
             System.out.println("Error: Unable to load the Application view.");
             ex.printStackTrace();
@@ -172,8 +125,11 @@ public class DashboardController {
             CompanyController companyController = new CompanyController(user);  
             loader.setController(companyController);
             Pane view = loader.load();
-            mainPane.getChildren().setAll(view);
 
+            
+            hbox.getChildren().remove(1);
+            hbox.getChildren().add(1, view);
+            
         } catch (IOException ex) {
             System.out.println("Error: Unable to load the Company view.");
             ex.printStackTrace();
@@ -183,37 +139,22 @@ public class DashboardController {
 
     @FXML
     void btnOverviewClicked(ActionEvent event) {
-//    	System.out.println("Switching to Overview page!");
-//    	URL fileUrl = getClass().getResource("/view/DashboardUI.fxml");
-//    	FxmlLoader obejct = new FxmlLoader();
-//    	Pane view = obejct.getPage(fileUrl);
-//    	mainPane.getChildren().setAll(view);
-    	System.out.println("Switching to Overview page!");
-        
-        // Load the FXML file using the standard FXMLLoader
-        URL fileUrl = getClass().getResource("/view/DashboardUI.fxml");
-        if (fileUrl == null) {
-            System.out.println("Error: FXML file not found.");
-            return;
-        }
-
+        System.out.println("Switching to Overview page!");
+    	
         try {
-            // Create an FXMLLoader instance and set the location to the URL of the FXML file
-            FXMLLoader loader = new FXMLLoader(fileUrl);
-            // Set controller for this page
-            //loader.setController(new DashboardController(user));
-            // Load the pane from the FXML file
-            Pane view = loader.load();
-
+            // load and configure right pane(dashboard pane)
+            FXMLLoader loader2 = new FXMLLoader(getClass().getResource("../view/OverviewUI.fxml"));
+            loader2.setController(new OverviewController(user, hbox));
+            Pane overview = loader2.load();
             
-            mainPane.getChildren().setAll(view);
+            hbox.getChildren().remove(1);
+            hbox.getChildren().add(1, overview);
             
-        } catch (IOException e) {
-            System.out.println("Error: Failed to load the FXML view.");
-            e.printStackTrace();
-            return;
-
+        } catch (IOException ex) {
+            System.out.println("Error: Unable to load the Company view.");
+            ex.printStackTrace();
         }
+
     	
     }
 
@@ -227,8 +168,9 @@ public class DashboardController {
             QuestionController questionsController = new QuestionController(user);  
             loader.setController(questionsController);
             Pane view = loader.load();
-            mainPane.getChildren().setAll(view);
-        } catch (IOException ex) {
+            
+            hbox.getChildren().remove(1);
+            hbox.getChildren().add(1, view);        } catch (IOException ex) {
             System.out.println("Error: Unable to load the Questions view.");
             ex.printStackTrace();
         }
@@ -244,8 +186,10 @@ public class DashboardController {
             SettingsController settingsController = new SettingsController(user);  
             loader.setController(settingsController);
             Pane view = loader.load();
-            mainPane.getChildren().setAll(view);
-
+            
+            
+            hbox.getChildren().remove(1);
+            hbox.getChildren().add(1, view);
         } catch (IOException ex) {
             System.out.println("Error: Unable to load the Settings view.");
             ex.printStackTrace();
@@ -276,6 +220,9 @@ public class DashboardController {
     }
     
 
+    public Pane getHbox() {
+    	return this.hbox;
+    }
 
     
 }
