@@ -86,15 +86,7 @@
                   <TextField fx:id="question" alignment="TOP_LEFT" prefHeight="118.0" prefWidth="234.0" promptText="Enter the Question" />
                   <Label text="Response" />
                   <TextField fx:id="response" alignment="TOP_LEFT" prefHeight="91.0" prefWidth="234.0" promptText="Enter the response" />
-                  <Button fx:id="btn_add_questions" mnemonicParsing="false" onAction="#addQuestion" prefHeight="31.0" prefWidth="238.0" styleClass="btn_add" stylesheets="@style.css" text="Add">
-                     <graphic>
-                        <ImageView fitHeight="23.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../images/black_add.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
+                  <Button fx:id="btn_save_questions" mnemonicParsing="false" onAction="#saveQuestion" prefHeight="31.0" prefWidth="238.0" styleClass="btn_add" stylesheets="@style.css" text="Save" />
                   <ListView fx:id="questionListView" prefHeight="164.0" prefWidth="234.0" />
                </children>
                <padding>

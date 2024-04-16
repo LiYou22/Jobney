@@ -15,6 +15,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
@@ -147,7 +148,7 @@ public class ManageApplicationController {
 			progress_label.setText(percent);
 		};
 		
-		// Assign the listener to each checkbox
+		// Assign listener to each checkbox
 		do_research_checkbox.selectedProperty().addListener(listener);
 		tailor_resume_checkbox.selectedProperty().addListener(listener);
 		tailore_cover_checkbox.selectedProperty().addListener(listener);
@@ -159,6 +160,14 @@ public class ManageApplicationController {
 	        observableNotesList.addAll(currentApplication.getNotesList().getAllNotes());
 	    }
 	    notesListView.setItems(observableNotesList);
+	    
+	    // Add listener to ListView
+	    notesListView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+	        if (newValue != null) {
+	            note_title.setText(newValue.getTitle());
+	            note_content.setText(newValue.getContent());
+	        }
+	    });
         
 	}
 	
@@ -184,19 +193,43 @@ public class ManageApplicationController {
 
     @FXML
     void saveNote(ActionEvent event) {
-        String title = note_title.getText();
-        String content = note_content.getText();
+        // Select a Note
+        Note selectedNote = notesListView.getSelectionModel().getSelectedItem();
 
-        if (!title.isEmpty() && !content.isEmpty()) {
-            Note newNote = new Note(title, content);
-            observableNotesList.add(newNote);
-            currentApplication.getNotesList().addNote(newNote); 
+        // Create a new note if no note is selected in the notesListView
+        if (selectedNote == null) {
+        	String title = note_title.getText();
+            String content = note_content.getText();
+  
+            if (!title.isEmpty() && !content.isEmpty()) {
+            	Note newNote = new Note(title, content);
+                observableNotesList.add(newNote);
+                currentApplication.getNotesList().addNote(newNote); 
+                note_title.clear();
+                note_content.clear();
+            } else {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error！");
+                alert.setHeaderText("Failed to Save Note");
+                alert.setContentText("Both title and content are required!");
+                alert.showAndWait();
+            }
+        } else {
+            // Update titles and contents
+            selectedNote.updateTitle(note_title.getText());
+            selectedNote.updateContent(note_content.getText());
+
+            // Update UI
+            notesListView.refresh();
+
+            // Clear the text fields and the selection
             note_title.clear();
             note_content.clear();
-        } else {
-            System.out.println("Need to fill out both title and content");
-        }
+            notesListView.getSelectionModel().clearSelection();
+    	}
     }
+        
+
    
 
     @FXML
