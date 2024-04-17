@@ -133,7 +133,7 @@ public class ApplicationController implements DataUpdateInterface{
         RateColumn.setCellValueFactory(new PropertyValueFactory<>("rate"));
 		
         // Get the existing data
-        ObservableList<Application> data = FXCollections.observableArrayList(ApplicationList.getApplicationList());
+        ObservableList<Application> data = FXCollections.observableArrayList(user.getApplicationList().getApplicationList());
 
         // Populate the TableView
         application_table.setItems(data);
@@ -153,7 +153,7 @@ public class ApplicationController implements DataUpdateInterface{
 		String searchfield = search_bar.getText();
 		List<Application> results = new ArrayList();
 		
-		for(Application app: ApplicationList.getApplicationList()) { // made static method and attribute
+		for(Application app: user.getApplicationList().getApplicationList()) { // made static method and attribute
 			if(app.getAssociatedJob().getJobName().toLowerCase().contains(searchfield)) {
 				results.add(app);
 			}

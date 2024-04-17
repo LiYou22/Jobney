@@ -97,7 +97,7 @@
       </VBox>
       <HBox fx:id="note_pane" layoutX="35.0" layoutY="429.0" prefHeight="386.0" prefWidth="612.0" styleClass="note_pane" stylesheets="@style.css">
          <children>
-            <Pane prefHeight="200.0" prefWidth="200.0" styleClass="statics_pane" stylesheets="@style.css">
+            <Pane fx:id="note_list_pane" prefHeight="200.0" prefWidth="200.0" styleClass="statics_pane" stylesheets="@style.css">
                <children>
                   <VBox alignment="TOP_CENTER" layoutX="11.0" layoutY="8.0" prefHeight="309.0" prefWidth="167.0" spacing="10.0">
                      <children>

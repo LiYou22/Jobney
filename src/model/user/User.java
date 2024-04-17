@@ -11,8 +11,6 @@ public abstract class User {
     private Profile profile;
     private ArrayList<String> passwrodHistory;
 
-
-
     public User(String email, String password) {
     	this.passwrodHistory = new ArrayList<>();
         this.email = email;

@@ -7,7 +7,6 @@ import javafx.scene.image.Image;
 public class Profile {
 	
 	private String userName;
-//	private Image avatar;
 	
     private ObjectProperty<Image> avatar = new SimpleObjectProperty<>();
 

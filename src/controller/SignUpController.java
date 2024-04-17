@@ -14,6 +14,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import model.user.AdminUser;
+import model.user.Profile;
 import model.user.RegularUser;
 
 public class SignUpController {
@@ -53,7 +54,14 @@ public class SignUpController {
 	    }
 
 	    RegularUser newUser = new RegularUser(userEmail, userPassword); 
+	    // use user id to create a profile
+	    Profile newProfile = new Profile(newUser.getUserId());
+	    newUser.setAssociatedProfile(newProfile);
 	    
+	    
+	    
+	    
+	    // gets a reference to the singleton AdminUser instance
 	    AdminUser admin = AdminUser.getAdministrator();
 	    boolean success = admin.getUserDirectory().addUser(newUser); 
 
