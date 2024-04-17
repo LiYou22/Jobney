@@ -53,6 +53,7 @@ public class SignUpController {
 	    }
 
 	    RegularUser newUser = new RegularUser(userEmail, userPassword); 
+	    
 	    AdminUser admin = AdminUser.getAdministrator();
 	    boolean success = admin.getUserDirectory().addUser(newUser); 
 

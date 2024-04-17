@@ -51,10 +51,11 @@ public class Initializer {
 	    Note note1 = new Note("company info", "PayPal is a global online payment system that serves as an electronic alternative to traditional paper methods such as checks, money orders, and cash transactions. Founded in 1998 in the United States and initially a subsidiary of eBay, it was spun off into its own company in 2015. Today, PayPal operates in more than 200 countries, allowing customers to send, receive, and hold funds in 25 currencies worldwide. The company's payment solution simplifies online transactions between businesses and consumers, providing secure and convenient digital payment options. PayPal continuously innovates its technology platform to reduce fraud risks and make online shopping easier, safer, and more user-friendly");
 	    Note note2 = new Note("job keywords", "detail oriented, React, Robotics experience is a plus");
 	    Note note3 = new Note("insights", "aligsn with my interest, but lack of some skills that mentioned in the job descriptioin.");
+	    ;
 	    
-//	    app1.getNoteList().addNote(note1);
-//	    app1.getNoteList().addNote(note2);
-//	    app1.getNoteList().addNote(note3);
+	    app1.getNotesList().addNote(note1);
+	    app1.getNotesList().addNote(note2);
+	    app1.getNotesList().addNote(note3);
 	    
 	    // add application to the user
 	    testUser.getApplicationList().addApplication(app1);

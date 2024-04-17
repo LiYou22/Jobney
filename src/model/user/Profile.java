@@ -35,17 +35,11 @@ public class Profile {
         this.userName = userName;
     }
 
-//    public void setAvatar(Image avatar) {
-//        this.avatar = avatar;
-//    }
 
     public String getUserName() {
         return userName;
     }
-//
-//    public Image getAvatar() {
-//        return this.avatar;
-//    }
+
 
 
 }

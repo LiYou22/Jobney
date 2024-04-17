@@ -73,6 +73,10 @@ public class ManageApplicationController {
 
     @FXML
     private TextArea note_content;
+    
+
+    @FXML
+    private Pane note_list_pane;
 
     @FXML
     private HBox note_pane;
@@ -178,9 +182,22 @@ public class ManageApplicationController {
 	    });
 	    
 	    note_pane.setOnMouseClicked(event -> {
-	        if (!(event.getTarget() instanceof ListView)) {
-	            notesListView.getSelectionModel().clearSelection();
+	    	
+	        Node target = (Node)event.getTarget();
+
+	        while (target != null && !(target instanceof Pane)) {
+	    	    target = target.getParent();
 	        }
+
+	        if(target != null){
+	            Pane clickedPane = (Pane) target;
+	            if (clickedPane.getId() == null || !clickedPane.getId().equals("note_list_pane")) {
+	                notesListView.getSelectionModel().clearSelection();
+	                note_content.clear();
+	                note_title.clear();
+	            }
+	        }
+	    	
 	    });
         
 	}
@@ -274,6 +291,10 @@ public class ManageApplicationController {
     public void openApplyLink(ActionEvent event) throws IOException, URISyntaxException {
     	System.out.println("link clicked!");
 		String applyLink = currentApplication.getAssociatedJob().getJobLink();
+		
+        if (!applyLink.startsWith("http://") && !applyLink.startsWith("https://")) {
+        	applyLink = "http://" + applyLink;
+        }
 
     	Desktop.getDesktop().browse(new URI(applyLink));
     }
