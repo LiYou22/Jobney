@@ -113,26 +113,25 @@ public class OverviewController {
     
     @FXML
     private void initialize() {
-    	
     	username.setText(user.getProfile().getUserName());
     	List<Application> appList = showApplications();
     	
-    	
-    	Application app1 = appList.get(0);
-    	Application app2 = appList.get(1);
-    	Application app3 = appList.get(2);
-    	Application app4 = appList.get(3);
-    	
-    	
-        job_title1.setText(app1.getJobName());
-        job_title2.setText(app2.getJobName());
-        job_title3.setText(app3.getJobName());
-        job_title4.setText(app4.getJobName());
-        
-        company1_name.setText(app1.getCompanyName());
-        company2_name.setText(app2.getCompanyName());
-        company3_name.setText(app3.getCompanyName());
-        company4_name.setText(app4.getCompanyName());
+    	if (appList.size() >= 4) {    	
+    		Application app1 = appList.get(0);
+	    	Application app2 = appList.get(1);
+	    	Application app3 = appList.get(2);
+	    	Application app4 = appList.get(3);
+	    	
+	        job_title1.setText(app1.getJobName());
+	        job_title2.setText(app2.getJobName());
+	        job_title3.setText(app3.getJobName());
+	        job_title4.setText(app4.getJobName());
+	        
+	        company1_name.setText(app1.getCompanyName());
+	        company2_name.setText(app2.getCompanyName());
+	        company3_name.setText(app3.getCompanyName());
+	        company4_name.setText(app4.getCompanyName());	
+    	}
     	
     	
     	// get statics

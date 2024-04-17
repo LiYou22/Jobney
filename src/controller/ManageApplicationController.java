@@ -125,6 +125,8 @@ public class ManageApplicationController {
 		String company = currentApplication.getCompanyName();
 		APPLICATIONSTATUS currentStatus = currentApplication.getStatus();
 		
+		note_content.setWrapText(true);
+		
 		// set up the items in the combo box
 		ArrayList<String> statusList = Arrays.stream(APPLICATIONSTATUS.values())
 	            .map(Enum::name)
