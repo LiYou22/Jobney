@@ -1,5 +1,10 @@
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Date;
+
 import model.application.Application;
 import model.company.Company;
+import model.enums.APPLICATIONSTATUS;
 import model.enums.INDUSTRY;
 import model.job.Job;
 import model.note.Note;
@@ -25,10 +30,22 @@ public class Initializer {
 	    Company com2 = new Company(INDUSTRY.TECH,"Google");
 	    Company com3 = new Company(INDUSTRY.TECH,"Apple");
 	    Company com4 = new Company(INDUSTRY.EDUCATION,"SYMPLICITY CORPORATION");
+
+	    Company com5 = new Company(INDUSTRY.EDUCATION,"Transit Mobility Lab");
+	    Company com6 = new Company(INDUSTRY.TECH,"Sedarotech");
+	    Company com7 = new Company(INDUSTRY.TECH,"Tencent");
+	    Company com8 = new Company(INDUSTRY.TECH,"Vivahr");	    
+	    Company com9 = new Company(INDUSTRY.TECH,"Github");	    
+	    
 	    administrator.getCompanyCatalog().addCompany(com1);
 	    administrator.getCompanyCatalog().addCompany(com2);
 	    administrator.getCompanyCatalog().addCompany(com3);
 	    administrator.getCompanyCatalog().addCompany(com4);
+	    administrator.getCompanyCatalog().addCompany(com5);
+	    administrator.getCompanyCatalog().addCompany(com6);
+	    administrator.getCompanyCatalog().addCompany(com7);
+	    administrator.getCompanyCatalog().addCompany(com8);
+	    administrator.getCompanyCatalog().addCompany(com9);
 	    
 	    // create a job under the company
 	    Job job1 = new Job(com1, "Software Engineer Intern", "https://paypal.eightfold.ai/careers?Codes=W-LINKEDIN&domain=paypal.com&query=R0111038&sort_by=relevance");
@@ -39,6 +56,15 @@ public class Initializer {
 	    Job job5 = new Job(com1, "Software Engineer", "https://paypal.eightfold.ai/careers?Codes=W-LINKEDIN&domain=paypal.com&query=R0111039&sort_by=relevance");
 	    Job job6 = new Job(com1, "Data Scientist Intern", "https://paypal.eightfold.ai/careers?Codes=W-LINKEDIN&domain=paypal.com&query=R0111040&sort_by=relevance");
 	    
+	    Job job7 = new Job(com5, "Public Transit Visualization Developer\n", "https://undergraduate.northeastern.edu/research/opportunities/public-transit-visualization-developer/");
+	    Job job8 = new Job(com6, "Software Engineering Intern (Summer 2024)", "https://sedarotech.bamboohr.com/careers/38");
+	    Job job9 = new Job(com9, "Software Engineer Intern","https://githubinc.jibeapply.com/jobs/2787?iis=Job+Board&iisn=LinkedIn&lever-source=LinkedinPosting&lang=en-us");
+	    Job job10 = new Job(com7, "Software Engineer Intern", "https://tencent.wd1.myworkdayjobs.com/en-US/Tencent_Careers/job/Software-Engineer-Intern_R102779-1?source=10100001");
+	    Job job11 = new Job(com8, "Software Engineering Intern", "https://jobs.vivahr.com/7639-altitude-ai/38522-software-engineering-intern");
+	    
+	    
+
+	   
 	    // create an application using the job
 	    Application app1 = new Application(job1, testUser);
 	    Application app2 = new Application(job2, testUser);
@@ -46,6 +72,53 @@ public class Initializer {
 	    Application app4 = new Application(job4, testUser);
 	    Application app5 = new Application(job5, testUser);
 	    Application app6 = new Application(job6, testUser);
+	    Application app7 = new Application(job7, testUser);
+	    Application app8 = new Application(job8, testUser);
+	    Application app9 = new Application(job9, testUser);
+	    Application app10 = new Application(job10, testUser);
+	    Application app11 = new Application(job11, testUser);
+	    
+	    // set up the created date for testing
+	    LocalDate localDate3 = LocalDate.of(2024, 02, 15);
+	    Date date3 = Date.from(localDate3.atStartOfDay(ZoneId.systemDefault()).toInstant());
+	    app3.setDateAdded(date3);
+	    
+	    LocalDate localDate4 = LocalDate.of(2024, 02, 16);
+	    Date date4 = Date.from(localDate4.atStartOfDay(ZoneId.systemDefault()).toInstant());
+	    app4.setDateAdded(date4);
+	    
+	    LocalDate localDate7 = LocalDate.of(2024, 02, 19);
+	    Date date7 = Date.from(localDate7.atStartOfDay(ZoneId.systemDefault()).toInstant());
+	    app7.setDateAdded(date7);
+	    
+	    LocalDate localDate8 = LocalDate.of(2024, 03, 25);
+	    Date date8 = Date.from(localDate8.atStartOfDay(ZoneId.systemDefault()).toInstant());
+	    app8.setDateAdded(date8);
+	    
+	    LocalDate localDate9 = LocalDate.of(2024, 03, 10);
+	    Date date9 = Date.from(localDate9.atStartOfDay(ZoneId.systemDefault()).toInstant());
+	    app9.setDateAdded(date9);
+	    
+	    LocalDate localDate10 = LocalDate.of(2024, 03, 18);
+	    Date date10 = Date.from(localDate10.atStartOfDay(ZoneId.systemDefault()).toInstant());
+	    app10.setDateAdded(date10);
+	    
+	    LocalDate localDate11 = LocalDate.of(2024, 02, 18);
+	    Date date11 = Date.from(localDate11.atStartOfDay(ZoneId.systemDefault()).toInstant());
+	    app11.setDateAdded(date11);
+	    
+	    app1.setStatus(APPLICATIONSTATUS.APPLIED);
+	    app2.setStatus(APPLICATIONSTATUS.APPLIED);
+	    app3.setStatus(APPLICATIONSTATUS.TOAPPLY);
+	    app4.setStatus(APPLICATIONSTATUS.TOAPPLY);
+	    app5.setStatus(APPLICATIONSTATUS.GETOFFER);
+	    app6.setStatus(APPLICATIONSTATUS.REJECTED);
+	    app7.setStatus(APPLICATIONSTATUS.TOAPPLY);
+	    app8.setStatus(APPLICATIONSTATUS.TOAPPLY);
+	    app9.setStatus(APPLICATIONSTATUS.TOAPPLY);
+	    app10.setStatus(APPLICATIONSTATUS.TOAPPLY);
+	    app11.setStatus(APPLICATIONSTATUS.TOAPPLY);
+	    
 	    
 	    // create notes under one application
 	    Note note1 = new Note("company info", "PayPal is a global online payment system that serves as an electronic alternative to traditional paper methods such as checks, money orders, and cash transactions. Founded in 1998 in the United States and initially a subsidiary of eBay, it was spun off into its own company in 2015. Today, PayPal operates in more than 200 countries, allowing customers to send, receive, and hold funds in 25 currencies worldwide. The company's payment solution simplifies online transactions between businesses and consumers, providing secure and convenient digital payment options. PayPal continuously innovates its technology platform to reduce fraud risks and make online shopping easier, safer, and more user-friendly");
@@ -64,19 +137,39 @@ public class Initializer {
 	    testUser.getApplicationList().addApplication(app4);
 	    testUser.getApplicationList().addApplication(app5);
 	    testUser.getApplicationList().addApplication(app6);
+	    testUser.getApplicationList().addApplication(app7);
+	    testUser.getApplicationList().addApplication(app8);
+	    testUser.getApplicationList().addApplication(app9);
+	    testUser.getApplicationList().addApplication(app10);
+	    testUser.getApplicationList().addApplication(app11);
 
 	    testUser.getCompanyList().addCompany(com1);
 	    testUser.getCompanyList().addCompany(com2);
 	    testUser.getCompanyList().addCompany(com3);
 	    testUser.getCompanyList().addCompany(com4);
-
+	    testUser.getCompanyList().addCompany(com5);
+	    testUser.getCompanyList().addCompany(com6);
+	    testUser.getCompanyList().addCompany(com7);
+	    testUser.getCompanyList().addCompany(com8);
+	    testUser.getCompanyList().addCompany(com9);
+	    
 	    //add application to company
 	    com1.addApplication(app1);
 	    com1.addApplication(app5);
 	    com1.addApplication(app6);
+	    
 	    com2.addApplication(app2);
 	    com3.addApplication(app3);
 	    com4.addApplication(app4);
+
+	    
+	    com5.addApplication(app7);
+	    com6.addApplication(app8);
+	    com7.addApplication(app10);
+	    com8.addApplication(app11);
+	    com9.addApplication(app9);
+
+
 	   
 	 // Create some questions
 	    Question question1 = new Question("What are the job responsibilities?");

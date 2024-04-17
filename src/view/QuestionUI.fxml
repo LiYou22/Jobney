@@ -15,89 +15,40 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="870.0" prefWidth="986.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <HBox layoutX="11.0" layoutY="120.0" prefHeight="39.0" prefWidth="986.0" spacing="20.0" AnchorPane.leftAnchor="0.0">
+      <HBox layoutX="11.0" layoutY="120.0" prefHeight="31.0" prefWidth="986.0" spacing="20.0" AnchorPane.leftAnchor="0.0">
          <children>
             <Pane prefHeight="42.0" prefWidth="38.0" />
-            <ImageView fitHeight="43.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/search-normal.png" />
                </image>
             </ImageView>
-            <TextField fx:id="questionNameField" prefHeight="37.0" prefWidth="232.0" promptText="Search question" />
-            <Button fx:id="btn_search" mnemonicParsing="false" onAction="#searchQuestion" prefHeight="38.0" prefWidth="81.0" styleClass="btn_search" stylesheets="@style.css" text="Search">
-               <font>
-                  <Font size="16.0" />
-               </font></Button>
+            <TextField fx:id="questionNameField" minHeight="-Infinity" prefHeight="27.0" prefWidth="660.0" promptText="Enter a keyword" />
+            <Button fx:id="btn_search" alignment="CENTER" contentDisplay="CENTER" graphicTextGap="0.0" minHeight="-Infinity" mnemonicParsing="false" onAction="#searchQuestion" prefHeight="27.0" prefWidth="117.0" styleClass="btn_search" stylesheets="@style.css" text="Search" textAlignment="CENTER" />
          </children>
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
       </HBox>
-      <VBox layoutX="56.0" layoutY="184.0" prefHeight="294.0" prefWidth="257.0">
+      <VBox layoutX="56.0" layoutY="184.0" prefHeight="633.0" prefWidth="335.0" spacing="10.0">
          <children>
-            <VBox prefHeight="294.0" prefWidth="706.0">
-               <children>
-                  <HBox prefHeight="49.0" prefWidth="257.0">
-                     <children>
-                        <ImageView fitHeight="47.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../../../../Desktop/Question%20and%20answer%20-%20Free%20communications%20icons_files/9356250.png" />
-                           </image>
-                        </ImageView>
-                        <Label lineSpacing="4.0" prefHeight="31.0" prefWidth="199.0" text="  Question">
-                           <font>
-                              <Font size="17.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </HBox>
-                  <TextField fx:id="searched_questions" prefHeight="79.0" prefWidth="257.0" />
-                  <Label prefHeight="48.0" prefWidth="717.0" text="Answer">
-                     <font>
-                        <Font size="19.0" />
-                     </font>
-                  </Label>
-                  <ListView fx:id="searchResultsListView" prefHeight="141.0" prefWidth="257.0" />
-               </children>
-            </VBox>
+            <Label text="Search Result">
+               <font>
+                  <Font size="16.0" />
+               </font></Label>
+            <Label graphicTextGap="0.0" prefHeight="31.0" prefWidth="259.0" text="  Question" />
+            <TextField fx:id="searched_questions" prefHeight="121.0" prefWidth="335.0" />
+            <Label prefHeight="48.0" prefWidth="717.0" text="Answer" />
+            <ListView fx:id="searchResultsListView" prefHeight="418.0" prefWidth="335.0" />
          </children>
       </VBox>
-      <VBox layoutX="431.0" layoutY="671.0" prefHeight="146.0" prefWidth="466.0">
+      <VBox layoutX="431.0" layoutY="184.0" prefHeight="633.0" prefWidth="466.0" spacing="10.0">
          <children>
-            <VBox prefHeight="150.0" prefWidth="466.0">
-               <children>
-                  <Label prefHeight="48.0" prefWidth="352.0" text="Answer">
-                     <font>
-                        <Font size="19.0" />
-                     </font>
-                     <graphic>
-                        <ImageView fitHeight="33.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../../../../Desktop/answer%20Icon%20-%20Free%20PNG%20&amp;%20SVG%201696126%20-%20Noun%20Project_files/4718339-200.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Label>
-                  <ListView fx:id="answerListView" prefHeight="200.0" prefWidth="200.0" />
-               </children>
-            </VBox>
+            <Label lineSpacing="4.0" prefHeight="31.0" prefWidth="199.0" text="All  Questions" />
+            <ListView fx:id="list_of_questions" prefHeight="406.0" prefWidth="465.0" />
+            <Label prefHeight="26.0" prefWidth="466.0" text="Answer" />
+            <ListView fx:id="answerListView" prefHeight="200.0" prefWidth="200.0" />
          </children>
       </VBox>
-      <ListView fx:id="list_of_questions" layoutX="430.0" layoutY="231.0" prefHeight="406.0" prefWidth="465.0" />
-      <ImageView fitHeight="47.0" fitWidth="39.0" layoutX="430.0" layoutY="183.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../../../../Desktop/Question%20and%20answer%20-%20Free%20communications%20icons_files/9356250.png" />
-         </image>
-      </ImageView>
-      <Label layoutX="477.0" layoutY="187.0" lineSpacing="4.0" prefHeight="31.0" prefWidth="199.0" text="  Question">
-         <font>
-            <Font size="17.0" />
-         </font>
-      </Label>
-      <ImageView fitHeight="249.0" fitWidth="249.0" layoutX="60.0" layoutY="503.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../../../../Desktop/Question%20and%20answer%20-%20Free%20communications%20icons_files/7755437.png" />
-         </image>
-      </ImageView>
    </children>
 </AnchorPane>

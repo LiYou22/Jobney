@@ -49,5 +49,10 @@ public class CompanyList {
     public static List<Company> getCompanies() {
         return new ArrayList<>(companies); 
     }
+    
+    
+    public int getSize() {
+    	return getCompanies().size();
+    }
 	
 }

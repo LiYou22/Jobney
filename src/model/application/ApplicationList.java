@@ -1,10 +1,12 @@
 package model.application;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 
 import model.company.Company;
+import model.enums.APPLICATIONSTATUS;
 import model.enums.INDUSTRY;
 
 public class ApplicationList {
@@ -43,6 +45,36 @@ public class ApplicationList {
 
     public List<Application> listApplicationByIndustry(INDUSTRY industry) {
     	return null;
+    }
+    
+    // get all to apply applications
+    public List<Application> getApplicationsByStatus(APPLICATIONSTATUS status){
+    	List<Application> list = new ArrayList<>();
+        for (Application app : applications) {
+            if (app.getStatus().equals(status)) {
+            	list.add(app);
+            }
+        }
+        return list;
+    	
+    }
+    
+    public void sortApplicationsByCreatedDate(List<Application> list) {
+    	
+        Comparator<Application> compareByDate = new Comparator<Application>() {
+            @Override
+            public int compare(Application app1, Application app2) {
+                return app1.getDaysSinceAdded().compareTo(app2.getDaysSinceAdded());
+            }
+        };
+
+        // use the comparator to sort the list
+        list.sort(compareByDate);
+    	
+    }
+    
+    public int getSize() {
+    	return getApplicationList().size();
     }
     
     @Override

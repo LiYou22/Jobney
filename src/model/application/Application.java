@@ -3,8 +3,10 @@ package model.application;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.time.temporal.ChronoUnit;
 import java.util.Date;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import model.connection.ConnectionList;
 import model.document.DocumentList;
@@ -108,10 +110,25 @@ public class Application {
 	    SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yy");
         return formatter.format(this.dateAdded);
     }
+	 
+	 public Date getDateCreated() {
+	        return this.dateAdded;
+	 }
+	 
+	 public void setDateAdded(Date date) {
+	        this.dateAdded = date;
 
-	 public String getDateApplied() {
-        return this.dateApplied;
-    }
+	 }
+
+	 public Long getDaysSinceAdded() {
+		    Date currentDate = new Date();
+		    long diffInMillies = Math.abs(currentDate.getTime() - this.dateAdded.getTime());
+		    Long diff = TimeUnit.DAYS.convert(diffInMillies, TimeUnit.MILLISECONDS);
+		    
+		    return diff;
+	 }
+
+
 
     public void setDateApplied() {
     	Date date = new Date();

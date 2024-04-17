@@ -41,9 +41,9 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <HBox spacing="10.0">
+            <HBox prefHeight="20.0" prefWidth="612.0" spacing="10.0" VBox.vgrow="ALWAYS">
                <children>
-                  <Button fx:id="apply_link" contentDisplay="CENTER" graphicTextGap="0.0" mnemonicParsing="false" onAction="#openApplyLink" prefHeight="25.0" prefWidth="95.0" styleClass="btn_add_application" stylesheets="@style.css" text="Apply Link" textFill="WHITE">
+                  <Button fx:id="apply_link" contentDisplay="CENTER" graphicTextGap="0.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#openApplyLink" prefHeight="27.0" prefWidth="95.0" styleClass="btn_add_application" stylesheets="@style.css" text="Apply Link" textFill="WHITE">
                      <graphic>
                         <Hyperlink />
                      </graphic></Button>
@@ -66,7 +66,7 @@
                      </graphic>
                   </Button>
                   <Pane prefHeight="26.0" prefWidth="43.0" HBox.hgrow="ALWAYS" />
-                  <ComboBox fx:id="btn_status" onAction="#ChangeStatus" prefHeight="25.0" prefWidth="129.0" promptText="Applying" styleClass="btn_change_status" stylesheets="@style.css" />
+                  <ComboBox fx:id="btn_status" minHeight="-Infinity" minWidth="-Infinity" onAction="#ChangeStatus" prefHeight="27.0" prefWidth="129.0" promptText="Applying" styleClass="btn_change_status" stylesheets="@style.css" />
                </children>
             </HBox>
          </children>
