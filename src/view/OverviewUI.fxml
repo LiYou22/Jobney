@@ -215,6 +215,11 @@
                         </Pane>
                      </children>
                   </GridPane>
+                  <ImageView fitHeight="245.0" fitWidth="265.0" layoutX="23.0" layoutY="533.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/Calendar.png" />
+                     </image>
+                  </ImageView>
                </children>
             </Pane>
          </children>
