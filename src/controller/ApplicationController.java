@@ -36,6 +36,8 @@ public class ApplicationController implements DataUpdateInterface{
 	
 	private DashboardController dashboardController;
 	
+//	private HBox hbox;
+	
 	@FXML
     private TextField search_bar;
 	@FXML
@@ -65,6 +67,10 @@ public class ApplicationController implements DataUpdateInterface{
     	this.dashboardController = dashboardController;
 	}
 	
+	public HBox getHbox() {
+		return (HBox) this.dashboardController.getHbox();
+	}
+	
     @FXML
     void openSelectedApplication(MouseEvent event) {
     	
@@ -92,14 +98,14 @@ public class ApplicationController implements DataUpdateInterface{
 	                loader2.setController(controller2);
 	                Pane view2 = loader2.load();
 	                
+	                
+	                HBox newbox = new HBox();
+	                newbox.getChildren().addAll(view1, view2); 
+	                
 	                dashboardController.getHbox().getChildren().remove(1);
-	                dashboardController.getHbox().getChildren().add(view1);
-	                dashboardController.getHbox().getChildren().add(view2);
+	                dashboardController.getHbox().getChildren().add(newbox);
+	                
 
-//	                hbox.getChildren().addAll(view1,view2);
-//	                
-//	                // switch the main pane to the new hbox
-//	                dashboardController.getHbox().getChildren().setAll(hbox);
 
 	            } catch(Exception e) {
 	                e.printStackTrace();

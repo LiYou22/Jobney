@@ -200,9 +200,8 @@ public class ManageApplicationController {
             loader.setController(applicationController);
             Pane previousView = loader.load();
             
-//            applicationController.getDashboardController().getHbox().getChildren().remove(0);
-//            applicationController.getDashboardController().getHbox().getChildren().add(previousView);
-
+            applicationController.getHbox().getChildren().remove(1);
+            applicationController.getHbox().getChildren().add(previousView);
             
         } catch (IOException e) {
             e.printStackTrace();
