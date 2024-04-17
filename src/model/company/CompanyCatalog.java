@@ -8,7 +8,7 @@ import model.user.RegularUser;
 
 public class CompanyCatalog {
 	
-	private List<Company> companies;
+	private static List<Company> companies;
 
     public CompanyCatalog() {
         this.companies = new ArrayList<>();

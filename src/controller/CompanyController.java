@@ -45,7 +45,7 @@ public class CompanyController {
 		applicationColumn.setCellValueFactory(new PropertyValueFactory<>("applicationCount"));
 		
         // get the existing data
-		ObservableList<Company> data = FXCollections.observableArrayList(CompanyList.getCompanies());
+		ObservableList<Company> data = FXCollections.observableArrayList(user.getCompanyList().getCompanies());
 	    //populate the tableview
 		company_table.setItems(data);
 		
@@ -56,7 +56,7 @@ public class CompanyController {
 	public void searchCompany(ActionEvent event) {
 		String searchfield = search_bar.getText();
 		List<Company> results = new ArrayList<>();
-		for (Company company : CompanyList.getCompanies()) {
+		for (Company company : user.getCompanyList().getCompanies()) {
 			if(company.getCompanyName().toLowerCase().contains(searchfield)) {
 				results.add(company);
 			}

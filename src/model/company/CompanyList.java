@@ -5,7 +5,7 @@ import java.util.List;
 
 public class CompanyList {
 	
-	private static List<Company> companies;
+	private List<Company> companies;
 
     public CompanyList() {
         this.companies = new ArrayList<>();
@@ -18,6 +18,8 @@ public class CompanyList {
     public void updateCompany(Company company) {
 
     }
+    
+    
 
     public void deleteCompany(Company company) {
         companies.remove(company);
@@ -27,7 +29,7 @@ public class CompanyList {
         return companies.size();
     }
 
-    public static int countApplicationByCompany(String companyName) {
+    public int countApplicationByCompany(String companyName) {
     	for(Company company: companies) {
     		if(company.getCompanyName().equals(companyName)) {
     			return company.getApplications().size();
@@ -46,7 +48,7 @@ public class CompanyList {
         return null;
     }
 
-    public static List<Company> getCompanies() {
+    public List<Company> getCompanies() {
         return new ArrayList<>(companies); 
     }
     
