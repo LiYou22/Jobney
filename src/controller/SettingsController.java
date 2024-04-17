@@ -59,7 +59,10 @@ public class SettingsController {
     
 	public void initialize() {
 		
-		avatar_img.setImage(user.getProfile().getAvatar());
+		// get the 
+		Image img = user.getProfile().getAvatar();
+		
+		avatar_img.setImage(img);
 		username_txt.setPromptText(user.getProfile().getUserName());
 
 	}
@@ -93,15 +96,8 @@ public class SettingsController {
 		} else {
             showAlert("Passwrod Error", "Please make sure that your new passwrod is not used before");
     		return false;
-
 		}
-		
-		
 	}
-	
-
-	
-	
 
     @FXML
     void save_profile(ActionEvent event) {

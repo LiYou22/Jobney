@@ -9,11 +9,15 @@
    <children>
       <Pane fx:id="contentPane" prefHeight="200.0" prefWidth="200.0">
          <children>
-            <ImageView fx:id="avatar_icon" fitHeight="40.0" fitWidth="40.0" layoutX="1106.0" layoutY="48.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/avatar.png" />
-               </image>
-            </ImageView>
+            <Pane fx:id="avatar_pane" layoutX="1105.0" layoutY="51.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="40.0">
+               <children>
+                  <ImageView fx:id="avatar_icon" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/User%2003C.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
          </children>
       </Pane>
    </children>

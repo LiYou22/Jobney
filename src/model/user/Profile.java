@@ -1,17 +1,33 @@
 package model.user;
 
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.scene.image.Image;
 
 public class Profile {
 	
 	private String userName;
-	private Image avatar;
+//	private Image avatar;
+	
+    private ObjectProperty<Image> avatar = new SimpleObjectProperty<>();
+
+    public ObjectProperty<Image> avatarProperty() {
+        return avatar;
+    }
+
+    public Image getAvatar() {
+        return avatar.get();
+    }
+
+    public void setAvatar(Image avatar) {
+        this.avatar.set(avatar);
+    }
 
     
     // this is for testing, can be deleted after we've done
     public Profile(String userName) {
         this.userName = userName;
-        this.avatar = new Image("/images/avatar.png"); // default avatar
+        this.avatar.set(new Image("/images/User 03C.png")); // default avatar
 
     }
 
@@ -19,17 +35,17 @@ public class Profile {
         this.userName = userName;
     }
 
-    public void setAvatar(Image avatar) {
-        this.avatar = avatar;
-    }
+//    public void setAvatar(Image avatar) {
+//        this.avatar = avatar;
+//    }
 
     public String getUserName() {
         return userName;
     }
-
-    public Image getAvatar() {
-        return this.avatar;
-    }
+//
+//    public Image getAvatar() {
+//        return this.avatar;
+//    }
 
 
 }
