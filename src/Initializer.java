@@ -4,6 +4,7 @@ import java.util.Date;
 
 import model.application.Application;
 import model.company.Company;
+import model.connection.Connection;
 import model.enums.APPLICATIONSTATUS;
 import model.enums.INDUSTRY;
 import model.job.Job;
@@ -118,6 +119,11 @@ public class Initializer {
 	    app9.setStatus(APPLICATIONSTATUS.TOAPPLY);
 	    app10.setStatus(APPLICATIONSTATUS.TOAPPLY);
 	    app11.setStatus(APPLICATIONSTATUS.TOAPPLY);
+	    
+	    // create a linkedin connection
+	    Connection c = new Connection("Yu Lai", "https://www.linkedin.com/in/yu-lai-3588b2210/");
+	    
+	    app1.getConnectionList().addConnection(c);
 	    
 	    
 	    // create notes under one application

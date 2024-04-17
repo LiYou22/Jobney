@@ -136,6 +136,11 @@ public class Application {
         this.dateApplied = formatter.format(date);
     }
     
+    public String getDateApplied() {
+    	return this.dateApplied;
+    	
+    }
+    
     public void setStatus(APPLICATIONSTATUS status) {
         this.status = status;
     }
