@@ -20,6 +20,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import model.company.Company;
 import model.enums.INDUSTRY;
@@ -110,10 +111,17 @@ public class LoginController {
             
 
 	        hbox.getChildren().addAll(dashboard, overview);
-            
+	        
+	        // Load base layout using a controller factory
+	        FXMLLoader loaderBase = new FXMLLoader(getClass().getResource("../view/BaseLayout.fxml"));
+	        loaderBase.setController(new BaseLayoutController(user));
+	        StackPane root = loaderBase.load();
+	        BaseLayoutController baseLayoutController = loaderBase.getController();
+	        baseLayoutController.getContentPane().getChildren().add(hbox);
+	                    
 
             Stage stage = (Stage) btn_signin.getScene().getWindow();
-            stage.setScene(new Scene(hbox));
+            stage.setScene(new Scene(root));
             stage.show();
 
         } catch (IOException e) {
@@ -121,6 +129,7 @@ public class LoginController {
             System.out.println("Error: Unable to load the Dashboard view.");
         }
     }
+
     
     private void showAlert(String title, String content) {
     	

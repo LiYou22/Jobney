@@ -13,11 +13,6 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="870.0" prefWidth="986.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="901.0" layoutY="42.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/avatar.png" />
-         </image>
-      </ImageView>
  	     <HBox alignment="CENTER" layoutX="73.0" layoutY="164.0" prefHeight="31.0" prefWidth="840.0" spacing="20.0">
 
 	         <children>

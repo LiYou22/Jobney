@@ -108,11 +108,6 @@
             </Pane>
             <Pane fx:id="right_side_pane" layoutX="658.0" layoutY="-3.0" prefHeight="879.0" prefWidth="307.0" styleClass="right_side_pane" stylesheets="@style.css">
                <children>
-                  <ImageView fx:id="avatar" fitHeight="40.0" fitWidth="40.0" layoutX="238.0" layoutY="38.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../images/avatar.png" />
-                     </image>
-                  </ImageView>
                   <Label layoutX="23.0" layoutY="98.0" text="Achievements">
                      <font>
                         <Font size="16.0" />
