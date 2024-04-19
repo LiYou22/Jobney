@@ -1,3 +1,4 @@
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
@@ -109,7 +110,20 @@ public class Initializer {
 	    app11.setDateAdded(date11);
 	    
 	    // simulate application status change 
+	    SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
+
+	    LocalDate localDate1 = LocalDate.of(2024, 03, 9);
+	    Date date1 = Date.from(localDate1.atStartOfDay(ZoneId.systemDefault()).toInstant());
+	    app1.setDateAdded(date1);
+	    String strDate1 = formatter.format(date1);
+	    app1.setDateApplied(strDate1);
 	    app1.setStatus(APPLICATIONSTATUS.APPLIED);
+	    
+	    LocalDate localDate2 = LocalDate.of(2024, 03, 11);
+	    Date date2 = Date.from(localDate2.atStartOfDay(ZoneId.systemDefault()).toInstant());
+	    app2.setDateAdded(date2);
+	    String strDate2 = formatter.format(date2);
+	    app2.setDateApplied(strDate2);
 	    app2.setStatus(APPLICATIONSTATUS.APPLIED);
 	    
 	    app3.setStatus(APPLICATIONSTATUS.TOAPPLY);
@@ -119,14 +133,30 @@ public class Initializer {
 	    app10.setStatus(APPLICATIONSTATUS.TOAPPLY);
 	    app11.setStatus(APPLICATIONSTATUS.TOAPPLY);
 	    
+	    
+	    LocalDate localDate5 = LocalDate.of(2024, 04,2);
+	    Date date5 = Date.from(localDate5.atStartOfDay(ZoneId.systemDefault()).toInstant());
+	    app5.setDateAdded(date5);
+	    String strDate5 = formatter.format(date5);
+	    app5.setDateApplied(strDate5);
 	    app5.setStatus(APPLICATIONSTATUS.APPLIED);
 	    app5.setStatus(APPLICATIONSTATUS.INTERVIEW);
 	    app5.setStatus(APPLICATIONSTATUS.GETOFFER);
 	    
+	    LocalDate localDate6 = LocalDate.of(2024, 03,10);
+	    Date date6 = Date.from(localDate6.atStartOfDay(ZoneId.systemDefault()).toInstant());
+	    app6.setDateAdded(date6);
+	    String strDate6 = formatter.format(date6);
+	    app6.setDateApplied(strDate5);
 	    app6.setStatus(APPLICATIONSTATUS.APPLIED);
 	    app6.setStatus(APPLICATIONSTATUS.INTERVIEW);
 	    app6.setStatus(APPLICATIONSTATUS.REJECTED);
 	    
+	    LocalDate localDate8_applied = LocalDate.of(2024, 04,1);
+	    Date date8_applied = Date.from(localDate8_applied.atStartOfDay(ZoneId.systemDefault()).toInstant());
+	    app8.setDateAdded(date8_applied);
+	    String strDate8 = formatter.format(date8_applied);
+	    app8.setDateApplied(strDate8);
 	    app8.setStatus(APPLICATIONSTATUS.APPLIED);
 	    app8.setStatus(APPLICATIONSTATUS.INTERVIEW);
 
