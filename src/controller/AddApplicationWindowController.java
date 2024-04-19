@@ -1,8 +1,10 @@
 package controller;
 
-import java.io.IOException;
+
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
@@ -99,7 +101,6 @@ public class AddApplicationWindowController {
     
     @FXML
     void AddNewApplication(ActionEvent event) {
-    	
     	// get the selected industry
     	String selectedIndustry = industryComboBox.getValue();
 
@@ -117,6 +118,33 @@ public class AddApplicationWindowController {
     
     	// create an application
     	Application app = new Application(job, user);
+    	
+        // Get the selected status from the ComboBox
+        String selectedStatus = statusComboBox.getValue();
+        
+        // Assuming APPLICATIONSTATUS is an enum with the same values as the ComboBox
+        APPLICATIONSTATUS status = APPLICATIONSTATUS.valueOf(selectedStatus);
+        
+        // Set the status in the application
+        app.setStatus(status); 
+        
+        // Get the selected date from the DatePicker
+        LocalDate localDateApplied = dateAppliedPicker.getValue();
+        
+        // Check if a date is selected
+        if(localDateApplied != null) {
+            Date dateApplied = Date.from(localDateApplied.atStartOfDay(ZoneId.systemDefault()).toInstant());
+            
+            // Create a SimpleDateFormat instance with the desired format
+            SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yy");
+
+            // Format the Date object into a String
+            String formattedDate = formatter.format(dateApplied);
+
+            app.setDateApplied(formattedDate); 
+        }
+        
+    	
     	user.getApplicationList().addApplication(app);
     	
     	

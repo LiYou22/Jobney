@@ -92,7 +92,6 @@ public class Application {
 	}
 	
 	
-	
 	 public String getDateAdded() {
 	    SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yy");
         return formatter.format(this.dateAdded);
@@ -117,10 +116,8 @@ public class Application {
 
 
 
-    public void setDateApplied() {
-    	Date date = new Date();
-	    SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yy");
-        this.dateApplied = formatter.format(date);
+    public void setDateApplied(String date) {
+    	this.dateApplied = date;
     }
     
     public String getDateApplied() {
@@ -129,10 +126,10 @@ public class Application {
     }
     
     public void setStatus(APPLICATIONSTATUS status) {
-    	// check if the status already in the history
         this.status = status;
         statusChangeHistory.add(status);
     }
+    
     
     public RegularUser getUser() {
     	return this.user;
