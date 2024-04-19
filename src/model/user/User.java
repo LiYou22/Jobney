@@ -14,12 +14,12 @@ public abstract class User{
     private ArrayList<String> passwrodHistory;
 
     public User(String email, String password) {
-    	this.passwrodHistory = new ArrayList<>();
-        this.email = email;
-        // hash pwd when creating the user
-        this.password = HashHelper.hashPassword(password);
-        this.profile = new Profile(email);
-    	passwrodHistory.add(this.password);
+        	this.passwrodHistory = new ArrayList<>();
+            this.email = email;
+            this.password = HashHelper.hashPassword(password);
+            this.profile = new Profile(email);
+        	passwrodHistory.add(this.password);
+
     }
     
     public Profile getProfile() {
@@ -74,6 +74,8 @@ public abstract class User{
     	}
     	return true;
     }
+    
+
     
   
     

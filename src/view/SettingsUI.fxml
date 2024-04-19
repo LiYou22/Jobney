@@ -12,8 +12,8 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="870.0" prefWidth="986.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Button fx:id="btn_save" layoutX="444.0" layoutY="673.0" mnemonicParsing="false" onAction="#save_profile" prefHeight="31.0" prefWidth="99.0" styleClass="btn_add_application" stylesheets="@style.css" text="Save" textFill="WHITE" />
-      <VBox layoutX="340.0" layoutY="350.0" prefHeight="276.0" prefWidth="306.0" spacing="10.0">
+      <Button fx:id="btn_save" layoutX="444.0" layoutY="742.0" mnemonicParsing="false" onAction="#save_profile" prefHeight="31.0" prefWidth="99.0" styleClass="btn_add_application" stylesheets="@style.css" text="Save" textFill="WHITE" />
+      <VBox layoutX="340.0" layoutY="350.0" prefHeight="309.0" prefWidth="306.0" spacing="10.0">
          <children>
             <Label text="Username" />
             <TextField fx:id="username_txt" prefHeight="30.0" prefWidth="306.0" />
@@ -21,6 +21,11 @@
             <PasswordField fx:id="current_pwd_txt" prefHeight="30.0" prefWidth="252.0" />
             <Label text="New Password" />
             <PasswordField fx:id="new_pwd_txt" prefHeight="30.0" prefWidth="252.0" />
+            <Pane prefHeight="49.0" prefWidth="306.0" VBox.vgrow="ALWAYS">
+               <children>
+                  <Label fx:id="pwd_label" prefHeight="50.0" prefWidth="306.0" text="* Password must between 8-20 characters, including one lowercase, uppercase, and special characters." textFill="#00000057" wrapText="true" />
+               </children>
+            </Pane>
             <Label text="Re-enter New Password" />
             <PasswordField fx:id="re_enter_new_pwd_txt" prefHeight="30.0" prefWidth="252.0" />
          </children>

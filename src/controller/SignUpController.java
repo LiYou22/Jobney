@@ -48,7 +48,13 @@ public class SignUpController implements HashHelper {
 	        showAlert("Error", "All fields must be filled out.");
 	        return;
 	    }
-
+    	
+    	if(!HashHelper.isStrongPassword(userPassword)) {
+        	String message = HashHelper.checkPasswordStrength(userPassword);
+	        showAlert("Error", message);
+	        return;
+    	}
+    	    	
 	    if (!userPassword.equals(confirmPassword)) {
 	        showAlert("Error", "Passwords do not match.");
 	        return;

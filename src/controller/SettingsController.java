@@ -25,8 +25,6 @@ public class SettingsController {
 	private File filePath;
 	private Image image;
 	
-
-
     @FXML
     private ImageView avatar_img;
 
@@ -43,16 +41,20 @@ public class SettingsController {
     private PasswordField current_pwd_txt;
 
     @FXML
+    private Label current_username;
+
+    @FXML
     private PasswordField new_pwd_txt;
+
+    @FXML
+    private Label pwd_label;
 
     @FXML
     private PasswordField re_enter_new_pwd_txt;
 
     @FXML
     private TextField username_txt;
-    
-    @FXML
-    private Label current_username;
+
     
     public SettingsController(RegularUser user) {
     	this.user = user;
@@ -68,6 +70,8 @@ public class SettingsController {
 
 	}
 	
+
+	
 	boolean validate_current_pwd() {
 		String current = HashHelper.hashPassword(current_pwd_txt.getText());
 		if(user.getPassword().equals(current)) {
@@ -82,9 +86,15 @@ public class SettingsController {
 
 	boolean validate_new_pwd() {
 		
-		// check if the new password be used before and if re-enter one is the same
-		
 		String new_pwd = new_pwd_txt.getText();
+		
+		// check if it is a strong password
+    	if(!HashHelper.isStrongPassword(new_pwd)) {
+        	String message = HashHelper.checkPasswordStrength(new_pwd);
+	        showAlert("Error", message);
+	        return false;
+    	}
+		// check if the new password be used before and if re-enter one is the same
 		
 		if(user.isValidPassword(new_pwd)) {
 			
