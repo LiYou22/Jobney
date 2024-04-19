@@ -4,8 +4,11 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 import model.connection.ConnectionList;
@@ -23,8 +26,6 @@ public class Application {
 	final String prefix = "application-";
 	private RegularUser user;
 	private static int nextId = 1;
-//	private String jobName;
-//	private String companyName;
     private String applicationId;
     private Date dateAdded;
     private String dateApplied;
@@ -32,7 +33,7 @@ public class Application {
     private RATE rate; 
     private Date applyDeadline;
     private APPLICATIONSTATUS status;
-    private List<StatusChange> statusChangeHistory; 
+    private Set<APPLICATIONSTATUS> statusChangeHistory; 
     
     private QuestionList questionList;
     private NoteList noteList;
@@ -40,39 +41,23 @@ public class Application {
     private DocumentList documentList;
 
     public Application(Job associatedJob, RegularUser user) {
+    	
         this.associatedJob = associatedJob;
         this.user = user;
         this.applicationId = prefix + nextId;
+        nextId++;
+
         this.dateAdded = new Date();
         this.status = APPLICATIONSTATUS.TOAPPLY;
+        this.statusChangeHistory = new HashSet<APPLICATIONSTATUS>();
         this.dateApplied = "N/A";
-        nextId++;
+        
         this.questionList = new QuestionList(this);
         this.noteList = new NoteList();
         this.connectionList = new ConnectionList();
         this.documentList = new DocumentList();
         
     }
-    
-    public Application(Job associatedJob, APPLICATIONSTATUS status, String dateApplied, RegularUser user) {
-        this.associatedJob = associatedJob;
-        this.user = user;
-        this.applicationId = prefix + nextId;
-        this.dateAdded = new Date();
-        this.status = status;
-        this.dateApplied = dateApplied;
-        nextId++;
-    }
-
-//    public Application(String jobName, String companyName, Date dateApplied, APPLICATIONSTATUS status) {
-//        this.jobName = jobName;
-//        this.companyName = companyName;
-//        this.dateApplied = dateApplied;
-//        this.status = status;
-//        this.applicationId = prefix + nextId;
-//        this.dateAdded = Date.from(LocalDate.now().atStartOfDay(ZoneId.systemDefault()).toInstant());
-//        nextId++;
-//    }
     
 	public String getJobName() {
 		return this.associatedJob.getJobName();
@@ -102,9 +87,11 @@ public class Application {
 		return this.status;
 	}
 	
-	public List<StatusChange> getStatusChangeHistory(){
+	public Set<APPLICATIONSTATUS> getStatusChangeHistory(){
 	 return this.statusChangeHistory;
 	}
+	
+	
 	
 	 public String getDateAdded() {
 	    SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yy");
@@ -142,7 +129,9 @@ public class Application {
     }
     
     public void setStatus(APPLICATIONSTATUS status) {
+    	// check if the status already in the history
         this.status = status;
+        statusChangeHistory.add(status);
     }
     
     public RegularUser getUser() {

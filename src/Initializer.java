@@ -108,17 +108,28 @@ public class Initializer {
 	    Date date11 = Date.from(localDate11.atStartOfDay(ZoneId.systemDefault()).toInstant());
 	    app11.setDateAdded(date11);
 	    
+	    // simulate application status change 
 	    app1.setStatus(APPLICATIONSTATUS.APPLIED);
 	    app2.setStatus(APPLICATIONSTATUS.APPLIED);
+	    
 	    app3.setStatus(APPLICATIONSTATUS.TOAPPLY);
 	    app4.setStatus(APPLICATIONSTATUS.TOAPPLY);
-	    app5.setStatus(APPLICATIONSTATUS.GETOFFER);
-	    app6.setStatus(APPLICATIONSTATUS.REJECTED);
 	    app7.setStatus(APPLICATIONSTATUS.TOAPPLY);
-	    app8.setStatus(APPLICATIONSTATUS.TOAPPLY);
 	    app9.setStatus(APPLICATIONSTATUS.TOAPPLY);
 	    app10.setStatus(APPLICATIONSTATUS.TOAPPLY);
 	    app11.setStatus(APPLICATIONSTATUS.TOAPPLY);
+	    
+	    app5.setStatus(APPLICATIONSTATUS.APPLIED);
+	    app5.setStatus(APPLICATIONSTATUS.INTERVIEW);
+	    app5.setStatus(APPLICATIONSTATUS.GETOFFER);
+	    
+	    app6.setStatus(APPLICATIONSTATUS.APPLIED);
+	    app6.setStatus(APPLICATIONSTATUS.INTERVIEW);
+	    app6.setStatus(APPLICATIONSTATUS.REJECTED);
+	    
+	    app8.setStatus(APPLICATIONSTATUS.APPLIED);
+	    app8.setStatus(APPLICATIONSTATUS.INTERVIEW);
+
 	    
 	    // create a linkedin connection
 	    Connection c = new Connection("Yu Lai", "https://www.linkedin.com/in/yu-lai-3588b2210/");

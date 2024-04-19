@@ -59,6 +59,19 @@ public class ApplicationList {
     	
     }
     
+    
+    // count application by status
+    public List<Application> countApplicationsByStatus(APPLICATIONSTATUS status){
+    	List<Application> list = new ArrayList<>();
+        for (Application app : applications) {
+            if (app.getStatusChangeHistory().contains(status)) {
+            	list.add(app);
+            }
+        }
+        return list;
+    	
+    }
+    
     public void sortApplicationsByCreatedDate(List<Application> list) {
     	
         Comparator<Application> compareByDate = new Comparator<Application>() {
