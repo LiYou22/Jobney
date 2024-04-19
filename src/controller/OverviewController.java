@@ -1,24 +1,54 @@
 package controller;
 
+import java.net.URL;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Random;
+import java.util.ResourceBundle;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
+import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import model.application.Application;
+import model.application.CalendarActivity;
 import model.enums.APPLICATIONSTATUS;
 import model.user.RegularUser;
 
-public class OverviewController {
+
+public class OverviewController implements Initializable {
 	
 	private RegularUser user;
 	private HBox hbox;
+	
+    ZonedDateTime dateFocus;
+    ZonedDateTime today;
+    
+    @FXML
+    private Text year;
 
+    @FXML
+    private Text month;
+
+    @FXML
+    private FlowPane calendar;
 
     @FXML
     private ImageView btn;
@@ -101,7 +131,6 @@ public class OverviewController {
     @FXML
     void click(MouseEvent event) {
     	
-    	
 
     }
     
@@ -111,8 +140,12 @@ public class OverviewController {
     }
 
     
-    @FXML
-    private void initialize() {
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+    	
+        dateFocus = ZonedDateTime.now();
+        today = ZonedDateTime.now();
+        drawCalendar();
+        
     	username.setText(user.getProfile().getUserName());
     	List<Application> appList = showApplications();
     	
@@ -141,6 +174,162 @@ public class OverviewController {
         num_offers.setText(String.valueOf(user.getApplicationList().countApplicationsByStatus(APPLICATIONSTATUS.GETOFFER).size()));;
 
     }
+    
+    @FXML
+    void backOneMonth(ActionEvent event) {
+        dateFocus = dateFocus.minusMonths(1);
+        calendar.getChildren().clear();
+        drawCalendar();
+    }
+
+    @FXML
+    void forwardOneMonth(ActionEvent event) {
+        dateFocus = dateFocus.plusMonths(1);
+        calendar.getChildren().clear();
+        drawCalendar();
+    }
+
+
+    private void drawCalendar(){
+        year.setText(String.valueOf(dateFocus.getYear()));
+        month.setText(String.valueOf(dateFocus.getMonth()));
+
+        double calendarWidth = calendar.getPrefWidth();
+        double calendarHeight = calendar.getPrefHeight();
+        double strokeWidth = 0.5;
+        double spacingH = calendar.getHgap();
+        double spacingV = calendar.getVgap();
+
+        //List of activities for a given month
+        Map<Integer, List<CalendarActivity>> calendarActivityMap = getCalendarActivitiesMonth(dateFocus);
+
+        int monthMaxDate = dateFocus.getMonth().maxLength();
+        //Check for leap year
+        if(dateFocus.getYear() % 4 != 0 && monthMaxDate == 29){
+            monthMaxDate = 28;
+        }
+        int dateOffset = ZonedDateTime.of(dateFocus.getYear(), dateFocus.getMonthValue(), 1,0,0,0,0,dateFocus.getZone()).getDayOfWeek().getValue();
+
+        for (int i = 0; i < 6; i++) {
+            for (int j = 0; j < 7; j++) {
+            	
+                StackPane stackPane = new StackPane();
+
+                Rectangle rectangle = new Rectangle();
+                
+                
+                rectangle.setFill(Color.TRANSPARENT);
+                rectangle.setStrokeWidth(strokeWidth);
+                double rectangleWidth =(calendarWidth/7) - strokeWidth - spacingH;
+                rectangle.setWidth(rectangleWidth);
+                double rectangleHeight = (calendarHeight/6) - strokeWidth - spacingV;
+                rectangle.setHeight(rectangleHeight);
+                stackPane.getChildren().add(rectangle);
+
+                int calculatedDate = (j+1)+(7*i);
+                
+                if(calculatedDate > dateOffset){
+                    int currentDate = calculatedDate - dateOffset;
+                    if(currentDate <= monthMaxDate){
+                        Text date = new Text(String.valueOf(currentDate));
+                        Font font = new Font(9); 
+                        date.setFont(font);
+                        
+                        double textTranslationY = - (rectangleHeight / 2) * 0.2;
+                        date.setTranslateY(textTranslationY);
+
+                        // get the list of calendar activites for this date
+                        List<CalendarActivity> calendarActivities = calendarActivityMap.get(currentDate);
+                        
+                        if(currentDate <= monthMaxDate && calendarActivities != null && !calendarActivities.isEmpty()){
+                            // Create a circle if there's an application
+                            Circle circle = new Circle();
+                            circle.setRadius(Math.min(calendarWidth, calendarHeight) / 15);  // Adjust size as needed
+                            circle.setFill(Color.web("#FFBB36"));
+                            stackPane.getChildren().add(circle);
+                        }
+
+                        stackPane.getChildren().add(date);
+                        calendar.getChildren().add(stackPane);
+
+}
+                }
+            }
+        }
+    }
+
+    private void createCalendarActivity(List<CalendarActivity> calendarActivities, double rectangleHeight, double rectangleWidth, StackPane stackPane) {
+        VBox calendarActivityBox = new VBox();
+        for (int k = 0; k < calendarActivities.size(); k++) {
+            if(k >= 2) {
+                Text moreActivities = new Text("...");
+                calendarActivityBox.getChildren().add(moreActivities);
+                moreActivities.setOnMouseClicked(mouseEvent -> {
+                    //On ... click print all activities for given date
+                    System.out.println(calendarActivities);
+                });
+                break;
+            }
+
+        }
+        calendarActivityBox.setTranslateY((rectangleHeight / 2) * 0.20);
+        calendarActivityBox.setMaxWidth(rectangleWidth * 0.5);
+        calendarActivityBox.setMaxHeight(rectangleHeight * 0.4);
+        calendarActivityBox.setStyle("-fx-background-color:GRAY");
+        stackPane.getChildren().add(calendarActivityBox);
+    }
+
+    private Map<Integer, List<CalendarActivity>> createCalendarMap(List<CalendarActivity> calendarActivities) {
+    	
+        Map<Integer, List<CalendarActivity>> calendarActivityMap = new HashMap<>();
+
+        for (CalendarActivity activity: calendarActivities) {
+            int activityDate = activity.getDate().getDayOfMonth();
+            if(!calendarActivityMap.containsKey(activityDate)){
+                calendarActivityMap.put(activityDate, List.of(activity));
+            } else {
+                List<CalendarActivity> OldListByDate = calendarActivityMap.get(activityDate);
+
+                List<CalendarActivity> newList = new ArrayList<>(OldListByDate);
+                newList.add(activity);
+                calendarActivityMap.put(activityDate, newList);
+            }
+        }
+        return  calendarActivityMap;
+    }
+
+//    private Map<Integer, List<CalendarActivity>> getCalendarActivitiesMonth(ZonedDateTime dateFocus) {
+//        List<CalendarActivity> calendarActivities = new ArrayList<>();
+//        int year = dateFocus.getYear();
+//        int month = dateFocus.getMonth().getValue();
+//
+//        Random random = new Random();
+//        for (int i = 0; i < 50; i++) {
+//            ZonedDateTime time = ZonedDateTime.of(year, month, random.nextInt(27)+1, 16,0,0,0,dateFocus.getZone());
+//            calendarActivities.add(new CalendarActivity(time, "Hans", 111111));
+//        }
+//
+//        return createCalendarMap(calendarActivities);
+//    }
+    
+    
+    
+    private Map<Integer, List<CalendarActivity>> getCalendarActivitiesMonth(ZonedDateTime dateFocus) {
+        
+        List<CalendarActivity> calendarActivities = new ArrayList<>();
+        
+        // loop over applications by their created date
+        List<Application> app = user.getApplicationList().getApplicationList();
+        
+        for(Application a: app) {
+        	Date date = a.getDateCreated();
+	        ZonedDateTime time = date.toInstant().atZone(ZoneId.systemDefault()); // convert Date to ZonedDateTime
+	        calendarActivities.add(new CalendarActivity(time));
+        }
+       return createCalendarMap(calendarActivities);
+    }
+
+    
     
     // get the applications that close to the deadline
     private List<Application> showApplications() {

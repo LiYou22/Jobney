@@ -117,8 +117,7 @@ public class LoginController {
 	        loaderBase.setController(new BaseLayoutController(user));
 	        StackPane root = loaderBase.load();
 	        BaseLayoutController baseLayoutController = loaderBase.getController();
-	        baseLayoutController.getContentPane().getChildren().add(hbox);
-	                    
+	        baseLayoutController.getContentPane().getChildren().add(hbox);          
 
             Stage stage = (Stage) btn_signin.getScene().getWindow();
             stage.setScene(new Scene(root));
