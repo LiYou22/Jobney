@@ -98,6 +98,7 @@ public class ManageLinkedinAndQuestionsController {
         currentApplication.getConnectionList().addConnection(newConnection);
         
         name.clear();
+        linkedin_link.clear();
     }
     
     private void openWebpage(String url) {
