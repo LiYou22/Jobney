@@ -6,6 +6,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.geometry.Bounds;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
@@ -13,6 +14,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import model.company.Company;
 import model.company.CompanyList;
 import model.user.RegularUser;
@@ -51,25 +53,27 @@ public class CompanyController {
 		
 		// set action for search button
 		btn_search.setOnAction(e -> searchCompany(e));
+		
 	}
 		
 	public void searchCompany(ActionEvent event) {
-		String searchfield = search_bar.getText();
-		List<Company> results = new ArrayList<>();
-		for (Company company : user.getCompanyList().getCompanies()) {
-			if(company.getCompanyName().toLowerCase().contains(searchfield)) {
-				results.add(company);
-			}
-		}
-		
-		if (results.isEmpty()) {
-		 Alert alert = new Alert(AlertType.INFORMATION);
+	    String searchfield = search_bar.getText().trim().toLowerCase(); 
+	    ObservableList<Company> results = FXCollections.observableArrayList();
+
+	    for (Company company : user.getCompanyList().getCompanies()) {
+	        if (company.getCompanyName().toLowerCase().contains(searchfield)) {
+	            results.add(company);
+	        }
+	    }
+
+	    if (results.isEmpty()) {
+	        Alert alert = new Alert(AlertType.INFORMATION);
 	        alert.setTitle("Search Result");
 	        alert.setHeaderText(null);
 	        alert.setContentText("No companies found with the name: " + searchfield);
 	        alert.showAndWait();
 	    } else {
-	        company_table.setItems(FXCollections.observableArrayList(results));
+	        company_table.setItems(results); 
 	    }
 	}
 		
