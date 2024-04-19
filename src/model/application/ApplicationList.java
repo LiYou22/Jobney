@@ -82,7 +82,7 @@ public class ApplicationList {
         };
 
         // use the comparator to sort the list
-        list.sort(compareByDate);
+        list.sort(compareByDate.reversed());
     	
     }
     

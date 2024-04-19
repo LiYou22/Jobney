@@ -29,80 +29,96 @@
                   </Label>
                   <VBox layoutX="34.0" layoutY="130.0">
                      <children>
-                        <Pane fx:id="btn_1day_left" onMouseClicked="#click" prefHeight="165.0" prefWidth="592.0">
+                        <Pane fx:id="pane_1" prefHeight="165.0" prefWidth="592.0">
                            <children>
                               <ImageView fitHeight="181.0" fitWidth="600.0" layoutX="-5.0" layoutY="-3.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../images/1dayleft.png" />
                                  </image>
                               </ImageView>
-                              <Text fx:id="job_title1" fill="WHITE" layoutX="50.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0">
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font>
-                              </Text>
-                              <Text fx:id="company1_name" fill="WHITE" layoutX="50.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0">
-                                 <font>
-                                    <Font size="14.0" />
-                                 </font>
-                              </Text>
+                              <VBox layoutX="40.0" layoutY="39.0" prefHeight="87.0" prefWidth="406.0" spacing="10.0">
+                                 <children>
+                                    <Text fx:id="job_title1" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="406.0">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fx:id="company1_name" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="406.0">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Text>
+                                 </children>
+                              </VBox>
                            </children>
                         </Pane>
-                        <Pane fx:id="btn_2day_left" onMouseClicked="#click" prefHeight="165.0" prefWidth="592.0">
+                        <Pane fx:id="pane_2" prefHeight="165.0" prefWidth="592.0">
                            <children>
                               <ImageView fx:id="btn" fitHeight="181.0" fitWidth="600.0" layoutX="-5.0" layoutY="-3.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../images/2daysleft.png" />
                                  </image>
                               </ImageView>
-                              <Text fx:id="job_title2" fill="WHITE" layoutX="50.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0">
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font>
-                              </Text>
-                              <Text fx:id="company2_name" fill="WHITE" layoutX="50.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0">
-                                 <font>
-                                    <Font size="14.0" />
-                                 </font>
-                              </Text>
+                              <VBox layoutX="41.0" layoutY="35.0" prefHeight="87.0" prefWidth="406.0" spacing="10.0">
+                                 <children>
+                                    <Text fx:id="job_title2" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="408.0">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fx:id="company2_name" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="408.0">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Text>
+                                 </children>
+                              </VBox>
                            </children>
                         </Pane>
-                        <Pane fx:id="btn_3day_left" onMouseClicked="#click" prefHeight="165.0" prefWidth="592.0">
+                        <Pane fx:id="pane_3" prefHeight="165.0" prefWidth="592.0">
                            <children>
                               <ImageView fitHeight="181.0" fitWidth="600.0" layoutX="-5.0" layoutY="-3.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../images/3daysleft.png" />
                                  </image>
                               </ImageView>
-                              <Text fx:id="job_title3" fill="WHITE" layoutX="50.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0">
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font>
-                              </Text>
-                              <Text fx:id="company3_name" fill="WHITE" layoutX="50.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0">
-                                 <font>
-                                    <Font size="14.0" />
-                                 </font>
-                              </Text>
+                              <VBox layoutX="39.0" layoutY="35.0" prefHeight="87.0" prefWidth="408.0" spacing="10.0">
+                                 <children>
+                                    <Text fx:id="job_title3" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="407.0">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fx:id="company3_name" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="409.0">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Text>
+                                 </children>
+                              </VBox>
                            </children>
                         </Pane>
-                        <Pane fx:id="btn_4day_left" onMouseClicked="#click" prefHeight="165.0" prefWidth="592.0">
+                        <Pane fx:id="pane_4" prefHeight="165.0" prefWidth="592.0">
                            <children>
                               <ImageView fitHeight="181.0" fitWidth="600.0" layoutX="-5.0" layoutY="-3.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../images/4daysleft.png" />
                                  </image>
                               </ImageView>
-                              <Text fx:id="job_title4" fill="WHITE" layoutX="50.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0">
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font>
-                              </Text>
-                              <Text fx:id="company4_name" fill="WHITE" layoutX="50.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0">
-                                 <font>
-                                    <Font size="14.0" />
-                                 </font>
-                              </Text>
+                              <VBox layoutX="44.0" layoutY="35.0" prefHeight="87.0" prefWidth="409.0" spacing="10.0">
+                                 <children>
+                                    <Text fx:id="job_title4" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="409.0">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fx:id="company4_name" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="410.0">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Text>
+                                 </children>
+                              </VBox>
                            </children>
                         </Pane>
                      </children>

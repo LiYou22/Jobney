@@ -18,7 +18,6 @@ public class Initializer {
 
     public static void initializeData(AdminUser administrator) {
     	
-
 	    // Initialize a test user
 	    RegularUser testUser = new RegularUser("user@gmail.com", "1111");
 	    administrator.getUserDirectory().addUser(testUser);
@@ -31,7 +30,7 @@ public class Initializer {
 	    Company com1 = new Company(INDUSTRY.FINTECH,"PayPal");
 	    Company com2 = new Company(INDUSTRY.TECH,"Google");
 	    Company com3 = new Company(INDUSTRY.TECH,"Apple");
-	    Company com4 = new Company(INDUSTRY.EDUCATION,"SYMPLICITY CORPORATION");
+	    Company com4 = new Company(INDUSTRY.EDUCATION,"Symplicity Corporation");
 
 	    Company com5 = new Company(INDUSTRY.EDUCATION,"Transit Mobility Lab");
 	    Company com6 = new Company(INDUSTRY.TECH,"Sedarotech");
@@ -58,7 +57,7 @@ public class Initializer {
 	    Job job5 = new Job(com1, "Software Engineer", "https://paypal.eightfold.ai/careers?Codes=W-LINKEDIN&domain=paypal.com&query=R0111039&sort_by=relevance");
 	    Job job6 = new Job(com1, "Data Scientist Intern", "https://paypal.eightfold.ai/careers?Codes=W-LINKEDIN&domain=paypal.com&query=R0111040&sort_by=relevance");
 	    
-	    Job job7 = new Job(com5, "Public Transit Visualization Developer\n", "https://undergraduate.northeastern.edu/research/opportunities/public-transit-visualization-developer/");
+	    Job job7 = new Job(com5, "Public Transit Visualization Developer", "https://undergraduate.northeastern.edu/research/opportunities/public-transit-visualization-developer/");
 	    Job job8 = new Job(com6, "Software Engineering Intern (Summer 2024)", "https://sedarotech.bamboohr.com/careers/38");
 	    Job job9 = new Job(com9, "Software Engineer Intern","https://githubinc.jibeapply.com/jobs/2787?iis=Job+Board&iisn=LinkedIn&lever-source=LinkedinPosting&lang=en-us");
 	    Job job10 = new Job(com7, "Software Engineer Intern", "https://tencent.wd1.myworkdayjobs.com/en-US/Tencent_Careers/job/Software-Engineer-Intern_R102779-1?source=10100001");
