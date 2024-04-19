@@ -16,6 +16,7 @@ import javafx.scene.layout.Pane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import model.user.RegularUser;
+import model.utilities.HashHelper;
 
 public class SettingsController {
 	
@@ -68,7 +69,7 @@ public class SettingsController {
 	}
 	
 	boolean validate_current_pwd() {
-		String current = current_pwd_txt.getText();
+		String current = HashHelper.hashPassword(current_pwd_txt.getText());
 		if(user.getPassword().equals(current)) {
 			return true;
 		} else {
@@ -103,7 +104,7 @@ public class SettingsController {
     void save_profile(ActionEvent event) {
     	
     	if(validate_current_pwd() && validate_new_pwd()) {
-    		user.setPassword(new_pwd_txt.getText());
+    		user.changePassword(new_pwd_txt.getText());
             user.getProfile().setAvatar(image);
 
             showAlert("Save", "Saved!");

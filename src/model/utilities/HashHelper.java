@@ -8,6 +8,8 @@ import java.util.Base64;
 
 public interface HashHelper {
 	
+	String salt = createSalt();
+	
     // salt is random data that is used as an additional input to hash password
     static String createSalt() {
         SecureRandom random = new SecureRandom();
@@ -20,7 +22,6 @@ public interface HashHelper {
     public static String hashPassword(String passwordToHash) {
     	
         String generatedPassword = null;
-        String salt = createSalt();
         
         try {
             MessageDigest md = MessageDigest.getInstance("SHA-512");
@@ -42,9 +43,9 @@ public interface HashHelper {
     }
 
     // validate the entered password
-    public static boolean isPasswordValid(String enteredPwd, String storedHash){
-        String hashedEnteredPwd = hashPassword(enteredPwd);
-        return hashedEnteredPwd.equals(storedHash);
-    }
+//    public static boolean isPasswordValid(String enteredPwd, String storedHash){
+//        String hashedEnteredPwd = hashPassword(enteredPwd);
+//        return hashedEnteredPwd.equals(storedHash);
+//    }
 
 }
