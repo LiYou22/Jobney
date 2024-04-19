@@ -26,22 +26,19 @@ public class QuestionController {
 	    @FXML
 	    private Button btn_search;
 	    @FXML
+	    private ListView<String> list_of_questions;
+	    @FXML
 	    private ListView<String> answerListView;
 	    @FXML
 	    private ListView<String> searchResultsListView;
-
 	    @FXML
-	    private ListView<String> list_of_questions;
-
+	    private ListView<String> searchResultsAnswerListView;
 	    @FXML
 	    private TextField questionNameField;
-
 	    @FXML
 	    private TextField searched_answers;
-
 	    @FXML
 	    private TextField searched_questions;
-	    
 	    @FXML
 	    private VBox searchResultsVBox; 
 
@@ -63,6 +60,24 @@ public class QuestionController {
 	            }
 	        });
 	        
+	        // Also add a listener to our searchResultListView
+	        searchResultsListView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+	            if (newValue != null) {
+	                searchResultsAnswerListView.getItems().clear();
+	                
+	                for (Question question : user.getQuestionDirectory().getQuestions()) {
+	                    if (question.getQuestion().equals(newValue)) {
+	                        List<String> answers = question.getAnswerList();
+	                        if (answers != null) {
+	                            for (String answer : answers) {
+	                                searchResultsAnswerListView.getItems().add(answer);
+	                            }
+	                        }
+	                        break;
+	                    }
+	                }
+	            }
+	        });
 	    }
 	    
 	    private void displayAnswer(String specificQuestionText) {
@@ -87,41 +102,35 @@ public class QuestionController {
 	            }
 	        }
 	    }
+	    
 		
 		@FXML
 		void searchQuestion(ActionEvent event) {
 		    String searchfield = questionNameField.getText().toLowerCase();
-		    Question foundQuestion = null;
+		    List<Question> foundQuestions = new ArrayList<>();
 
-		    for(Question question: user.getQuestionDirectory().getQuestions()) { // replace with your actual QuestionList instance
-		        if(question.getQuestion().toLowerCase().contains(searchfield)) {
-		            foundQuestion = question;
-		            break;
+		    for (Question question : user.getQuestionDirectory().getQuestions()) {
+		        if (question.getQuestion().toLowerCase().contains(searchfield)) {
+		            foundQuestions.add(question);
 		        }
 		    }
 
-		    if (foundQuestion == null) {
+		    if (foundQuestions.isEmpty()) {
 		        Alert alert = new Alert(AlertType.INFORMATION);
 		        alert.setTitle("Search Result");
 		        alert.setHeaderText(null);
-		        alert.setContentText("No question found: " + searchfield);
-
+		        alert.setContentText("No questions found containing: " + searchfield);
 		        alert.showAndWait();
 		    } else {
-		    	  searched_questions.setText(foundQuestion.getQuestion());
-		        // Clear the ListView
-		    	searchResultsListView.getItems().clear();
+		        searchResultsListView.getItems().clear(); // Clear the ListView
 
-		        // Add each answer to the ListView
-		    	List<String> answers = foundQuestion.getAnswerList();
-		    	for (int i = 0; i < answers.size(); i++) {
-		    	    String answer = answers.get(i);
-		    	    searchResultsListView.getItems().add((i + 1) + ". " + answer);
-		    	}
+		        for (Question question : foundQuestions) {
+		            searchResultsListView.getItems().add(question.getQuestion()); // Add each found question to the ListView
+		        }
 		    }
 		}
         
-	    }
+}
 
 	
 
