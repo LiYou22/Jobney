@@ -13,6 +13,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -20,6 +21,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -86,6 +88,31 @@ public class DashboardController {
     	this.hbox = hbox;
 
     }
+    
+    public void initialize() {
+        
+        // add hover style
+    	btn_overview.setOnMouseEntered(e -> btn_overview.setStyle("-fx-background-color: rgba(54, 159, 255, 0.1)")); // blue
+    	btn_overview.setOnMouseExited(e -> btn_overview.setStyle("-fx-background-color: #F5F5F5;")); // default 
+  
+    	btn_questions.setOnMouseEntered(e -> btn_questions.setStyle("-fx-background-color: rgba(54, 159, 255, 0.1)")); // blue
+    	btn_questions.setOnMouseExited(e -> btn_questions.setStyle("-fx-background-color: #F5F5F5;")); // default 
+    	
+    	btn_settings.setOnMouseEntered(e -> btn_settings.setStyle("-fx-background-color: rgba(54, 159, 255, 0.1)")); // blue
+    	btn_settings.setOnMouseExited(e -> btn_settings.setStyle("-fx-background-color: #F5F5F5;")); // default 
+    	
+    	btn_companies.setOnMouseEntered(e -> btn_companies.setStyle("-fx-background-color: rgba(54, 159, 255, 0.1)")); // blue
+    	btn_companies.setOnMouseExited(e -> btn_companies.setStyle("-fx-background-color: #F5F5F5;")); // default 
+    	
+    	btn_application.setOnMouseEntered(e -> btn_application.setStyle("-fx-background-color: rgba(54, 159, 255, 0.1)")); // blue
+    	btn_application.setOnMouseExited(e -> btn_application.setStyle("-fx-background-color: #F5F5F5;")); // default 
+    	
+    	
+    	
+    
+    }
+    
+
     
 
 

@@ -17,6 +17,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
@@ -231,6 +232,30 @@ public class OverviewController implements Initializable {
 	            }
 	        }
 		});
+		
+		// add mouse hover effect to pane
+
+		DropShadow shadow = new DropShadow();
+		shadow.setColor(Color.rgb(0, 0, 0, 0.2));
+		shadow.setRadius(5.0);
+		shadow.setSpread(0.20);
+		
+		
+		pane_1.setOnMouseEntered(event -> pane_1.setEffect(shadow));
+		pane_1.setOnMouseExited(event -> pane_1.setEffect(null));
+		
+		
+		pane_2.setOnMouseEntered(event -> pane_2.setEffect(shadow));
+		pane_2.setOnMouseExited(event -> pane_2.setEffect(null));
+		
+		
+		pane_3.setOnMouseEntered(event -> pane_3.setEffect(shadow));
+		pane_3.setOnMouseExited(event -> pane_3.setEffect(null));
+		
+		pane_4.setOnMouseEntered(event -> pane_4.setEffect(shadow));
+		pane_4.setOnMouseExited(event -> pane_4.setEffect(null));
+
+
 
 	}
 

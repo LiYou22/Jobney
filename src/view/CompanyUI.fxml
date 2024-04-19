@@ -30,7 +30,7 @@
             </HBox>
          </children>
       </HBox>
-      <TableView fx:id="company_table" layoutX="64.0" layoutY="230.0" prefHeight="597.0" prefWidth="870.0" stylesheets="@style.css">
+      <TableView fx:id="company_table" layoutX="64.0" layoutY="230.0" prefHeight="597.0" prefWidth="870.0">
         <columns>
           <TableColumn fx:id="companyColumn" prefWidth="75.0" text="Company" />
           <TableColumn fx:id="applicationColumn" prefWidth="75.0" text="# Application" />

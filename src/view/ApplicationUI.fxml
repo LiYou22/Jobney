@@ -44,7 +44,7 @@
             </Button>
          </children>
       </HBox>
-      <TableView fx:id="application_table" layoutX="51.0" layoutY="224.0" onMouseClicked="#openSelectedApplication" prefHeight="610.0" prefWidth="870.0" stylesheets="@style.css">
+      <TableView fx:id="application_table" layoutX="51.0" layoutY="224.0" onMouseClicked="#openSelectedApplication" prefHeight="610.0" prefWidth="870.0">
         <columns>
           <TableColumn fx:id="JobPositionColumn" maxWidth="200.0" prefWidth="150.0" text="Job" />
           <TableColumn fx:id="companyColumn" maxWidth="200.0" prefWidth="150.0" text="Company" />

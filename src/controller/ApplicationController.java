@@ -146,6 +146,9 @@ public class ApplicationController implements DataUpdateInterface{
         btn_search.setOnAction(e -> search(e));
         btn_addApplication.setOnAction(e -> addApplication(e));   
         
+        // add hover effect
+        
+        
 	}
 	
 	public void search(ActionEvent event) {
