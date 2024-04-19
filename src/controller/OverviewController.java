@@ -214,16 +214,15 @@ public class OverviewController implements Initializable {
             for (int j = 0; j < 7; j++) {
             	
                 StackPane stackPane = new StackPane();
-
                 Rectangle rectangle = new Rectangle();
                 
-                
                 rectangle.setFill(Color.TRANSPARENT);
-                rectangle.setStrokeWidth(strokeWidth);
+                
                 double rectangleWidth =(calendarWidth/7) - strokeWidth - spacingH;
                 rectangle.setWidth(rectangleWidth);
                 double rectangleHeight = (calendarHeight/6) - strokeWidth - spacingV;
                 rectangle.setHeight(rectangleHeight);
+                
                 stackPane.getChildren().add(rectangle);
 
                 int calculatedDate = (j+1)+(7*i);
@@ -258,27 +257,6 @@ public class OverviewController implements Initializable {
         }
     }
 
-    private void createCalendarActivity(List<CalendarActivity> calendarActivities, double rectangleHeight, double rectangleWidth, StackPane stackPane) {
-        VBox calendarActivityBox = new VBox();
-        for (int k = 0; k < calendarActivities.size(); k++) {
-            if(k >= 2) {
-                Text moreActivities = new Text("...");
-                calendarActivityBox.getChildren().add(moreActivities);
-                moreActivities.setOnMouseClicked(mouseEvent -> {
-                    //On ... click print all activities for given date
-                    System.out.println(calendarActivities);
-                });
-                break;
-            }
-
-        }
-        calendarActivityBox.setTranslateY((rectangleHeight / 2) * 0.20);
-        calendarActivityBox.setMaxWidth(rectangleWidth * 0.5);
-        calendarActivityBox.setMaxHeight(rectangleHeight * 0.4);
-        calendarActivityBox.setStyle("-fx-background-color:GRAY");
-        stackPane.getChildren().add(calendarActivityBox);
-    }
-
     private Map<Integer, List<CalendarActivity>> createCalendarMap(List<CalendarActivity> calendarActivities) {
     	
         Map<Integer, List<CalendarActivity>> calendarActivityMap = new HashMap<>();
@@ -297,35 +275,24 @@ public class OverviewController implements Initializable {
         }
         return  calendarActivityMap;
     }
-
-//    private Map<Integer, List<CalendarActivity>> getCalendarActivitiesMonth(ZonedDateTime dateFocus) {
-//        List<CalendarActivity> calendarActivities = new ArrayList<>();
-//        int year = dateFocus.getYear();
-//        int month = dateFocus.getMonth().getValue();
-//
-//        Random random = new Random();
-//        for (int i = 0; i < 50; i++) {
-//            ZonedDateTime time = ZonedDateTime.of(year, month, random.nextInt(27)+1, 16,0,0,0,dateFocus.getZone());
-//            calendarActivities.add(new CalendarActivity(time, "Hans", 111111));
-//        }
-//
-//        return createCalendarMap(calendarActivities);
-//    }
-    
-    
     
     private Map<Integer, List<CalendarActivity>> getCalendarActivitiesMonth(ZonedDateTime dateFocus) {
         
         List<CalendarActivity> calendarActivities = new ArrayList<>();
         
-        // loop over applications by their created date
+        // loop over applications to get their created date
         List<Application> app = user.getApplicationList().getApplicationList();
         
         for(Application a: app) {
-        	Date date = a.getDateCreated();
-	        ZonedDateTime time = date.toInstant().atZone(ZoneId.systemDefault()); // convert Date to ZonedDateTime
-	        calendarActivities.add(new CalendarActivity(time));
+            Date date = a.getDateCreated();
+            ZonedDateTime time = date.toInstant().atZone(ZoneId.systemDefault()); // convert Date to ZonedDateTime
+
+            // Check if the application was created in the same month and year as dateFocus
+            if (time.getMonthValue() == dateFocus.getMonthValue() && time.getYear() == dateFocus.getYear()) {
+                calendarActivities.add(new CalendarActivity(time));
+            }
         }
+
        return createCalendarMap(calendarActivities);
     }
 

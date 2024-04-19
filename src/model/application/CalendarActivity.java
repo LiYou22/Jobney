@@ -5,8 +5,6 @@ import java.time.ZonedDateTime;
 public class CalendarActivity {
 	
     private ZonedDateTime date;
-    private String clientName;
-    private Integer serviceNo;
 
     public CalendarActivity(ZonedDateTime date) {
         this.date = date;
