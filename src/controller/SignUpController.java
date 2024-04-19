@@ -16,8 +16,9 @@ import javafx.stage.Stage;
 import model.user.AdminUser;
 import model.user.Profile;
 import model.user.RegularUser;
+import model.utilities.HashHelper;
 
-public class SignUpController {
+public class SignUpController implements HashHelper {
 
     @FXML
     private TextField email;
@@ -42,12 +43,18 @@ public class SignUpController {
     	String userEmail = email.getText();
     	String userPassword = password.getText();
     	String confirmPassword = password1.getText();
-
+    	
 	    if (userEmail.isEmpty() || userPassword.isEmpty() || confirmPassword.isEmpty()) {
 	        showAlert("Error", "All fields must be filled out.");
 	        return;
 	    }
-
+    	
+    	if(!HashHelper.isStrongPassword(userPassword)) {
+        	String message = HashHelper.checkPasswordStrength(userPassword);
+	        showAlert("Error", message);
+	        return;
+    	}
+    	    	
 	    if (!userPassword.equals(confirmPassword)) {
 	        showAlert("Error", "Passwords do not match.");
 	        return;
@@ -57,9 +64,6 @@ public class SignUpController {
 	    // use user id to create a profile
 	    Profile newProfile = new Profile(newUser.getUserId());
 	    newUser.setAssociatedProfile(newProfile);
-	    
-	    
-	    
 	    
 	    // gets a reference to the singleton AdminUser instance
 	    AdminUser admin = AdminUser.getAdministrator();

@@ -8,6 +8,8 @@ import java.util.Base64;
 
 public interface HashHelper {
 	
+	String salt = createSalt();
+	
     // salt is random data that is used as an additional input to hash password
     static String createSalt() {
         SecureRandom random = new SecureRandom();
@@ -20,7 +22,6 @@ public interface HashHelper {
     public static String hashPassword(String passwordToHash) {
     	
         String generatedPassword = null;
-        String salt = createSalt();
         
         try {
             MessageDigest md = MessageDigest.getInstance("SHA-512");
@@ -40,11 +41,76 @@ public interface HashHelper {
         }
         return generatedPassword;
     }
-
-    // validate the entered password
-    public static boolean isPasswordValid(String enteredPwd, String storedHash){
-        String hashedEnteredPwd = hashPassword(enteredPwd);
-        return hashedEnteredPwd.equals(storedHash);
+    
+    public static boolean isStrongPassword(String password) {
+        // Length rule
+        if (password.length() < 8 || password.length() > 20) {
+            return false;
+        }
+        
+        // Check for at least one upper case, one lower case, one digit and one special character
+        boolean upperCaseFlag = false;
+        boolean lowerCaseFlag = false;
+        boolean digitFlag = false;
+        boolean specialFlag = false;
+        for (int i = 0; i < password.length(); i++) {
+            char c = password.charAt(i);
+            if (Character.isUpperCase(c)) {
+                upperCaseFlag = true;
+            } else if (Character.isLowerCase(c)) {
+                lowerCaseFlag = true;
+            } else if (Character.isDigit(c)) {
+                digitFlag = true;
+            } else if (!Character.isLetterOrDigit(c)) {
+                specialFlag = true;
+            }
+            
+            // If all flags are true, no need to check further
+            if (upperCaseFlag && lowerCaseFlag && digitFlag && specialFlag) {
+                break;
+            }
+        }
+        
+        return upperCaseFlag && lowerCaseFlag && digitFlag && specialFlag;
     }
+
+
+    public static String checkPasswordStrength(String password) {
+        // Length rule
+        if (password.length() < 8 || password.length() > 20) {
+            return "Password length must be between 8 and 20 characters.";
+        }
+
+        // Check for at least one upper case, one lower case, one digit and one special character
+        boolean upperCaseFlag = false;
+        boolean lowerCaseFlag = false;
+        boolean digitFlag = false;
+        boolean specialFlag = false;
+        for (int i = 0; i < password.length(); i++) {
+            char c = password.charAt(i);
+            if (Character.isUpperCase(c)) {
+                upperCaseFlag = true;
+            } else if (Character.isLowerCase(c)) {
+                lowerCaseFlag = true;
+            } else if (Character.isDigit(c)) {
+                digitFlag = true;
+            } else if (!Character.isLetterOrDigit(c)) {
+                specialFlag = true;
+            }
+        }
+
+        if (!upperCaseFlag) {
+            return "Password must have at least one uppercase letter.";
+        } else if (!lowerCaseFlag) {
+            return "Password must have at least one lowercase letter.";
+        } else if (!digitFlag) {
+            return "Password must have at least one digit.";
+        } else if (!specialFlag) {
+            return "Password must have at least one special character.";
+        } else {
+            return "Password is strong.";
+        }
+    }
+
 
 }

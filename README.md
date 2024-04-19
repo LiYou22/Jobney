@@ -1,5 +1,8 @@
 # Jobney
 
+### Report:
+[Gdoc](https://docs.google.com/document/d/1QpImLz9J1yayu8i30f3WyWGqRTSubBn4/edit?usp=sharing&ouid=114284426177446314643&rtpof=true&sd=true)
+
 ### Progress Tracker:
 
 [Trello Board](https://trello.com/b/L4NtzPg1/jobney)

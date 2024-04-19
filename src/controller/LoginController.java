@@ -57,8 +57,8 @@ public class LoginController {
     private void login() {
     	
         String userEmail = email.getText();
-        String userPassword = password.getText();
-        
+        String userPassword = HashHelper.hashPassword(password.getText());
+                        
         try {
             // Fetch the administrator from the singleton object
             AdminUser administrator = AdminUser.getAdministrator();

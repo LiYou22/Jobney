@@ -137,8 +137,8 @@ public class OverviewController {
     	// get statics
         num_applications.setText(String.valueOf(user.getApplicationList().getSize()));;
         num_companies.setText(String.valueOf(user.getCompanyList().getSize()));;
-        num_interviews.setText(String.valueOf(user.getApplicationList().getApplicationsByStatus(APPLICATIONSTATUS.INTERVIEW).size()));;
-        num_offers.setText(String.valueOf(user.getApplicationList().getApplicationsByStatus(APPLICATIONSTATUS.GETOFFER).size()));;
+        num_interviews.setText(String.valueOf(user.getApplicationList().countApplicationsByStatus(APPLICATIONSTATUS.INTERVIEW).size()));;
+        num_offers.setText(String.valueOf(user.getApplicationList().countApplicationsByStatus(APPLICATIONSTATUS.GETOFFER).size()));;
 
     }
     
