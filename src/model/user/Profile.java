@@ -5,40 +5,36 @@ import javafx.beans.property.SimpleObjectProperty;
 import javafx.scene.image.Image;
 
 public class Profile {
-	
+
 	private String userName;
-	
-    private ObjectProperty<Image> avatar = new SimpleObjectProperty<>();
 
-    public ObjectProperty<Image> avatarProperty() {
-        return avatar;
-    }
+	private ObjectProperty<Image> avatar = new SimpleObjectProperty<>();
 
-    public Image getAvatar() {
-        return avatar.get();
-    }
+	public ObjectProperty<Image> avatarProperty() {
+		return avatar;
+	}
 
-    public void setAvatar(Image avatar) {
-        this.avatar.set(avatar);
-    }
+	public Image getAvatar() {
+		return avatar.get();
+	}
 
-    
-    // this is for testing, can be deleted after we've done
-    public Profile(String userName) {
-        this.userName = userName;
-        this.avatar.set(new Image("/images/User 03C.png")); // default avatar
+	public void setAvatar(Image avatar) {
+		this.avatar.set(avatar);
+	}
 
-    }
+	// this is for testing, can be deleted after we've done
+	public Profile(String userName) {
+		this.userName = userName;
+		this.avatar.set(new Image("/images/User 03C.png")); // default avatar
 
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
+	}
 
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
 
-    public String getUserName() {
-        return userName;
-    }
-
-
+	public String getUserName() {
+		return userName;
+	}
 
 }

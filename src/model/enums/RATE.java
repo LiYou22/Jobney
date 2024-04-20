@@ -1,10 +1,5 @@
 package model.enums;
 
 public enum RATE {
-	ZERO,
-    ONE,
-    TWO,
-    THREE,
-    FOUR,
-    FIVE
+	ZERO, ONE, TWO, THREE, FOUR, FIVE
 }
