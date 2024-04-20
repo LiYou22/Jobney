@@ -55,17 +55,17 @@ public class OverviewController implements Initializable {
 	@FXML
 	private ImageView btn;
 
-    @FXML
-    private Pane pane_1;
+	@FXML
+	private Pane pane_1;
 
-    @FXML
-    private Pane pane_2;
+	@FXML
+	private Pane pane_2;
 
-    @FXML
-    private Pane pane_3;
+	@FXML
+	private Pane pane_3;
 
-    @FXML
-    private Pane pane_4;
+	@FXML
+	private Pane pane_4;
 
 	@FXML
 	private Text company1_name;
@@ -139,13 +139,12 @@ public class OverviewController implements Initializable {
 		this.user = user;
 		this.hbox = hbox;
 	}
-	
+
 	List<Application> appList;
 	Application app1;
 	Application app2;
 	Application app3;
 	Application app4;
-
 
 	public void initialize(URL url, ResourceBundle resourceBundle) {
 
@@ -153,9 +152,8 @@ public class OverviewController implements Initializable {
 		today = ZonedDateTime.now();
 		drawCalendar();
 
-		username.setText(user.getProfile().getUserName());
+		username.setText(user.getAssociatedProfile().getUserName());
 		appList = showApplications();
-
 
 		// get the top 4 applications that haven't been applied to in chronological
 		// order(oldest to newest)
@@ -178,84 +176,81 @@ public class OverviewController implements Initializable {
 
 		// get statics
 		num_applications.setText(String.valueOf(user.getApplicationList().getSize()));
-		
+
 		num_companies.setText(String.valueOf(user.getCompanyList().getSize()));
-		
-		num_interviews.setText(String.valueOf(user.getApplicationList().countApplicationsByStatus(APPLICATIONSTATUS.INTERVIEW).size()));
-		
-		num_offers.setText(String.valueOf(user.getApplicationList().countApplicationsByStatus(APPLICATIONSTATUS.GETOFFER).size()));		
-		
+
+		num_interviews.setText(String
+				.valueOf(user.getApplicationList().countApplicationsByStatus(APPLICATIONSTATUS.INTERVIEW).size()));
+
+		num_offers.setText(
+				String.valueOf(user.getApplicationList().countApplicationsByStatus(APPLICATIONSTATUS.GETOFFER).size()));
+
 		pane_1.setOnMouseClicked(event -> {
-			
-	    	if (Desktop.isDesktopSupported() && Desktop.getDesktop().isSupported(Desktop.Action.BROWSE)) {
-	            try {
-	                URI uri = new URI(app1.getAssociatedJob().getJobLink());
-	                Desktop.getDesktop().browse(uri);
-	            } catch (Exception e) {
-	                e.printStackTrace();
-	            }
-	        }
+
+			if (Desktop.isDesktopSupported() && Desktop.getDesktop().isSupported(Desktop.Action.BROWSE)) {
+				try {
+					URI uri = new URI(app1.getAssociatedJob().getJobLink());
+					Desktop.getDesktop().browse(uri);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
 		});
-		
+
 		pane_2.setOnMouseClicked(event -> {
-			
-	    	if (Desktop.isDesktopSupported() && Desktop.getDesktop().isSupported(Desktop.Action.BROWSE)) {
-	            try {
-	                URI uri = new URI(app2.getAssociatedJob().getJobLink());
-	                Desktop.getDesktop().browse(uri);
-	            } catch (Exception e) {
-	                e.printStackTrace();
-	            }
-	        }
+
+			if (Desktop.isDesktopSupported() && Desktop.getDesktop().isSupported(Desktop.Action.BROWSE)) {
+				try {
+					URI uri = new URI(app2.getAssociatedJob().getJobLink());
+					Desktop.getDesktop().browse(uri);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
 		});
-		
+
 		pane_3.setOnMouseClicked(event -> {
-			
-	    	if (Desktop.isDesktopSupported() && Desktop.getDesktop().isSupported(Desktop.Action.BROWSE)) {
-	            try {
-	                URI uri = new URI(app3.getAssociatedJob().getJobLink());
-	                Desktop.getDesktop().browse(uri);
-	            } catch (Exception e) {
-	                e.printStackTrace();
-	            }
-	        }
+
+			if (Desktop.isDesktopSupported() && Desktop.getDesktop().isSupported(Desktop.Action.BROWSE)) {
+				try {
+					URI uri = new URI(app3.getAssociatedJob().getJobLink());
+					Desktop.getDesktop().browse(uri);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
 		});
-		
+
 		pane_4.setOnMouseClicked(event -> {
-			
-	    	if (Desktop.isDesktopSupported() && Desktop.getDesktop().isSupported(Desktop.Action.BROWSE)) {
-	            try {
-	                URI uri = new URI(app4.getAssociatedJob().getJobLink());
-	                Desktop.getDesktop().browse(uri);
-	            } catch (Exception e) {
-	                e.printStackTrace();
-	            }
-	        }
+
+			if (Desktop.isDesktopSupported() && Desktop.getDesktop().isSupported(Desktop.Action.BROWSE)) {
+				try {
+					URI uri = new URI(app4.getAssociatedJob().getJobLink());
+					Desktop.getDesktop().browse(uri);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
 		});
-		
+
 		// add mouse hover effect to pane
 
 		DropShadow shadow = new DropShadow();
 		shadow.setColor(Color.rgb(0, 0, 0, 0.2));
 		shadow.setRadius(5.0);
 		shadow.setSpread(0.20);
-		
-		
+
 		pane_1.setOnMouseEntered(event -> pane_1.setEffect(shadow));
 		pane_1.setOnMouseExited(event -> pane_1.setEffect(null));
-		
-		
+
 		pane_2.setOnMouseEntered(event -> pane_2.setEffect(shadow));
 		pane_2.setOnMouseExited(event -> pane_2.setEffect(null));
-		
-		
+
 		pane_3.setOnMouseEntered(event -> pane_3.setEffect(shadow));
 		pane_3.setOnMouseExited(event -> pane_3.setEffect(null));
-		
+
 		pane_4.setOnMouseEntered(event -> pane_4.setEffect(shadow));
 		pane_4.setOnMouseExited(event -> pane_4.setEffect(null));
-
-
 
 	}
 
@@ -283,8 +278,6 @@ public class OverviewController implements Initializable {
 		calendar.getChildren().clear();
 		drawCalendar();
 	}
-
-
 
 	private void drawCalendar() {
 		year.setText(String.valueOf(dateFocus.getYear()));

@@ -3,24 +3,23 @@ package model.application;
 import java.time.ZonedDateTime;
 
 public class CalendarActivity {
-	
-    private ZonedDateTime date;
 
-    public CalendarActivity(ZonedDateTime date) {
-        this.date = date;
-    }
+	private ZonedDateTime date;
 
-    public ZonedDateTime getDate() {
-        return date;
-    }
+	public CalendarActivity(ZonedDateTime date) {
+		this.date = date;
+	}
 
-    public void setDate(ZonedDateTime date) {
-        this.date = date;
-    }
+	public ZonedDateTime getDate() {
+		return date;
+	}
 
-    @Override
-    public String toString() {
-        return "CalenderActivity{" +
-                "date=" + date;
-    }
+	public void setDate(ZonedDateTime date) {
+		this.date = date;
+	}
+
+	@Override
+	public String toString() {
+		return "CalenderActivity{" + "date=" + date;
+	}
 }

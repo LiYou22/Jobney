@@ -1,7 +1,5 @@
 package model.enums;
 
 public enum INDUSTRY {
-    TECH,
-    EDUCATION,
-    FINTECH,
+	TECH, EDUCATION, FINTECH, HEALTHCARE, CONSULTING, RETAIL, MANUFACTURING
 }
