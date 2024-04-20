@@ -152,7 +152,7 @@ public class OverviewController implements Initializable {
 		today = ZonedDateTime.now();
 		drawCalendar();
 
-		username.setText(user.getProfile().getUserName());
+		username.setText(user.getAssociatedProfile().getUserName());
 		appList = showApplications();
 
 		// get the top 4 applications that haven't been applied to in chronological

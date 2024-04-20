@@ -8,25 +8,25 @@ public abstract class User {
 
 	private String email;
 	private String password;
-	private Profile profile;
+//	private Profile profile;
 	private ArrayList<String> passwrodHistory;
 
 	public User(String email, String password) {
 		this.passwrodHistory = new ArrayList<>();
 		this.email = email;
 		this.password = HashHelper.hashPassword(password);
-		this.profile = new Profile(email);
+//		this.profile = new Profile();
 		passwrodHistory.add(this.password);
 
 	}
 
-	public Profile getProfile() {
-		return profile;
-	}
-
-	public void setProfile(Profile p) {
-		this.profile = p;
-	}
+//	public Profile getProfile() {
+//		return profile;
+//	}
+//
+//	public void setProfile(Profile p) {
+//		this.profile = p;
+//	}
 
 	public String getEmail() {
 		return email;

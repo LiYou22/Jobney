@@ -21,8 +21,11 @@ public class Profile {
 	public void setAvatar(Image avatar) {
 		this.avatar.set(avatar);
 	}
+	
+	public Profile() {
 
-	// this is for testing, can be deleted after we've done
+	}
+
 	public Profile(String userName) {
 		this.userName = userName;
 		this.avatar.set(new Image("/images/User 03C.png")); // default avatar

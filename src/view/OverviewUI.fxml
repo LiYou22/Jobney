@@ -123,7 +123,7 @@
                         </Pane>
                      </children>
                   </VBox>
-                  <Label fx:id="username" layoutX="197.0" layoutY="85.0" text="username">
+                  <Label fx:id="username" layoutX="197.0" layoutY="85.0">
                      <font>
                         <Font size="16.0" />
                      </font>

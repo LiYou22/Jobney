@@ -20,7 +20,11 @@ public class Initializer {
 
 		// Initialize a test user
 		RegularUser testUser = new RegularUser("user@gmail.com", "1111");
+//		Profile profile1 = testUser.getAssociatedProfile();
+//		profile1.setUserName("Lily");
+		
 		administrator.getUserDirectory().addUser(testUser);
+		
 
 		// create user profile
 		Profile profile1 = new Profile("Bruno");
@@ -236,13 +240,6 @@ public class Initializer {
 		question3.addAnswer("Submit resume and cover letter");
 		question3.addAnswer("Complete online coding test");
 		question3.addFrequency();
-
-		// Create a question list and associate it with an application
-//	    List<Question> questions = Arrays.asList(question1, question2, question3);
-//	    QuestionList questionList = new QuestionList("application-1", questions);
-//	    questionList.addQuestion(question1);
-//	    questionList.addQuestion(question2);
-//	    questionList.addQuestion(question3);
 
 		QuestionList ql1 = app1.getQuestionList();
 		ql1.addQuestion(question1);

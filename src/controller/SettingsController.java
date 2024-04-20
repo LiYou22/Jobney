@@ -61,10 +61,10 @@ public class SettingsController {
 
 	public void initialize() {
 
-		Image img = user.getProfile().getAvatar();
+		Image img = user.getAssociatedProfile().getAvatar();
 
 		avatar_img.setImage(img);
-		username_txt.setPromptText(user.getProfile().getUserName());
+		username_txt.setPromptText(user.getAssociatedProfile().getUserName());
 
 	}
 
@@ -110,7 +110,8 @@ public class SettingsController {
 
 		if (validate_current_pwd() && validate_new_pwd()) {
 			user.changePassword(new_pwd_txt.getText());
-			user.getProfile().setAvatar(image);
+			user.getAssociatedProfile().setAvatar(image);
+			user.getAssociatedProfile().setUserName(username_txt.getText());
 
 			showAlert("Save", "Saved!");
 

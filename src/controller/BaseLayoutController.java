@@ -33,7 +33,7 @@ public class BaseLayoutController {
 	@FXML
 	public void initialize() {
 		// Load your image and set it to ImageView.
-		Image image = user.getProfile().getAvatar();
+		Image image = user.getAssociatedProfile().getAvatar();
 		avatar_icon.setImage(image);
 
 		Circle clip = new Circle();
@@ -46,12 +46,12 @@ public class BaseLayoutController {
 		avatar_icon.setClip(clip);
 
 		// Set the initial image if available
-		if (user.getProfile().getAvatar() != null) {
-			avatar_icon.setImage(user.getProfile().getAvatar());
+		if (user.getAssociatedProfile().getAvatar() != null) {
+			avatar_icon.setImage(user.getAssociatedProfile().getAvatar());
 		}
 
 		// add a listener to track the change of avatar
-		user.getProfile().avatarProperty().addListener((obs, oldImage, newImage) -> Platform.runLater(() -> {
+		user.getAssociatedProfile().avatarProperty().addListener((obs, oldImage, newImage) -> Platform.runLater(() -> {
 			avatar_icon.setImage(newImage);
 			avatar_icon.setClip(clip);
 		}));
@@ -59,7 +59,7 @@ public class BaseLayoutController {
 	}
 
 	public void updateAvatar() {
-		Image image = user.getProfile().getAvatar();
+		Image image = user.getAssociatedProfile().getAvatar();
 		avatar_icon.setImage(image);
 
 	}
