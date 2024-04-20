@@ -6,7 +6,7 @@
 
 ### Live Demo:
 
-[Demo]([www.youtube.com](https://youtu.be/bKcWWTSydwU))
+[Demo](https://youtu.be/bKcWWTSydwU)
 
 ### Slides:
 
