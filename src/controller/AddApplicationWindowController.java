@@ -102,7 +102,6 @@ public class AddApplicationWindowController {
 
 		// create the company
 		Company company = new Company(INDUSTRY.valueOf(selectedIndustry), companyName);
-		user.getCompanyList().addCompany(company);
 
 		// create the job
 		String jobName = jobNameField.getText();
@@ -137,8 +136,12 @@ public class AddApplicationWindowController {
 
 			app.setDateApplied(formattedDate);
 		}
+		
+		company.addApplication(app);
 
 		user.getApplicationList().addApplication(app);
+		user.getCompanyList().addCompany(company);		
+		
 
 		System.out.println("saved the new application!");
 		System.out.println("current application list: " + user.getApplicationList());
