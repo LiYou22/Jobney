@@ -1,4 +1,6 @@
 # Jobney
+## Intro:
+
 
 ### Report:
 
@@ -7,9 +9,6 @@
 ### Live Demo:
 
 [Demo](https://youtu.be/bKcWWTSydwU)
-
-### Demo Video:
-<iframe width="560" height="315" src="https://youtu.be/bKcWWTSydwU" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
 ### Slides:
 
