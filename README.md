@@ -41,12 +41,12 @@ This project is designed to simplify the job application process for job seekers
       --add-modules javafx.controls,javafx.fxml
       ```
     * Unselect all the options under the **VM Arguments** field.
-* Apply and Run
+* Apply and Run.
 
 ## Usage:
 
-* Please reference the [Instructions.txt](Instructions.txt)
-* Please check the demo vidoe: [Demo](https://youtu.be/bKcWWTSydwU)
+* Please reference the [Instructions.txt](Instructions.txt).
+* Please check the demo vidoe: [Demo](https://youtu.be/bKcWWTSydwU).
 
 
 ## Project Architecture:
