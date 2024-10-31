@@ -46,7 +46,7 @@ This project is designed to simplify the job application process for job seekers
 ## Usage:
 
 * Please reference the [Instructions.txt](Instructions.txt).
-* Please check the demo vidoe: [Demo](https://youtu.be/bKcWWTSydwU).
+* Please check the demo video: [Demo](https://youtu.be/bKcWWTSydwU).
 
 
 ## Project Architecture:
