@@ -1,6 +1,6 @@
 # Jobney: A Centralized Tracking System for Job Application Management
 
-![](/src/images/demo.gif)
+
 
 ## Project Overview
 
@@ -8,7 +8,7 @@ Built by job seekers, for job seekers, Jobney is a job application management sy
 
 With Jobney, you can easily track your applications, view your achievements and statistics, manage different versions of your resume and cover letters, set reminders, and organize your notes. The system also provides analysis to help you identify your job preferences and actions.
 
-<img width="1196" alt="overview1" src="https://github.com/user-attachments/assets/96123e1b-8f6f-43c7-9573-b8f1f091f38e">
+![](/src/images/demo.gif)
 
 ## Features
 
