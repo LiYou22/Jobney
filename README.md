@@ -1,7 +1,5 @@
 # Jobney: A Centralized Tracking System for Job Application Management
 
-
-
 ## Project Overview
 
 Built by job seekers, for job seekers, Jobney is a job application management system designed to simplifies the process of tracking every stage of your job applications in an intuitive way, serving as a central hub that organizes all aspects of your job search in one place.
