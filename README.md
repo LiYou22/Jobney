@@ -17,10 +17,6 @@ With Jobney, you can easily track your applications, view your achievements and 
 - **LinkedIn Connection Tracker**: Track professional connections relevant.
 - **Progress Tracking**: visualzie the application proecss with intuitive interface.
 
-## Project Architecture
-
-<img width="1335" alt="Screenshot 2024-10-31 at 19 42 16" src="https://github.com/user-attachments/assets/c8078d3b-5cc4-4c05-ae6c-ad95d1de729c">
-
 ## How to Run
 
 ### Prerequisites
